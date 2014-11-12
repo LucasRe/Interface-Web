@@ -10,5 +10,5 @@ anchor: 'Continuous'
 
 // Drag
 $(function() {    
-    $( "#bloco" ).draggable({ containment: "parent" });
+    $( "#bloco" ).draggable({ containment: "parent", cursor:"move" });
 });
