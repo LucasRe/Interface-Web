@@ -14,13 +14,13 @@
             #state2 {
               position: relative;
               left: 250px;
-              top: 100px;
+              top: 25px;
             }
 
             #state3 {
-              position:relative;
+              position: relative;
               left: 100px;
-              top: 250px;
+              top: 2px;
             }  
             
             #bloco{
@@ -28,4 +28,6 @@
               background-color: #ddddff;
               width: 100px;
               height: 100px;
+                position: relative;
+                top: 50px;
             }

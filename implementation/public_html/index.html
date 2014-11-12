@@ -25,7 +25,7 @@
     </head>    
     <body>        
         
-        <header>
+        <header class="page-header">
             
         <!-- Menu -->
         <nav class="navbar navbar-default" role="navigation">
@@ -70,9 +70,10 @@
     </header>
         
         <!-- Main DIV BEGIN -->
-        <div class="container-fluid">
+        <div id="pqmain" class="container-fluid">
             <div class="row">
                 <div class="col-md-12">  
+                    
                     <span class="glyphicon glyphicon-eye-open"></span>
                     
                     <!-- DEMO -->
@@ -81,23 +82,19 @@
                     </div>
                     <div id="state2" class="item"></div>
                     <div id="state3" class="item"></div>
-                    <script type="text/javascript">
-                        jsPlumb.ready(function() {
-                        jsPlumb.makeSource($('.item'), {
-                        connector: 'Flowchart'
-                        });
-                        jsPlumb.makeTarget($('.item'), {
-                        anchor: 'Continuous'
-                        });
-                        });
-                    </script>
+                    
+                    <!-- JavaScript Interface -->                    
+                    <script type="text/javascript" src="javascript/interface.js"></script>
                     <!-- DEMO -->
                     
                 </div>
             </div>
         </div>  
-        <!-- Main DIV END -->
-        
-        <footer><span class="glyphicon glyphicon-eye-open"></span> VGL</footer>          
+        <!-- Main DIV END -->       
+    <footer id="pgfooter" class="footer">
+        <div class="container">
+        <p><span class="glyphicon glyphicon-eye-open"></span> VGL</p>
+        </div>
+    </footer>             
     </body>     
 </html>
