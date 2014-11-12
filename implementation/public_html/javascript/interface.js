@@ -9,6 +9,6 @@ anchor: 'Continuous'
 });
 
 // Drag
-$(function() {
-    $( "#bloco" ).draggable(); // #bloco is a draggable element
+$(function() {    
+    $( "#bloco" ).draggable({ containment: "parent" });
 });
