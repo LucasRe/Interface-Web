@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>VisionGL</title> 
+
+        <!-- Jquery -->
+        <script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
+
+        <!-- Jquery UI -->
+        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">     
+        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.structure.css">
+        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">  
+        <script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>
+
+        <!-- JsPlumb -->
+        <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.1.js"></script>
+
+        <!--Project Style -->
+        <link rel="stylesheet" href="css/interface.css">
+
+        <!-- JavaScript Interface -->
+        <style>
+            .draggable { width: 150px; height: 150px; padding: 0.5em; }
+        </style>
+        <script>
+            $(function() {
+                $( ".draggable" ).draggable();
+            });
+
+            // Connections
+            jsPlumb.ready(function() {
+                jsPlumb.makeSource($('.vertexout'), {
+                    connector: 'Flowchart'
+                });
+                jsPlumb.makeTarget($('.vertexin'), {
+                    anchor: 'Continuous'
+                });
+            });
+        </script>
+
+    </head>    
+    <body> 
+        <div class="ui-widget-content draggable">
+            <p>out</p>
+            <div class="vertexout"></div>
+        </div>
+        <div class="ui-widget-content draggable">
+            <p>in</p>
+            <div class="vertexin"></div>
+        </div>
+        <div class="ui-widget-content draggable">
+            <p>in</p>
+            <div class="vertexin"></div>
+            <p>in</p>
+            <div class="vertexin"></div>
+            <p>in</p>
+            <div class="vertexin"></div>
+        </div>
+    </body>
+</html>
