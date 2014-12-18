@@ -19,43 +19,98 @@
         <!--Project Style -->
         <link rel="stylesheet" href="css/interface.css">
 
-        <!-- JavaScript Interface -->
-        <style>
-            .draggable { width: 150px; height: 150px; padding: 0.5em; }
-        </style>
+        <!-- JavaScript WebApp -->        
         <script>
-            $(function() {
-                $( ".draggable" ).draggable();
-            });
+
+            // Drag
+            /* $(function() {
+                $( ".block" ).draggable({ containment: "#maindiv", cursor: "move", cursorAt: { top: 10, right: 10 }, handle: ".ui-widget-header"});
+            }); */
 
             // Connections
             jsPlumb.ready(function() {
-                jsPlumb.makeSource($('.vertexout'), {
-                    connector: 'Flowchart'
+
+                var vout = '.vertexout';
+                var vin = '.vertexin';
+                var dragob = '.block';
+                var container = '#maindiv';
+
+                jsPlumb.setContainer($(container));   
+                
+                jsPlumb.makeSource($(vout), {  
                 });
-                jsPlumb.makeTarget($('.vertexin'), {
-                    anchor: 'Continuous'
+
+                jsPlumb.makeTarget($(vin), { 
+                });    
+
+                jsPlumb.draggable($(dragob), {
+                    containment: container, 
+                    cursor: "move", 
+                    cursorAt: { top: 10, right: 10 }, 
+                    handle: ".ui-widget-header"
                 });
-            });
+            }); 
         </script>
 
     </head>    
-    <body> 
-        <div class="ui-widget-content draggable">
-            <p>out</p>
-            <div class="vertexout"></div>
-        </div>
-        <div class="ui-widget-content draggable">
-            <p>in</p>
-            <div class="vertexin"></div>
-        </div>
-        <div class="ui-widget-content draggable">
-            <p>in</p>
-            <div class="vertexin"></div>
-            <p>in</p>
-            <div class="vertexin"></div>
-            <p>in</p>
-            <div class="vertexin"></div>
-        </div>
-    </body>
-</html>
+    <body class="noselect">
+        <!-- Header -->
+        <header>
+            <nav>
+                <ul class="drop_menu">
+                    <li><a href='#'>Menu ▼</a>
+                        <ul>
+                            <li><a href='#'>Open</a></li>
+                            <li><a href='#'>Save</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>Edit ▼</a>
+                        <ul>
+                            <li><a href='#'>Duplicate</a></li>
+                            <li><a href='#'>Delete</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>Help ▼</a>
+                        <ul>
+                            <li><a href='#'>Documentation</a></li>
+                            <li><a href='#'>About</a></li>
+                        </ul>
+                    </li>
+                    </nav>
+                </header>
+            <!-- /Header -->
+
+            <!-- Main Div -->
+            <div id="maindiv">
+                <div class="block ui-corner-all"> 
+                    <div class="ui-widget-header ui-corner-top">Integer</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p style="text-align: right">out<span class="vertexout"></span></p>
+                    </div>          
+
+                </div>
+                <div class="block ui-corner-all"> 
+                    <div class="ui-widget-header ui-corner-top">Function</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin"></span> in</p>
+                        <p><span class="vertexin"></span> in</p>
+                        <p><span class="vertexin"></span> in</p>
+                        <p><span class="vertexin"></span> in</p>
+                        <p style="text-align: right">out<span class="vertexout"></span></p>
+                    </div>
+                </div>
+                <div class="block ui-corner-all"> 
+                    <div class="ui-widget-header ui-corner-top">View</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin"></span> in</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /Main Div -->        
+
+            <!-- Footer -->
+            <footer>
+            </footer>
+            <!-- /Footer -->
+            </body>
+        </html>

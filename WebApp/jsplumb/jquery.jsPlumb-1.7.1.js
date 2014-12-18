@@ -2749,7 +2749,7 @@
 		var jsPlumbInstance = window.jsPlumbInstance = function(_defaults) {
 				
 			this.Defaults = {
-				Anchor : "Bottom",
+				Anchor : [ "Perimeter", { shape:"Circle" }],
 				Anchors : [ null, null ],
 	            ConnectionsDetachable : true,
 	            ConnectionOverlays : [ ],
@@ -2758,10 +2758,10 @@
 				DoNotThrowErrors:false,
 				DragOptions : { },
 				DropOptions : { },
-				Endpoint : "Dot",
+				Endpoint : "Blank",
 				EndpointOverlays : [ ],
 				Endpoints : [ null, null ],
-				EndpointStyle : { fillStyle : "#456" },
+				EndpointStyle : { fillStyle : "#456"},
 				EndpointStyles : [ null, null ],
 				EndpointHoverStyle : null,
 				EndpointHoverStyles : [ null, null ],
@@ -2770,7 +2770,7 @@
 				LogEnabled : false,
 				Overlays : [ ],
 				MaxConnections : 1, 
-				PaintStyle : { lineWidth : 4, strokeStyle : "#456" },
+				PaintStyle : { lineWidth : 2, strokeStyle : "#456" },
 				ReattachConnections:false,
 				RenderMode : "svg",
 				Scope : "jsPlumb_DefaultScope"
