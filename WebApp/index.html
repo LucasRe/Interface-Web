@@ -23,6 +23,10 @@
         <script>
             // Selected Block var initialize
             var selected = '';
+            var vout = '.vertexout';
+            var vin = '.vertexin';
+            var dragob = '.block';
+            var container = '#maindiv';
 
             $(document).ready(function(){
 
@@ -58,8 +62,8 @@
                 });
 
                 // Remove Block
-                $("button#delete").click(function(){
-                    jsPlumb.detachAllConnections(selected);
+                $("button#delete").click(function(){  
+                    //jsPlumb.detachAllConnections();
                     selected.remove();
 
                 });
@@ -67,16 +71,12 @@
                 // Clone Block
                 $("button#clone").click(function(){
                     selected.clone().css({ left: '500px'}).attr('id', 'id'+1 ).insertAfter(selected);
+
                 });
             });
 
             // Connections
-            jsPlumb.ready(function() {
-
-                var vout = '.vertexout';
-                var vin = '.vertexin';
-                var dragob = '.block';
-                var container = '#maindiv';
+            jsPlumb.ready(function() {               
 
                 //jsPlumb set container
                 jsPlumb.setContainer($(container));
