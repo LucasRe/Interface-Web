@@ -2,30 +2,73 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>VisionGL</title> 
+        <title>VisionGL</title>
 
         <!-- Jquery -->
         <script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
 
         <!-- Jquery UI -->
-        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">     
+        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">
         <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.structure.css">
-        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">  
+        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">
         <script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>
 
         <!-- JsPlumb -->
-        <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.1.js"></script>
+        <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
 
         <!--Project Style -->
         <link rel="stylesheet" href="css/interface.css">
 
-        <!-- JavaScript WebApp -->        
+        <!-- JavaScript WebApp -->
         <script>
+            // Selected Block var initialize
+            var selected = '';
 
-            // Drag
-            /* $(function() {
-                $( ".block" ).draggable({ containment: "#maindiv", cursor: "move", cursorAt: { top: 10, right: 10 }, handle: ".ui-widget-header"});
-            }); */
+            $(document).ready(function(){
+
+                // Library Toggle
+                $("#librarytoggle").click(function(){
+                    $("#librarybody").slideToggle('slow');
+
+                });
+
+                // Library Tabs
+                $(function() {
+                    $( "#tabs" ).tabs();
+                });
+
+                // Select Block
+                $( ".ui-widget-header" ).dblclick(function() {
+                    if (selected == ''){
+                        selected = $(this).parent();
+                        selected.addClass('selected');
+                    } else {
+                        selected.removeClass('selected');
+                        selected = $(this).parent();
+                        selected.addClass('selected');
+                    }
+                });
+
+                // DeSelect Block
+                $( "#maindiv" ).click(function() {
+                    if (selected != ''){
+                        selected.removeClass('selected');
+                        selected = '';
+                    }
+                });
+
+                // Remove Block
+                $("button#delete").click(function(){
+                    jsPlumb.detachAllConnections(selected);
+                    selected.remove();
+
+                });
+
+                // Clone Block
+                $("button#clone").click(function(){
+                    selected.clone().css({ left: '500px'}).attr('id', 'id'+1 ).insertAfter(selected);
+                });
+            });
 
             // Connections
             jsPlumb.ready(function() {
@@ -35,24 +78,60 @@
                 var dragob = '.block';
                 var container = '#maindiv';
 
-                jsPlumb.setContainer($(container));   
-                
-                jsPlumb.makeSource($(vout), {  
+                //jsPlumb set container
+                jsPlumb.setContainer($(container));
+
+                // Vertex image
+                jsPlumb.makeSource($(vout+'.image'), {
+                    scope:'image'
                 });
 
-                jsPlumb.makeTarget($(vin), { 
-                });    
+                jsPlumb.makeTarget($(vin+'.image'), {
+                    maxConnections:1,
+                    scope:'image'
+                });
 
+                // Vertex int
+                jsPlumb.makeSource($(vout+'.int'), {
+                    scope:'int'
+                });
+
+                jsPlumb.makeTarget($(vin+'.int'), {
+                    maxConnections:1,
+                    scope:'int'
+                });
+
+                // Vertex float
+                jsPlumb.makeSource($(vout+'.float'), {
+                    scope:'float'
+                });
+
+                jsPlumb.makeTarget($(vin+'.float'), {
+                    maxConnections:1,
+                    scope:'float'
+                });
+
+                // Vertex char
+                jsPlumb.makeSource($(vout+'.char'), {
+                    scope:'char'
+                });
+
+                jsPlumb.makeTarget($(vin+'.char'), {
+                    maxConnections:1,
+                    scope:'char'
+                });
+
+                // Drag block
                 jsPlumb.draggable($(dragob), {
-                    containment: container, 
-                    cursor: "move", 
-                    cursorAt: { top: 10, right: 10 }, 
+                    containment: container,
+                    cursor: "move",
+                    cursorAt: { top: 10, right: 10 },
                     handle: ".ui-widget-header"
-                });
-            }); 
+                });                
+            });
         </script>
 
-    </head>    
+    </head>
     <body class="noselect">
         <!-- Header -->
         <header>
@@ -67,50 +146,181 @@
                     <li><a href='#'>Edit ▼</a>
                         <ul>
                             <li><a href='#'>Duplicate</a></li>
-                            <li><a href='#'>Delete</span></a></li>
-                        </ul>
-                    </li>
-                    <li><a href='#'>Help ▼</a>
-                        <ul>
-                            <li><a href='#'>Documentation</a></li>
-                            <li><a href='#'>About</a></li>
-                        </ul>
-                    </li>
-                    </nav>
-                </header>
-            <!-- /Header -->
+                            <li><a href='#' id="delete">Delete</span></a></li>
+                </ul>
+                </li>
+            <li><a href='#'>Help ▼</a>
+                <ul>
+                    <li><a href='#'>Documentation</a></li>
+                    <li><a href='#'>About</a></li>
+                </ul>
+            </li>
+            <li>
+                <button id="delete">Delete</button>
+                <button id="clone">Clone</button>
+                <!-- <button id="zoomin">Zoom In</button>
+<button id="zoomout">Zoom Out</button> -->
+            </li>
+            </ul>
+        </nav>
+    </header>
+<!-- /Header -->
 
-            <!-- Main Div -->
-            <div id="maindiv">
-                <div class="block ui-corner-all"> 
+<!-- Main Div -->
+<div id="maindiv">
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">Integer</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p style="text-align: right">out<span class="vertexout int"></span></p>
+        </div>
+
+    </div>
+    <div id="teste" class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">Function</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><span class="vertexin image"></span> in</p>
+            <p><span class="vertexin int"></span> in</p>
+            <p><span class="vertexin float"></span> in</p>
+            <p><span class="vertexin char"></span> in</p>
+            <p style="text-align: right">out<span class="vertexout float"></span></p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">Image Viewer</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><img src="demo.png"></p>
+            <p><span class="vertexin image"></span>img_input</p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">vglClNot</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><span class="vertexin image"></span>img_input</p>
+            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">vglClErode</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><span class="vertexin image"></span>img_input</p>
+            <p><span class="vertexin float"></span>convolution_window</p>
+            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><span class="vertexin image"></span>img_input</p>
+            <p><span class="vertexin float"></span>convolution_window</p>
+            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">vglClSum</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><span class="vertexin image"></span>img_input1</p>
+            <p><span class="vertexin image"></span>img_input1</p>
+            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+        </div>
+    </div>
+    <div class="block ui-corner-all noselect">
+        <div class="ui-widget-header ui-corner-top">Image</div>
+        <div class="ui-widget-content ui-corner-bottom">
+            <p><img src="demo.png"></p>
+            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+        </div>
+    </div>
+</div>
+<!-- /Main Div -->
+<div id="librarycontainer">
+    <div id="librarytoggle" class="ui-widget-header ui-corner-top">Library</div>
+    <div id="librarybody">
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">All</a></li>
+                <li><a href="#tabs-2">Category 2</a></li>
+                <li><a href="#tabs-3">category 2</a></li>
+            </ul>
+            <div id="tabs-1">
+                <p>
+                <div class="block ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">Integer</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p style="text-align: right">out<span class="vertexout"></span></p>
-                    </div>          
+                        <p style="text-align: right">out<span class="vertexout int"></span></p>
+                    </div>
 
                 </div>
-                <div class="block ui-corner-all"> 
+                <div id="teste" class="block ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">Function</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin"></span> in</p>
-                        <p><span class="vertexin"></span> in</p>
-                        <p><span class="vertexin"></span> in</p>
-                        <p><span class="vertexin"></span> in</p>
-                        <p style="text-align: right">out<span class="vertexout"></span></p>
+                        <p><span class="vertexin image"></span> in</p>
+                        <p><span class="vertexin int"></span> in</p>
+                        <p><span class="vertexin float"></span> in</p>
+                        <p><span class="vertexin char"></span> in</p>
+                        <p style="text-align: right">out<span class="vertexout float"></span></p>
                     </div>
                 </div>
-                <div class="block ui-corner-all"> 
-                    <div class="ui-widget-header ui-corner-top">View</div>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">Image Viewer</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin"></span> in</p>
+                        <p><img src="demo.png"></p>
+                        <p><span class="vertexin image"></span>img_input</p>
                     </div>
                 </div>
-            </div>
-            <!-- /Main Div -->        
-
-            <!-- Footer -->
-            <footer>
-            </footer>
-            <!-- /Footer -->
-            </body>
-        </html>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClNot</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClErode</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p><span class="vertexin float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p><span class="vertexin float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClSum</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input1</p>
+                        <p><span class="vertexin image"></span>img_input1</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="block ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">Image</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><img src="demo.png"></p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                </p>
+        </div>
+        <div id="tabs-2">
+            <p>
+            </p>
+        </div>
+        <div id="tabs-3">
+            <p>
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Footer -->
+<footer>
+</footer>
+<!-- /Footer -->
+</body>
+</html>

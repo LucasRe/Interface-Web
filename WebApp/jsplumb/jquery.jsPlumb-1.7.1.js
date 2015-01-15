@@ -2753,7 +2753,7 @@
 				Anchors : [ null, null ],
 	            ConnectionsDetachable : true,
 	            ConnectionOverlays : [ ],
-	            Connector : "Bezier",
+	            Connector : [ "Bezier", {curviness:5},{stub:500} ],
 				Container : null,
 				DoNotThrowErrors:false,
 				DragOptions : { },
