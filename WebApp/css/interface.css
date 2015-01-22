@@ -97,10 +97,14 @@ table {
     background-color:black;
 }
 .drop_menu li:hover ul li a:hover { background:gray; }
+
 /* ---------- WebApp ---------- */
+
 #maindiv{
     height: 94vh;
-    margin: 5px;
+    margin: 5px; 
+    font-family: sans-serif;
+    font-size: 10px;
 }
 .noselect {
     -webkit-touch-callout: none;
@@ -115,22 +119,20 @@ table {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     position: relative;
-    min-width: 10px;
-    min-height: 10px;    
+    min-width: 12px;
+    min-height: 12px;    
     float: left;    
-    left: -10px;
-    top: 5px;    
+    left: -11px; 
 }
 .vertexout {
     border: 1px solid #454545;    
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     position: relative;
-    width: 10px;
-    height: 10px;   
+    width: 12px;
+    height: 12px;   
     float: right;    
-    right: -10px;
-    top: 5px;
+    right: -11px;
 }
 .vertexin.image{
     background-color: #ff4141;
@@ -163,7 +165,7 @@ table {
     max-height: auto;
     max-width: auto;
     padding-top: 0px;
-    position: absolute;
+    position:relative;
     z-index: 1;
 }
 .block{ 
@@ -184,7 +186,7 @@ table {
     z-index: 2;
 }
 .block p{
-   margin: 5px;
+    margin: 5px;
 }
 #librarycontainer{  
     position: absolute;    
@@ -217,8 +219,8 @@ table {
 #clone{
 }
 .block img{
-    max-height: 243px;
-    max-width: 360px;
+    max-height: 60px;
+    max-width: 90px;
     margin: 5px;
 }
 .hend{
