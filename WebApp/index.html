@@ -26,7 +26,13 @@
             var vout = '.vertexout';
             var vin = '.vertexin';
             var dragob = '.block';
-            var container = '#maindiv';
+            var dragop = {
+                containment: container,
+                cursor: "move",
+                cursorAt: { top: 10, right: 10 },
+                handle: ".ui-widget-header"
+            }
+            var container = '#maindiv';            
 
             $(document).ready(function(){
 
@@ -75,8 +81,28 @@
                 $("button#clone").click(function(){
                     var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
                     alert(idt);                    
-                    selected.clone().css({ left: '500px'}).attr('id', idn  ).insertAfter(selected); 
-                    jsPlumb.draggable($(dragob));
+                    selected.clone().css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected').appendTo($(container)); 
+                    jsPlumb.draggable($(idt));
+                    var vin2 = $(idt).children('.ui-widget-content').children('p').children('.vertexin');
+                    for (i = 0; i < vin2.length; i++) {
+                        if (vin2.hasClass('int')){
+                            jsPlumb.makeTarget($(vin2), {
+                                maxConnections:1,
+                                scope:'int'
+                            });
+                        } else if (vin2.hasClass('float')){
+                            jsPlumb.makeTarget($(vin2), {
+                                maxConnections:1,
+                                scope:'float'
+                            });
+                        } else {
+                            jsPlumb.makeTarget($(vin2), {
+                                maxConnections:1,
+                                scope:'char'
+                            });
+                        }
+                    }                 
+                    var vout = $(idt).children('.ui-widget-content').children('p').children('.vertexout');
                 });
             });
 
@@ -127,12 +153,7 @@
                 });
 
                 // Drag block
-                jsPlumb.draggable($(dragob), {
-                    containment: container,
-                    cursor: "move",
-                    cursorAt: { top: 10, right: 10 },
-                    handle: ".ui-widget-header"
-                });                
+                jsPlumb.draggable($(dragob), dragop);                
             });
         </script>
 
@@ -178,7 +199,6 @@
         <div class="ui-widget-content ui-corner-bottom">
             <p style="text-align: right">out<span class="vertexout int"></span></p>
         </div>
-
     </div>
     <div id="teste" class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">Function</div>
@@ -247,18 +267,25 @@
                 <li><a href="#tabs-3">category 2</a></li>
             </ul>
             <div id="tabs-1">
-
-            </div>
-            <div id="tabs-2">
                 <p>
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">Integer</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p style="text-align: right">out<span class="vertexout int"></span></p>
+                    </div>
+                </div>
                 </p>
-            </div>
-            <div id="tabs-3">
-                <p>
-                </p>
-            </div>
+        </div>
+        <div id="tabs-2">
+            <p>
+            </p>
+        </div>
+        <div id="tabs-3">
+            <p>
+            </p>
         </div>
     </div>
+</div>
 </div>
 <!-- Footer -->
 <footer>
