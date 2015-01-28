@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>VisionGL</title>
+        
+        <!-- CSS Reset -->
+        <link rel="stylesheet" href="css/css-reset.css">
 
         <!-- Jquery -->
         <script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
@@ -16,7 +19,7 @@
         <!-- JsPlumb -->
         <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
 
-        <!--Project Style -->
+        <!-- Project CSS -->
         <link rel="stylesheet" href="css/interface.css">
 
         <!-- JavaScript WebApp -->
@@ -29,8 +32,8 @@
             var dragob = '.block';
             var dragop = {
                 containment: container,
-                cursor: "move",
-                cursorAt: { top: 10, right: 10 },
+                cursor: "default",
+                //cursorAt: { top: 10, right: 10 },
                 handle: ".ui-widget-header"
             }
 
