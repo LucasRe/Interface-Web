@@ -20,6 +20,7 @@
         <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
 
         <!-- Project CSS -->
+        <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/interface.css">
 
         <!-- JavaScript WebApp -->
@@ -51,7 +52,7 @@
                 });
 
                 // Select Block
-                $( ".ui-widget-header" ).dblclick(function() {
+                $( "#maindiv .ui-widget-header" ).click(function() {
                     if (selected == ''){
                         selected = $(this).parent();
                         selected.addClass('selected');
