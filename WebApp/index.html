@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>VisionGL</title>
-        
+
         <!-- CSS Reset -->
         <link rel="stylesheet" href="css/css-reset.css">
 
@@ -84,8 +84,14 @@
                 // Clone Block
                 $("button#clone").click(function(){
                     var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
-                    selected.clone().css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected').appendTo($(container)); 
-                    jsPlumb.draggable($(idt));
+                    var block = selected.clone().css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
+                    block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','teste12');
+                    var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
+                    jsPlumb.makeSource(exit, {
+                        scope:'image'
+                    });
+                    block.appendTo($(container));
+                    jsPlumb.draggable($(idt), dragop);
                     var vin2 = $(idt).children('.ui-widget-content').children('p').children('.vertexin');
                     for (i = 0; i < vin2.length; i++) {
                         if (vin2.hasClass('image')){
@@ -109,8 +115,7 @@
                                 scope:'char'
                             });
                         }
-                    }                 
-                    var vout = $(idt).children('.ui-widget-content').children('p').children('.vertexout');
+                    } 
                 });
             });
 
