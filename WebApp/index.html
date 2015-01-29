@@ -69,6 +69,101 @@
                         selected.removeClass('selected');
                         selected = '';
                     }
+                    alert(event.clientX, event.clientY);
+                });
+
+                // Resize Block
+                $(function() {
+                    $( ".block" ).resizable({
+                        maxHeight: 250,
+                        maxWidth: 350,
+                        minHeight: 150,
+                        minWidth: 200,
+                        aspectRatio: 16 / 9
+                    });                    
+                });
+
+                // Clone from Lib
+                $(function(){
+                    $( ".gblock" ).draggable({ opacity: 0.7, helper: "clone" });
+                });
+
+                //Droppable
+                $(function() {
+                    $( "#maindiv" ).droppable({
+                        accept: ".gblock",
+                        //activeClass: "ui-state-hover",
+                        //hoverClass: "ui-state-active",
+                        drop: function( event, ui ) {
+                            // Clone
+                            var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
+                            var block = $(ui.draggable).clone();
+                            block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected gblock').addClass('block'); 
+                            block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
+                            var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
+                            alert(exit.length);
+                            for (i = 0; i < exit.length; i++) {
+                                if ($(exit[i]).hasClass('image')){  
+                                    $(exit[i]).attr('id','v'+idn);
+                                    jsPlumb.makeTarget($(exit[i]), {
+                                        maxConnections:1,
+                                        scope:'image'
+                                    });
+                                } else if ($(exit[i]).hasClass('int')){
+                                    $(exit[i]).attr('id','v'+idn+1);
+                                    jsPlumb.makeTarget($(exit[i]), {
+                                        maxConnections:1,
+                                        scope:'int'
+                                    });
+                                } else if ($(exit[i]).hasClass('float')){
+                                    $(exit[i]).attr('id','v'+idn+2);
+                                    jsPlumb.makeTarget($(exit[i]), {
+                                        maxConnections:1,
+                                        scope:'float'
+                                    });
+                                } else {
+                                    $(exit[i]).attr('id','v'+idn+3);
+                                    jsPlumb.makeTarget($(exit[i]), {
+                                        maxConnections:1,
+                                        scope:'char'
+                                    });
+                                }  
+                            }
+                            var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
+                            for (i = 0; i < vin2.length; i++) {
+                                if ($(vin2[i]).hasClass('image')){  
+                                    $(vin2[i]).attr('id','v'+idn);
+                                    jsPlumb.makeTarget($(vin2[i]), {
+                                        maxConnections:1,
+                                        scope:'image'
+                                    });
+                                } else if ($(vin2[i]).hasClass('int')){
+                                    $(vin2[i]).attr('id','v'+idn+1);
+                                    jsPlumb.makeTarget($(vin2[i]), {
+                                        maxConnections:1,
+                                        scope:'int'
+                                    });
+                                } else if ($(vin2[i]).hasClass('float')){
+                                    $(vin2[i]).attr('id','v'+idn+2);
+                                    jsPlumb.makeTarget($(vin2[i]), {
+                                        maxConnections:1,
+                                        scope:'float'
+                                    });
+                                } else {
+                                    $(vin2[i]).attr('id','v'+idn+3);
+                                    jsPlumb.makeTarget($(vin2[i]), {
+                                        maxConnections:1,
+                                        scope:'char'
+                                    });
+                                }
+                            } 
+                            block.appendTo($(container));
+                            jsPlumb.draggable($(idt), dragop);
+                            // End Clone
+
+                            // Add resize
+                        }
+                    });
                 });
 
                 // Remove Block
@@ -88,9 +183,33 @@
                     block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
                     block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
                     var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
-                    jsPlumb.makeSource(exit, {
-                        scope:'image'
-                    });                    
+                    for (i = 0; i < exit.length; i++) {
+                        if ($(exit[i]).hasClass('image')){  
+                            $(exit[i]).attr('id','v'+idn);
+                            jsPlumb.makeTarget($(exit[i]), {
+                                maxConnections:1,
+                                scope:'image'
+                            });
+                        } else if ($(exit[i]).hasClass('int')){
+                            $(exit[i]).attr('id','v'+idn+1);
+                            jsPlumb.makeTarget($(exit[i]), {
+                                maxConnections:1,
+                                scope:'int'
+                            });
+                        } else if ($(exit[i]).hasClass('float')){
+                            $(exit[i]).attr('id','v'+idn+2);
+                            jsPlumb.makeTarget($(exit[i]), {
+                                maxConnections:1,
+                                scope:'float'
+                            });
+                        } else {
+                            $(exit[i]).attr('id','v'+idn+3);
+                            jsPlumb.makeTarget($(exit[i]), {
+                                maxConnections:1,
+                                scope:'char'
+                            });
+                        }  
+                    }                   
                     var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
                     for (i = 0; i < vin2.length; i++) {
                         if ($(vin2[i]).hasClass('image')){  
@@ -121,8 +240,17 @@
                     } 
                     block.appendTo($(container));
                     jsPlumb.draggable($(idt), dragop);
+
+                    // Resize
+                    $( ".block" ).resizable({
+                        maxHeight: 250,
+                        maxWidth: 350,
+                        minHeight: 150,
+                        minWidth: 200,
+                        aspectRatio: 16 / 9
+                    });
                 });
-            // End Document.ready
+                // End Document.ready
             });
 
             // Connections
@@ -286,19 +414,66 @@
                 <li><a href="#tabs-3">category 2</a></li>
             </ul>
             <div id="tabs-1">
-                <p>
+                <p style="float: left">
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">Integer</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p style="text-align: right">out<span class="vertexout int"></span></p>
+                    </div>
+                </div> 
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">Function</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span> in</p>
+                        <p><span class="vertexin int"></span> in</p>
+                        <p><span class="vertexin float"></span> in</p>
+                        <p><span class="vertexin char"></span> in</p>
+                        <p style="text-align: right">out<span class="vertexout float"></span></p>
+                    </div>
+                </div>
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClNot</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClErode</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p><span class="vertexin float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input</p>
+                        <p><span class="vertexin float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
+                <div class="gblock ui-corner-all noselect">
+                    <div class="ui-widget-header ui-corner-top">vglClSum</div>
+                    <div class="ui-widget-content ui-corner-bottom">
+                        <p><span class="vertexin image"></span>img_input1</p>
+                        <p><span class="vertexin image"></span>img_input1</p>
+                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                    </div>
+                </div>
                 </p>
-            </div>
-            <div id="tabs-2">
-                <p>
-                </p>
-            </div>
-            <div id="tabs-3">
-                <p>
-                </p>
-            </div>
+        </div>
+        <div id="tabs-2">
+            <p>
+            </p>
+        </div>
+        <div id="tabs-3">
+            <p>
+            </p>
         </div>
     </div>
+</div>
 </div>
 <!-- Footer -->
 <footer>
