@@ -84,39 +84,45 @@
                 // Clone Block
                 $("button#clone").click(function(){
                     var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
-                    var block = selected.clone().css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
-                    block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','teste12');
+                    var block = $(selected).clone();
+                    block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
+                    block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
                     var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
                     jsPlumb.makeSource(exit, {
                         scope:'image'
-                    });
-                    block.appendTo($(container));
-                    jsPlumb.draggable($(idt), dragop);
-                    var vin2 = $(idt).children('.ui-widget-content').children('p').children('.vertexin');
+                    });                    
+                    var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
                     for (i = 0; i < vin2.length; i++) {
-                        if (vin2.hasClass('image')){
-                            jsPlumb.makeTarget($(vin2), {
+                        if ($(vin2[i]).hasClass('image')){  
+                            $(vin2[i]).attr('id','v'+idn);
+                            jsPlumb.makeTarget($(vin2[i]), {
                                 maxConnections:1,
                                 scope:'image'
                             });
-                        } else if (vin2.hasClass('int')){
-                            jsPlumb.makeTarget($(vin2), {
+                        } else if ($(vin2[i]).hasClass('int')){
+                            $(vin2[i]).attr('id','v'+idn+1);
+                            jsPlumb.makeTarget($(vin2[i]), {
                                 maxConnections:1,
                                 scope:'int'
                             });
-                        } else if (vin2.hasClass('float')){
-                            jsPlumb.makeTarget($(vin2), {
+                        } else if ($(vin2[i]).hasClass('float')){
+                            $(vin2[i]).attr('id','v'+idn+2);
+                            jsPlumb.makeTarget($(vin2[i]), {
                                 maxConnections:1,
                                 scope:'float'
                             });
                         } else {
-                            jsPlumb.makeTarget($(vin2), {
+                            $(vin2[i]).attr('id','v'+idn+3);
+                            jsPlumb.makeTarget($(vin2[i]), {
                                 maxConnections:1,
                                 scope:'char'
                             });
                         }
                     } 
+                    block.appendTo($(container));
+                    jsPlumb.draggable($(idt), dragop);
                 });
+            // End Document.ready
             });
 
             // Connections
