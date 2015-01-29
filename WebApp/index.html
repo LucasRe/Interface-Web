@@ -100,35 +100,28 @@
                             var block = $(ui.draggable).clone();
                             block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected gblock').addClass('block'); 
                             block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
-                            var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
-                            alert(exit.length);
-                            for (i = 0; i < exit.length; i++) {
-                                if ($(exit[i]).hasClass('image')){  
-                                    $(exit[i]).attr('id','v'+idn);
-                                    jsPlumb.makeTarget($(exit[i]), {
-                                        maxConnections:1,
-                                        scope:'image'
-                                    });
-                                } else if ($(exit[i]).hasClass('int')){
-                                    $(exit[i]).attr('id','v'+idn+1);
-                                    jsPlumb.makeTarget($(exit[i]), {
-                                        maxConnections:1,
-                                        scope:'int'
-                                    });
-                                } else if ($(exit[i]).hasClass('float')){
-                                    $(exit[i]).attr('id','v'+idn+2);
-                                    jsPlumb.makeTarget($(exit[i]), {
-                                        maxConnections:1,
-                                        scope:'float'
-                                    });
-                                } else {
-                                    $(exit[i]).attr('id','v'+idn+3);
-                                    jsPlumb.makeTarget($(exit[i]), {
-                                        maxConnections:1,
-                                        scope:'char'
-                                    });
-                                }  
-                            }
+                            var exit = block.children('.ui-widget-content').children('p').children('.vertexout');                          
+                            if ($(exit).hasClass('image')){  
+                                $(exit).attr('id','v'+idn+4);
+                                jsPlumb.makeSource($(exit), {
+                                    scope:'image'
+                                });
+                            } else if ($(exit).hasClass('int')){
+                                $(exit).attr('id','v'+idn+5);
+                                jsPlumb.makeSource($(exit), {
+                                    scope:'int'
+                                });
+                            } else if ($(exit).hasClass('float')){
+                                $(exit).attr('id','v'+idn+6);
+                                jsPlumb.makeSource($(exit), {
+                                    scope:'float'
+                                });
+                            } else {
+                                $(exit).attr('id','v'+idn+7);
+                                jsPlumb.makeSource($(exit), {
+                                    scope:'char'
+                                });
+                            } 
                             var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
                             for (i = 0; i < vin2.length; i++) {
                                 if ($(vin2[i]).hasClass('image')){  
@@ -183,33 +176,27 @@
                     block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
                     block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
                     var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
-                    for (i = 0; i < exit.length; i++) {
-                        if ($(exit[i]).hasClass('image')){  
-                            $(exit[i]).attr('id','v'+idn);
-                            jsPlumb.makeTarget($(exit[i]), {
-                                maxConnections:1,
-                                scope:'image'
-                            });
-                        } else if ($(exit[i]).hasClass('int')){
-                            $(exit[i]).attr('id','v'+idn+1);
-                            jsPlumb.makeTarget($(exit[i]), {
-                                maxConnections:1,
-                                scope:'int'
-                            });
-                        } else if ($(exit[i]).hasClass('float')){
-                            $(exit[i]).attr('id','v'+idn+2);
-                            jsPlumb.makeTarget($(exit[i]), {
-                                maxConnections:1,
-                                scope:'float'
-                            });
-                        } else {
-                            $(exit[i]).attr('id','v'+idn+3);
-                            jsPlumb.makeTarget($(exit[i]), {
-                                maxConnections:1,
-                                scope:'char'
-                            });
-                        }  
-                    }                   
+                    if ($(exit).hasClass('image')){  
+                        $(exit).attr('id','v'+idn+4);
+                        jsPlumb.makeSource($(exit), {
+                            scope:'image'
+                        });
+                    } else if ($(exit).hasClass('int')){
+                        $(exit).attr('id','v'+idn+5);
+                        jsPlumb.makeSource($(exit), {
+                            scope:'int'
+                        });
+                    } else if ($(exit).hasClass('float')){
+                        $(exit).attr('id','v'+idn+6);
+                        jsPlumb.makeSource($(exit), {
+                            scope:'float'
+                        });
+                    } else {
+                        $(exit).attr('id','v'+idn+7);
+                        jsPlumb.makeSource($(exit), {
+                            scope:'char'
+                        });
+                    }                  
                     var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
                     for (i = 0; i < vin2.length; i++) {
                         if ($(vin2[i]).hasClass('image')){  
