@@ -24,9 +24,9 @@
         <link rel="stylesheet" href="css/interface.css">
 
         <!-- JavaScript WebApp -->
-        <script>
-            // Selected Block var initialize
-            var selected = '';
+        <script>            
+            var selected = ''; // Selected Block var initialize 
+            var mouse = {X:0,Y:0}
             var vout = '.vertexout';
             var vin = '.vertexin';
             var container = '#maindiv';
@@ -38,7 +38,90 @@
                 handle: ".ui-widget-header"
             }
 
+            // Resize
+            function resize(){
+                $( ".block" ).resizable({
+                    maxHeight: 250,
+                    maxWidth: 360,
+                    minHeight: 150,
+                    minWidth: 80,
+                    //aspectRatio: 16 / 9
+                });
+            }
+
+            // Clone Block
+            function cloneblock (obj, event, ui){                
+                var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
+                if (obj){
+                    var block = $(selected).clone();
+                    block.css({ left: mouse.X+'px', top: mouse.Y+'px'}).attr('id', idn  ).removeClass('ui-draggable selected');
+                } else {
+                    var block = $(ui.draggable).clone();
+                    block.css({ left: mouse.X+'px', top: mouse.Y+'px'}).attr('id', idn ).removeClass('ui-draggable selected gblock').addClass('block');
+                }                     
+                block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
+                var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
+                if ($(exit).hasClass('image')){  
+                    $(exit).attr('id','v'+idn+4);
+                    jsPlumb.makeSource($(exit), {
+                        scope:'image'
+                    });
+                } else if ($(exit).hasClass('int')){
+                    $(exit).attr('id','v'+idn+5);
+                    jsPlumb.makeSource($(exit), {
+                        scope:'int'
+                    });
+                } else if ($(exit).hasClass('float')){
+                    $(exit).attr('id','v'+idn+6);
+                    jsPlumb.makeSource($(exit), {
+                        scope:'float'
+                    });
+                } else {
+                    $(exit).attr('id','v'+idn+7);
+                    jsPlumb.makeSource($(exit), {
+                        scope:'char'
+                    });
+                }                  
+                var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
+                for (i = 0; i < vin2.length; i++) {
+                    if ($(vin2[i]).hasClass('image')){  
+                        $(vin2[i]).attr('id','v'+idn);
+                        jsPlumb.makeTarget($(vin2[i]), {
+                            maxConnections:1,
+                            scope:'image'
+                        });
+                    } else if ($(vin2[i]).hasClass('int')){
+                        $(vin2[i]).attr('id','v'+idn+1);
+                        jsPlumb.makeTarget($(vin2[i]), {
+                            maxConnections:1,
+                            scope:'int'
+                        });
+                    } else if ($(vin2[i]).hasClass('float')){
+                        $(vin2[i]).attr('id','v'+idn+2);
+                        jsPlumb.makeTarget($(vin2[i]), {
+                            maxConnections:1,
+                            scope:'float'
+                        });
+                    } else {
+                        $(vin2[i]).attr('id','v'+idn+3);
+                        jsPlumb.makeTarget($(vin2[i]), {
+                            maxConnections:1,
+                            scope:'char'
+                        });
+                    }
+                } 
+                block.appendTo($(container));
+                jsPlumb.draggable($(idt), dragop);
+                resize();
+            }            
+
             $(document).ready(function(){
+
+                // Mouse track               
+                $( "#maindiv" ).mousemove(function(event) {
+                    mouse.X = event.clientX;
+                    mouse.Y = event.clientY;
+                });
 
                 // Library Toggle
                 $("#librarytoggle").click(function(){
@@ -49,6 +132,10 @@
                 // Library Tabs
                 $(function() {
                     $( "#tabs" ).tabs();
+                }); 
+
+                $("button#clone").click(function(){
+                    cloneblock(true);
                 });
 
                 // Select Block
@@ -69,94 +156,6 @@
                         selected.removeClass('selected');
                         selected = '';
                     }
-                    alert(event.clientX, event.clientY);
-                });
-
-                // Resize Block
-                $(function() {
-                    $( ".block" ).resizable({
-                        maxHeight: 250,
-                        maxWidth: 350,
-                        minHeight: 150,
-                        minWidth: 200,
-                        aspectRatio: 16 / 9
-                    });                    
-                });
-
-                // Clone from Lib
-                $(function(){
-                    $( ".gblock" ).draggable({ opacity: 0.7, helper: "clone" });
-                });
-
-                //Droppable
-                $(function() {
-                    $( "#maindiv" ).droppable({
-                        accept: ".gblock",
-                        //activeClass: "ui-state-hover",
-                        //hoverClass: "ui-state-active",
-                        drop: function( event, ui ) {
-                            // Clone
-                            var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
-                            var block = $(ui.draggable).clone();
-                            block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected gblock').addClass('block'); 
-                            block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
-                            var exit = block.children('.ui-widget-content').children('p').children('.vertexout');                          
-                            if ($(exit).hasClass('image')){  
-                                $(exit).attr('id','v'+idn+4);
-                                jsPlumb.makeSource($(exit), {
-                                    scope:'image'
-                                });
-                            } else if ($(exit).hasClass('int')){
-                                $(exit).attr('id','v'+idn+5);
-                                jsPlumb.makeSource($(exit), {
-                                    scope:'int'
-                                });
-                            } else if ($(exit).hasClass('float')){
-                                $(exit).attr('id','v'+idn+6);
-                                jsPlumb.makeSource($(exit), {
-                                    scope:'float'
-                                });
-                            } else {
-                                $(exit).attr('id','v'+idn+7);
-                                jsPlumb.makeSource($(exit), {
-                                    scope:'char'
-                                });
-                            } 
-                            var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
-                            for (i = 0; i < vin2.length; i++) {
-                                if ($(vin2[i]).hasClass('image')){  
-                                    $(vin2[i]).attr('id','v'+idn);
-                                    jsPlumb.makeTarget($(vin2[i]), {
-                                        maxConnections:1,
-                                        scope:'image'
-                                    });
-                                } else if ($(vin2[i]).hasClass('int')){
-                                    $(vin2[i]).attr('id','v'+idn+1);
-                                    jsPlumb.makeTarget($(vin2[i]), {
-                                        maxConnections:1,
-                                        scope:'int'
-                                    });
-                                } else if ($(vin2[i]).hasClass('float')){
-                                    $(vin2[i]).attr('id','v'+idn+2);
-                                    jsPlumb.makeTarget($(vin2[i]), {
-                                        maxConnections:1,
-                                        scope:'float'
-                                    });
-                                } else {
-                                    $(vin2[i]).attr('id','v'+idn+3);
-                                    jsPlumb.makeTarget($(vin2[i]), {
-                                        maxConnections:1,
-                                        scope:'char'
-                                    });
-                                }
-                            } 
-                            block.appendTo($(container));
-                            jsPlumb.draggable($(idt), dragop);
-                            // End Clone
-
-                            // Add resize
-                        }
-                    });
                 });
 
                 // Remove Block
@@ -166,79 +165,32 @@
                         jsPlumb.detachAllConnections(vertex[i]);
                     }                    
                     selected.remove();
-
                 });
 
-                // Clone Block
-                $("button#clone").click(function(){
-                    var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
-                    var block = $(selected).clone();
-                    block.css({ left: '700px'}).attr('id', idn  ).removeClass('ui-draggable selected'); 
-                    block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
-                    var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
-                    if ($(exit).hasClass('image')){  
-                        $(exit).attr('id','v'+idn+4);
-                        jsPlumb.makeSource($(exit), {
-                            scope:'image'
-                        });
-                    } else if ($(exit).hasClass('int')){
-                        $(exit).attr('id','v'+idn+5);
-                        jsPlumb.makeSource($(exit), {
-                            scope:'int'
-                        });
-                    } else if ($(exit).hasClass('float')){
-                        $(exit).attr('id','v'+idn+6);
-                        jsPlumb.makeSource($(exit), {
-                            scope:'float'
-                        });
-                    } else {
-                        $(exit).attr('id','v'+idn+7);
-                        jsPlumb.makeSource($(exit), {
-                            scope:'char'
-                        });
-                    }                  
-                    var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
-                    for (i = 0; i < vin2.length; i++) {
-                        if ($(vin2[i]).hasClass('image')){  
-                            $(vin2[i]).attr('id','v'+idn);
-                            jsPlumb.makeTarget($(vin2[i]), {
-                                maxConnections:1,
-                                scope:'image'
-                            });
-                        } else if ($(vin2[i]).hasClass('int')){
-                            $(vin2[i]).attr('id','v'+idn+1);
-                            jsPlumb.makeTarget($(vin2[i]), {
-                                maxConnections:1,
-                                scope:'int'
-                            });
-                        } else if ($(vin2[i]).hasClass('float')){
-                            $(vin2[i]).attr('id','v'+idn+2);
-                            jsPlumb.makeTarget($(vin2[i]), {
-                                maxConnections:1,
-                                scope:'float'
-                            });
-                        } else {
-                            $(vin2[i]).attr('id','v'+idn+3);
-                            jsPlumb.makeTarget($(vin2[i]), {
-                                maxConnections:1,
-                                scope:'char'
-                            });
-                        }
-                    } 
-                    block.appendTo($(container));
-                    jsPlumb.draggable($(idt), dragop);
-
-                    // Resize
-                    $( ".block" ).resizable({
-                        maxHeight: 250,
-                        maxWidth: 350,
-                        minHeight: 150,
-                        minWidth: 200,
-                        aspectRatio: 16 / 9
-                    });
+                // Clone from Lib
+                $(function(){
+                    $( ".gblock" ).draggable({ opacity: 0.7, revert: true, helper: "clone" });
                 });
-                // End Document.ready
-            });
+
+                // Call resize function
+                resize();
+
+
+                //Droppable clone from Lib
+                $( "#maindiv" ).droppable({
+                    accept: ".gblock",
+                    //activeClass: "ui-state-hover",
+                    //hoverClass: "ui-state-active",
+                    drop: function(event, ui ) {
+                        // Call Clone function for lib blocks
+                        cloneblock(false, event, ui );
+                    }
+                });            
+
+                // Call Clone function for selected block
+                cloneblock(true);
+
+            });// End Document.ready
 
             // Connections
             jsPlumb.ready(function() {               
@@ -250,7 +202,7 @@
                 jsPlumb.makeSource($(vout+'.image'), {
                     scope:'image'
                 });
-
+                // Vertex image
                 jsPlumb.makeTarget($(vin+'.image'), {
                     maxConnections:1,
                     scope:'image'
@@ -260,7 +212,7 @@
                 jsPlumb.makeSource($(vout+'.int'), {
                     scope:'int'
                 });
-
+                // Vertex int
                 jsPlumb.makeTarget($(vin+'.int'), {
                     maxConnections:1,
                     scope:'int'
@@ -270,23 +222,23 @@
                 jsPlumb.makeSource($(vout+'.float'), {
                     scope:'float'
                 });
-
+                // Vertex float
                 jsPlumb.makeTarget($(vin+'.float'), {
                     maxConnections:1,
                     scope:'float'
                 });
 
-                // Vertex char
+                // Vertex Char Source
                 jsPlumb.makeSource($(vout+'.char'), {
                     scope:'char'
                 });
-
+                // Vertex Char Target
                 jsPlumb.makeTarget($(vin+'.char'), {
                     maxConnections:1,
                     scope:'char'
                 });
 
-                // Drag block
+                // Drag Block
                 jsPlumb.draggable($(dragob), dragop);                
             });
         </script>
