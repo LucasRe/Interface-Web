@@ -86,9 +86,12 @@ body {
   padding-top: 0px;
   position: relative;
   z-index: 1;
+  float: left;
+  display: inline-block;
+  margin-right: 10px;
 }
 
-/* line 70, interface.scss */
+/* line 73, interface.scss */
 .block {
   opacity: 0.9;
   min-width: 100px auto;
@@ -101,7 +104,7 @@ body {
   cursor: default;
 }
 
-/* line 81, interface.scss */
+/* line 84, interface.scss */
 .block:hover {
   opacity: 1;
   -webkit-box-shadow: 2px 2px 10px 0px #48A4CB;
@@ -110,12 +113,12 @@ body {
   z-index: 2;
 }
 
-/* line 88, interface.scss */
+/* line 91, interface.scss */
 .block p {
   margin: 5px;
 }
 
-/* line 91, interface.scss */
+/* line 94, interface.scss */
 #librarycontainer {
   position: absolute;
   bottom: 0px;
@@ -124,12 +127,12 @@ body {
   z-index: 4;
 }
 
-/* line 98, interface.scss */
+/* line 101, interface.scss */
 #librarytoggle {
   text-align: center;
 }
 
-/* line 101, interface.scss */
+/* line 104, interface.scss */
 #librarybody {
   align-self: center;
   bottom: 0px;
@@ -141,7 +144,7 @@ body {
   cursor: default;
 }
 
-/* line 111, interface.scss */
+/* line 114, interface.scss */
 .selected {
   opacity: 1;
   -webkit-box-shadow: 2px 2px 10px 0px #ff4141;
@@ -150,14 +153,14 @@ body {
   z-index: 2;
 }
 
-/* line 122, interface.scss */
+/* line 125, interface.scss */
 .block img {
   max-height: 60px;
   max-width: 90px;
   margin: 5px;
 }
 
-/* line 127, interface.scss */
+/* line 130, interface.scss */
 .hend {
   z-index: 3;
   opacity: 0;

@@ -66,6 +66,9 @@ body{
     padding-top: 0px;
     position:relative;
     z-index: 1;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
 }
 .block{ 
     opacity: 0.9;
