@@ -24,21 +24,22 @@
         <link rel="stylesheet" href="css/interface.css">
 
         <!-- JavaScript WebApp -->
-        <script>            
+        <script>    
+            // Variables
             var selected = ''; // Selected Block var initialize 
-            var mouse = {X:0,Y:0}
-            var vout = '.vertexout';
-            var vin = '.vertexin';
-            var container = '#maindiv';
-            var dragob = '.block';
+            var mouse = {X:0,Y:0} // Hold mouse pos
+            var vout = '.vertex.out'; // Vertex output class
+            var vin = '.vertex.in'; // Vertex input class
+            var container = '#maindiv'; // Container id
+            var dragob = '.block'; // Block class
             var dragop = {
                 containment: container,
                 cursor: "default",
                 //cursorAt: { top: 10, right: 10 },
                 handle: ".ui-widget-header"
-            }
+            } // Drag options
 
-            // Resize
+            /*// Resize
             function resize(){
                 $( ".block" ).resizable({
                     maxHeight: 250,
@@ -47,20 +48,26 @@
                     minWidth: 80,
                     //aspectRatio: 16 / 9
                 });
-            }
+            }*/ 
 
             // Clone Block
-            function cloneblock (obj, event, ui){                
+            function cloneblock (obj, event, ui){
+                
+                // Generate id
                 var idn = Math.floor((Math.random() * 100) + 1), idt = '#'+idn;
+                
+                // Object from?
                 if (obj){
-                    var block = $(selected).clone();
+                    var block = $(selected).clone(true);
                     block.css({ left: mouse.X+'px', top: mouse.Y+'px'}).attr('id', idn  ).removeClass('ui-draggable selected');
                 } else {
-                    var block = $(ui.draggable).clone();
-                    block.css({ left: mouse.X+'px', top: mouse.Y+'px'}).attr('id', idn ).removeClass('ui-draggable selected gblock').addClass('block');
-                }                     
-                block.children('.ui-widget-content').children('p').children('.vertexout').attr('id','vo'+idn);
-                var exit = block.children('.ui-widget-content').children('p').children('.vertexout');
+                    var block = $(ui.draggable).clone(true);
+                    block.css({ left: mouse.X+'px', top: mouse.Y+'px'}).attr('id', idn ).removeClass('ui-draggable selected lblock').addClass('block');
+                }  
+                
+                // Change output id
+                block.children('.ui-widget-content').children('p').children('.vertex.out').attr('id','vo'+idn);
+                var exit = block.children('.ui-widget-content').children('p').children('.vertex.out');
                 if ($(exit).hasClass('image')){  
                     $(exit).attr('id','v'+idn+4);
                     jsPlumb.makeSource($(exit), {
@@ -81,8 +88,10 @@
                     jsPlumb.makeSource($(exit), {
                         scope:'char'
                     });
-                }                  
-                var vin2 = block.children('.ui-widget-content').children('p').children('.vertexin');
+                } 
+                
+                // Change input id
+                var vin2 = block.children('.ui-widget-content').children('p').children('.vertex.in');
                 for (i = 0; i < vin2.length; i++) {
                     if ($(vin2[i]).hasClass('image')){  
                         $(vin2[i]).attr('id','v'+idn);
@@ -110,12 +119,14 @@
                         });
                     }
                 } 
-                block.appendTo($(container));
-                jsPlumb.draggable($(idt), dragop);
-                resize();
-            }            
+                
+                block.appendTo($(container)); // Append block to container
+                
+                jsPlumb.draggable($(idt), dragop); // Add drag to block
+                //resize();
+            }
 
-            $(document).ready(function(){
+            $(document).ready(function(){ 
 
                 // Mouse track               
                 $( "#maindiv" ).mousemove(function(event) {
@@ -169,31 +180,30 @@
 
                 // Clone from Lib
                 $(function(){
-                    $( ".gblock" ).draggable({ opacity: 0.7, revert: true, helper: "clone" });
+                    $( ".lblock" ).draggable({ opacity: 0.7, revert: true, helper: "clone" });
                 });
 
                 // Call resize function
-                resize();
+                //resize();
 
 
                 //Droppable clone from Lib
                 $( "#maindiv" ).droppable({
-                    accept: ".gblock",
+                    accept: ".lblock",
                     //activeClass: "ui-state-hover",
                     //hoverClass: "ui-state-active",
                     drop: function(event, ui ) {
                         // Call Clone function for lib blocks
                         cloneblock(false, event, ui );
                     }
-                });            
-
-                // Call Clone function for selected block
-                cloneblock(true);
+                }); 
 
             });// End Document.ready
 
             // Connections
-            jsPlumb.ready(function() {               
+            jsPlumb.ready(function() {   
+
+
 
                 //jsPlumb set container
                 jsPlumb.setContainer($(container));
@@ -283,62 +293,62 @@
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">Integer</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p style="text-align: right">out<span class="vertexout int"></span></p>
+            <p style="text-align: right">out<span class="vertex out int"></span></p>
         </div>
     </div>
     <div id="teste" class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">Function</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertexin image"></span> in</p>
-            <p><span class="vertexin int"></span> in</p>
-            <p><span class="vertexin float"></span> in</p>
-            <p><span class="vertexin char"></span> in</p>
-            <p style="text-align: right">out<span class="vertexout float"></span></p>
+            <p><span class="vertex in image"></span> in</p>
+            <p><span class="vertex in int"></span> in</p>
+            <p><span class="vertex in float"></span> in</p>
+            <p><span class="vertex in char"></span> in</p>
+            <p style="text-align: right">out<span class="vertex out float"></span></p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">Image Viewer</div>
         <div class="ui-widget-content ui-corner-bottom">
             <p><img src="demo.png"></p>
-            <p><span class="vertexin image"></span>img_input</p>
+            <p><span class="vertex in image"></span>img_input</p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">vglClNot</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertexin image"></span>img_input</p>
-            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+            <p><span class="vertex in image"></span>img_input</p>
+            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">vglClErode</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertexin image"></span>img_input</p>
-            <p><span class="vertexin float"></span>convolution_window</p>
-            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+            <p><span class="vertex in image"></span>img_input</p>
+            <p><span class="vertex in float"></span>convolution_window</p>
+            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertexin image"></span>img_input</p>
-            <p><span class="vertexin float"></span>convolution_window</p>
-            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+            <p><span class="vertex in image"></span>img_input</p>
+            <p><span class="vertex in float"></span>convolution_window</p>
+            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">vglClSum</div>
         <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertexin image"></span>img_input1</p>
-            <p><span class="vertexin image"></span>img_input1</p>
-            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+            <p><span class="vertex in image"></span>img_input1</p>
+            <p><span class="vertex in image"></span>img_input1</p>
+            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
         </div>
     </div>
     <div class="block ui-corner-all noselect">
         <div class="ui-widget-header ui-corner-top">Image</div>
         <div class="ui-widget-content ui-corner-bottom">
             <p><img src="demo.png"></p>
-            <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
         </div>
     </div>
 </div>
@@ -354,51 +364,51 @@
             </ul>
             <div id="tabs-1">
                 <p style="float: left">
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">Integer</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p style="text-align: right">out<span class="vertexout int"></span></p>
+                        <p style="text-align: right">out<span class="vertex out int"></span></p>
                     </div>
                 </div> 
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">Function</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin image"></span> in</p>
-                        <p><span class="vertexin int"></span> in</p>
-                        <p><span class="vertexin float"></span> in</p>
-                        <p><span class="vertexin char"></span> in</p>
-                        <p style="text-align: right">out<span class="vertexout float"></span></p>
+                        <p><span class="vertex in image"></span> in</p>
+                        <p><span class="vertex in int"></span> in</p>
+                        <p><span class="vertex in float"></span> in</p>
+                        <p><span class="vertex in char"></span> in</p>
+                        <p style="text-align: right">out<span class="vertex out float"></span></p>
                     </div>
                 </div>
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">vglClNot</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin image"></span>img_input</p>
-                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                        <p><span class="vertex in image"></span>img_input</p>
+                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
                     </div>
                 </div>
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">vglClErode</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin image"></span>img_input</p>
-                        <p><span class="vertexin float"></span>convolution_window</p>
-                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                        <p><span class="vertex in image"></span>img_input</p>
+                        <p><span class="vertex in float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
                     </div>
                 </div>
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin image"></span>img_input</p>
-                        <p><span class="vertexin float"></span>convolution_window</p>
-                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                        <p><span class="vertex in image"></span>img_input</p>
+                        <p><span class="vertex in float"></span>convolution_window</p>
+                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
                     </div>
                 </div>
-                <div class="gblock ui-corner-all noselect">
+                <div class="lblock ui-corner-all noselect">
                     <div class="ui-widget-header ui-corner-top">vglClSum</div>
                     <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertexin image"></span>img_input1</p>
-                        <p><span class="vertexin image"></span>img_input1</p>
-                        <p style="text-align: right"><span class="vertexout image"></span>img_output</p>
+                        <p><span class="vertex in image"></span>img_input1</p>
+                        <p><span class="vertex in image"></span>img_input1</p>
+                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
                     </div>
                 </div>
                 </p>

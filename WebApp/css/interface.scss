@@ -1,10 +1,15 @@
 /* ---------- WebApp ---------- */
 
 /* ---------- Variables ---------- */
-$vimg : #ff4141;
-$vint : #009f00;
-$vfloat : #6565ff;
-$vchar : #ffff9a;
+$vimg : #ff4141;  /* Image vertex color */
+$vint : #009f00;  /* Integer vertex color */
+$vfloat : #6565ff; /* Float vertex color */
+$vchar : #ffff9a; /* Char vertex color */
+$vpos : -11px;  /* Vertex position */
+$vradius : 10px 10px 10px 10px; /* Vertex radius */
+$vborder : 1px solid #454545; /* Vertex border */
+$bshadow_hover: 2px 2px 10px 0px #48A4CB; /* Block:hover shadow */
+$selected_shadow: 2px 2px 10px 0px $vimg; /* Selected block shadow */
 /* ---------- END Variables ---------- */
 body{
     font-family: sans-serif;
@@ -21,53 +26,38 @@ body{
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;    
 }
-.vertexin {
-    border: 1px solid #454545;   
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
+/* Vertex */
+.vertex {
+    border: $vborder;   
+    -webkit-border-radius: $vradius;
+    border-radius: $vradius;
     position: relative;
     min-width: 12px;
-    min-height: 12px;    
+    min-height: 12px;   
+}
+.vertex.in{
     float: left;    
-    left: -11px; 
+    left: $vpos; 
 }
-.vertexout {
-    border: 1px solid #454545;    
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    position: relative;
-    width: 12px;
-    height: 12px;   
+.vertex.out {    
     float: right;    
-    right: -11px;
+    right: $vpos;
 }
-.vertexin.image{
+.vertex.image{
     background-color: $vimg;
 }
-.vertexin.int{
+.vertex.int{
     background-color: $vint;
 }
-.vertexin.float{
-    background-color: #6565ff;
+.vertex.float{
+    background-color: $vfloat;
 }
-.vertexin.char{
-    background-color: #ffff9a;
+.vertex.char{
+    background-color: $vchar;
 }
-.vertexout.image{
-    background-color: $vimg;
-}
-.vertexout.int{
-    background-color: $vint;
-}
-.vertexout.float{
-    background-color: #6565ff;
-}
-.vertexout.char{
-    background-color: #ffff9a;
-}
-.gblock{ 
+.lblock{ 
     opacity: 0.9;
     min-width: 100px auto; 
     min-height: 100px auto;
@@ -90,9 +80,9 @@ body{
 }
 .block:hover{
     opacity: 1;
-    -webkit-box-shadow: 2px 2px 10px 0px #48A4CB;
-    -moz-box-shadow:    2px 2px 10px 0px #48A4CB;
-    box-shadow:         2px 2px 10px 0px #48A4CB;
+    -webkit-box-shadow: $bshadow_hover;
+    -moz-box-shadow:    $bshadow_hover;
+    box-shadow:         $bshadow_hover;
     z-index: 2;
 }
 .block p{
@@ -120,9 +110,9 @@ body{
 }
 .selected{
     opacity: 1;
-    -webkit-box-shadow: 2px 2px 10px 0px $vimg;
-    -moz-box-shadow:    2px 2px 10px 0px $vimg;
-    box-shadow:         2px 2px 10px 0px $vimg;
+    -webkit-box-shadow: $selected_shadow;
+    -moz-box-shadow: $selected_shadow;
+    box-shadow: $selected_shadow;
     z-index: 2;
 }
 #delete{
