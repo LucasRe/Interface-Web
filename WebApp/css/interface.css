@@ -7,23 +7,12 @@
 /* Vertex position */
 /* Vertex radius */
 /* Vertex border */
+/* Vertex sixe */
+/* Shadow setup */
 /* Block:hover shadow */
 /* Selected block shadow */
 /* ---------- END Variables ---------- */
-/* line 14, interface.scss */
-body {
-  font-family: sans-serif;
-  font-size: 10px;
-  cursor: default;
-}
-
-/* line 19, interface.scss */
-#maindiv {
-  height: 94vh;
-  margin: 5px;
-}
-
-/* line 23, interface.scss */
+/* line 38, interface.scss */
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -33,62 +22,78 @@ body {
   user-select: none;
 }
 
+/* line 47, interface.scss */
+body {
+  font-family: sans-serif;
+  font-size: 10px;
+  cursor: default;
+}
+
+/* line 53, interface.scss */
+#maindiv {
+  height: 95vh;
+  margin: 5px;
+}
+
 /* Vertex */
-/* line 32, interface.scss */
+/* line 59, interface.scss */
 .vertex {
   border: 1px solid #454545;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   position: relative;
-  min-width: 12px;
-  min-height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
-/* line 40, interface.scss */
+/* line 68, interface.scss */
 .vertex.in {
   float: left;
-  left: -11px;
+  left: -2px;
 }
 
-/* line 44, interface.scss */
+/* line 73, interface.scss */
 .vertex.out {
   float: right;
-  right: -11px;
+  right: -2px;
 }
 
-/* line 48, interface.scss */
+/* line 78, interface.scss */
 .vertex.image {
   background-color: #ff4141;
 }
 
-/* line 51, interface.scss */
+/* line 82, interface.scss */
 .vertex.int {
   background-color: #009f00;
 }
 
-/* line 54, interface.scss */
+/* line 86, interface.scss */
 .vertex.float {
   background-color: #6565ff;
 }
 
-/* line 57, interface.scss */
+/* line 90, interface.scss */
 .vertex.char {
   background-color: #ffff9a;
 }
 
-/* line 60, interface.scss */
+/* line 94, interface.scss */
 .lblock {
   opacity: 0.9;
   min-width: 100px auto;
   min-height: 100px auto;
   max-height: 150px;
-  max-width: 150px;
+  max-width: 190px;
   padding-top: 0px;
   position: relative;
   z-index: 1;
+  float: left;
+  display: inline-block;
+  margin-right: 15px;
 }
 
-/* line 70, interface.scss */
+/* line 108, interface.scss */
 .block {
   opacity: 0.9;
   min-width: 100px auto;
@@ -101,21 +106,49 @@ body {
   cursor: default;
 }
 
-/* line 81, interface.scss */
+/* line 120, interface.scss */
 .block:hover {
   opacity: 1;
-  -webkit-box-shadow: 2px 2px 10px 0px #48A4CB;
-  -moz-box-shadow: 2px 2px 10px 0px #48A4CB;
-  box-shadow: 2px 2px 10px 0px #48A4CB;
+  -webkit-box-shadow: 0px 0px 10px 2px #4ba8d1;
+  -moz-box-shadow: 0px 0px 10px 2px #4ba8d1;
+  box-shadow: 0px 0px 10px 2px #4ba8d1;
   z-index: 2;
 }
 
-/* line 88, interface.scss */
-.block p {
+/* line 128, interface.scss */
+.pright {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  margin-right: -4px;
+  text-align: right;
+}
+
+/* line 136, interface.scss */
+.pleft {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 50px;
+  margin-left: -4px;
+}
+
+/* line 143, interface.scss */
+.block img {
+  max-height: 60px;
+  max-width: 90px;
   margin: 5px;
 }
 
-/* line 91, interface.scss */
+/* line 149, interface.scss */
+.selected {
+  opacity: 1;
+  -webkit-box-shadow: 0px 0px 10px 2px #fd7639;
+  -moz-box-shadow: 0px 0px 10px 2px #fd7639;
+  box-shadow: 0px 0px 10px 2px #fd7639;
+  z-index: 2;
+}
+
+/* line 157, interface.scss */
 #librarycontainer {
   position: absolute;
   bottom: 0px;
@@ -124,12 +157,12 @@ body {
   z-index: 4;
 }
 
-/* line 98, interface.scss */
+/* line 165, interface.scss */
 #librarytoggle {
   text-align: center;
 }
 
-/* line 101, interface.scss */
+/* line 169, interface.scss */
 #librarybody {
   align-self: center;
   bottom: 0px;
@@ -141,23 +174,7 @@ body {
   cursor: default;
 }
 
-/* line 111, interface.scss */
-.selected {
-  opacity: 1;
-  -webkit-box-shadow: 2px 2px 10px 0px #ff4141;
-  -moz-box-shadow: 2px 2px 10px 0px #ff4141;
-  box-shadow: 2px 2px 10px 0px #ff4141;
-  z-index: 2;
-}
-
-/* line 122, interface.scss */
-.block img {
-  max-height: 60px;
-  max-width: 90px;
-  margin: 5px;
-}
-
-/* line 127, interface.scss */
+/* line 180, interface.scss */
 .hend {
   z-index: 3;
   opacity: 0;
