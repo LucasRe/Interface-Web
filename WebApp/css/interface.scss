@@ -1,78 +1,113 @@
 /* ---------- WebApp ---------- */
-
 /* ---------- Variables ---------- */
-$vimg : #ff4141;  /* Image vertex color */
-$vint : #009f00;  /* Integer vertex color */
-$vfloat : #6565ff; /* Float vertex color */
-$vchar : #ffff9a; /* Char vertex color */
-$vpos : -11px;  /* Vertex position */
-$vradius : 10px 10px 10px 10px; /* Vertex radius */
-$vborder : 1px solid #454545; /* Vertex border */
-$bshadow_hover: 2px 2px 10px 0px #48A4CB; /* Block:hover shadow */
-$selected_shadow: 2px 2px 10px 0px $vimg; /* Selected block shadow */
+
+$vimg: #ff4141;
+/* Image vertex color */
+
+$vint: #009f00;
+/* Integer vertex color */
+
+$vfloat: #6565ff;
+/* Float vertex color */
+
+$vchar: #ffff9a;
+/* Char vertex color */
+
+$vpos: -2px;
+/* Vertex position */
+
+$vradius: 10px 10px 10px 10px;
+/* Vertex radius */
+
+$vborder: 1px solid #454545;
+/* Vertex border */
+
+$vsize: 10px;
+/* Vertex sixe */
+
+$shadow: 0px 0px 10px 2px;
+/* Shadow setup */
+
+$bshadow_hover: $shadow #4ba8d1;
+/* Block:hover shadow */
+
+$selected_shadow: $shadow #fd7639;
+/* Selected block shadow */
 /* ---------- END Variables ---------- */
-body{
-    font-family: sans-serif;
-    font-size: 10px;
-    cursor: default;
-}
-#maindiv{
-    height: 94vh;
-    margin: 5px;
-}
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;    
+    user-select: none;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 10px;
+    cursor: default;
+}
+
+#maindiv {
+    height: 95vh;
+    margin: 5px;
 }
 /* Vertex */
+
 .vertex {
-    border: $vborder;   
+    border: $vborder;
     -webkit-border-radius: $vradius;
     border-radius: $vradius;
     position: relative;
-    min-width: 12px;
-    min-height: 12px;   
+    width: $vsize;
+    height: $vsize;
 }
-.vertex.in{
-    float: left;    
-    left: $vpos; 
+
+.vertex.in {
+    float: left;
+    left: $vpos;
 }
-.vertex.out {    
-    float: right;    
+
+.vertex.out {
+    float: right;
     right: $vpos;
 }
-.vertex.image{
+
+.vertex.image {
     background-color: $vimg;
 }
-.vertex.int{
+
+.vertex.int {
     background-color: $vint;
 }
-.vertex.float{
+
+.vertex.float {
     background-color: $vfloat;
 }
-.vertex.char{
+
+.vertex.char {
     background-color: $vchar;
 }
-.lblock{ 
+
+.lblock {
     opacity: 0.9;
-    min-width: 100px auto; 
+    min-width: 100px auto;
     min-height: 100px auto;
     max-height: 150px;
     max-width: 150px;
     padding-top: 0px;
-    position:relative;
+    position: relative;
     z-index: 1;
     float: left;
     display: inline-block;
     margin-right: 10px;
 }
-.block{ 
+
+.block {
     opacity: 0.9;
-    min-width: 100px auto; 
+    min-width: 100px auto;
     min-height: 100px auto;
     max-height: auto;
     max-width: auto;
@@ -81,27 +116,57 @@ body{
     z-index: 1;
     cursor: default;
 }
-.block:hover{
+
+.block:hover {
     opacity: 1;
     -webkit-box-shadow: $bshadow_hover;
-    -moz-box-shadow:    $bshadow_hover;
-    box-shadow:         $bshadow_hover;
+    -moz-box-shadow: $bshadow_hover;
+    box-shadow: $bshadow_hover;
     z-index: 2;
 }
-.block p{
+
+.pright {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: -4px;
+    text-align: right;
+}
+
+.pleft {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 50px;
+    margin-left: -4px;
+}
+
+.block img {
+    max-height: 60px;
+    max-width: 90px;
     margin: 5px;
 }
-#librarycontainer{  
-    position: absolute;    
-    bottom: 0px;   
+
+.selected {
+    opacity: 1;
+    -webkit-box-shadow: $selected_shadow;
+    -moz-box-shadow: $selected_shadow;
+    box-shadow: $selected_shadow;
+    z-index: 2;
+}
+
+#librarycontainer {
+    position: absolute;
+    bottom: 0px;
     width: 100%;
     height: auto;
     z-index: 4;
 }
-#librarytoggle{
+
+#librarytoggle {
     text-align: center;
 }
-#librarybody{
+
+#librarybody {
     align-self: center;
     bottom: 0px;
     position: relative;
@@ -111,23 +176,8 @@ body{
     display: none;
     cursor: default;
 }
-.selected{
-    opacity: 1;
-    -webkit-box-shadow: $selected_shadow;
-    -moz-box-shadow: $selected_shadow;
-    box-shadow: $selected_shadow;
-    z-index: 2;
-}
-#delete{
-}
-#clone{
-}
-.block img{
-    max-height: 60px;
-    max-width: 90px;
-    margin: 5px;
-}
-.hend{
+
+.hend {
     z-index: 3;
     opacity: 0;
 }

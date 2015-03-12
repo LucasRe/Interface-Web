@@ -1,205 +1,224 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>VisionGL</title>
 
-        <!-- CSS Reset -->
-        <link rel="stylesheet" href="css/css-reset.css">
+<head>
+    <meta charset="utf-8">
+    <title>VisionGL</title>
+</head>
 
-        <!-- Jquery -->
-        <script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
-
-        <!-- Jquery UI -->
-        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">
-        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.structure.css">
-        <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">
-        <script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>
-
-        <!-- JsPlumb -->
-        <script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
-
-        <!-- Project CSS -->
-        <link rel="stylesheet" href="css/menu.css">
-        <link rel="stylesheet" href="css/interface.css">
-
-        <!-- JavaScript WebApp -->
-        <script type="text/javascript" src="javascript/webapp.js"></script>
-
-    </head>
-    <body class="noselect">
-        <!-- Header -->
-        <header>
-            <nav>
-                <ul class="drop_menu">
-                    <li><a href='#'>Menu ▼</a>
-                        <ul>
-                            <li><a href='#'>Open</a></li>
-                            <li><a href='#'>Save</a></li>
-                        </ul>
-                    </li>
-                    <li><a href='#'>Edit ▼</a>
-                        <ul>
-                            <li><a href='#'>Duplicate</a></li>
-                            <li><a href='#' id="delete">Delete</span></a></li>
-                </ul>
+<body class="noselect">
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul class="drop_menu">
+                <li><a href='#'>Menu ▼</a>
+                    <ul>
+                        <li><a href='#'>Open</a>
+                        </li>
+                        <li><a href='#'>Save</a>
+                        </li>
+                    </ul>
                 </li>
-            <li><a href='#'>Help ▼</a>
-                <ul>
-                    <li><a href='#'>Documentation</a></li>
-                    <li><a href='#'>About</a></li>
-                </ul>
-            </li>
-            <li>
-                <button id="delete">Delete</button>
-                <button id="clone">Clone</button>
-                <!-- <button id="zoomin">Zoom In</button>
+                <li><a href='#'>Edit ▼</a>
+                    <ul>
+                        <li><a href='#'>Duplicate</a>
+                        </li>
+                        <li><a href='#' id="delete">Delete</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href='#'>Help ▼</a>
+                    <ul>
+                        <li><a href='#'>Documentation</a>
+                        </li>
+                        <li><a href='#'>About</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button id="delete">Delete</button>
+                    <button id="clone">Clone</button>
+                    <!-- <button id="zoomin">Zoom In</button>
 <button id="zoomout">Zoom Out</button> -->
-            </li>
+                </li>
             </ul>
         </nav>
     </header>
-<!-- /Header -->
+    <!-- /Header -->
 
-<!-- Main Div -->
-<div id="maindiv">
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">Integer</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p style="text-align: right">out<span class="vertex out int"></span></p>
-        </div>
-    </div>
-    <div id="teste" class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">Function</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertex in image"></span> in</p>
-            <p><span class="vertex in int"></span> in</p>
-            <p><span class="vertex in float"></span> in</p>
-            <p><span class="vertex in char"></span> in</p>
-            <p style="text-align: right">out<span class="vertex out float"></span></p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">Image Viewer</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><img src="demo.png"></p>
-            <p><span class="vertex in image"></span>img_input</p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">vglClNot</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertex in image"></span>img_input</p>
-            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">vglClErode</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertex in image"></span>img_input</p>
-            <p><span class="vertex in float"></span>convolution_window</p>
-            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertex in image"></span>img_input</p>
-            <p><span class="vertex in float"></span>convolution_window</p>
-            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">vglClSum</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><span class="vertex in image"></span>img_input1</p>
-            <p><span class="vertex in image"></span>img_input1</p>
-            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-        </div>
-    </div>
-    <div class="block ui-corner-all noselect">
-        <div class="ui-widget-header ui-corner-top">Image</div>
-        <div class="ui-widget-content ui-corner-bottom">
-            <p><img src="demo.png"></p>
-            <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-        </div>
-    </div>
-</div>
-<!-- /Main Div -->
-<div id="librarycontainer">
-    <div id="librarytoggle" class="ui-widget-header ui-corner-top">Library</div>
-    <div id="librarybody">
-        <div id="tabs">
-            <ul>
-                <li><a href="#tabs-1">All</a></li>
-                <li><a href="#tabs-2">Category 2</a></li>
-                <li><a href="#tabs-3">category 2</a></li>
-            </ul>
-            <div id="tabs-1">
-                <p style="float: left">
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">Integer</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p style="text-align: right">out<span class="vertex out int"></span></p>
-                    </div>
-                </div> 
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">Function</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertex in image"></span> in</p>
-                        <p><span class="vertex in int"></span> in</p>
-                        <p><span class="vertex in float"></span> in</p>
-                        <p><span class="vertex in char"></span> in</p>
-                        <p style="text-align: right">out<span class="vertex out float"></span></p>
-                    </div>
-                </div>
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">vglClNot</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertex in image"></span>img_input</p>
-                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-                    </div>
-                </div>
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">vglClErode</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertex in image"></span>img_input</p>
-                        <p><span class="vertex in float"></span>convolution_window</p>
-                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-                    </div>
-                </div>
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertex in image"></span>img_input</p>
-                        <p><span class="vertex in float"></span>convolution_window</p>
-                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-                    </div>
-                </div>
-                <div class="lblock ui-corner-all noselect">
-                    <div class="ui-widget-header ui-corner-top">vglClSum</div>
-                    <div class="ui-widget-content ui-corner-bottom">
-                        <p><span class="vertex in image"></span>img_input1</p>
-                        <p><span class="vertex in image"></span>img_input1</p>
-                        <p style="text-align: right"><span class="vertex out image"></span>img_output</p>
-                    </div>
-                </div>
+    <!-- Main Div -->
+    <div id="maindiv">
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">Integer</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pright">out<span class="vertex out int"></span>
                 </p>
+            </div>
         </div>
-        <div id="tabs-2">
-            <p>
-            </p>
+        <div id="teste" class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">Function</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pleft"><span class="vertex in image"></span> in</p>
+                <p class="pleft"><span class="vertex in int"></span> in</p>
+                <p class="pleft"><span class="vertex in float"></span> in</p>
+                <p class="pleft"><span class="vertex in char"></span> in</p>
+                <p class="pright">out<span class="vertex out float"></span>
+                </p>
+            </div>
         </div>
-        <div id="tabs-3">
-            <p>
-            </p>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">Image Viewer</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p><img src="demo.png">
+                </p>
+                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+            </div>
+        </div>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">vglClNot</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                <p class="pright"><span class="vertex out image"></span>img_output</p>
+            </div>
+        </div>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">vglClErode</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
+                <p class="pright"><span class="vertex out image"></span>img_output</p>
+            </div>
+        </div>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
+                <p class="pright"><span class="vertex out image"></span>img_output</p>
+            </div>
+        </div>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">vglClSum</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
+                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
+                <p class="pright"><span class="vertex out image"></span>img_output</p>
+            </div>
+        </div>
+        <div class="block ui-corner-all noselect">
+            <div class="ui-widget-header ui-corner-top">Image</div>
+            <div class="ui-widget-content ui-corner-bottom">
+                <p><img src="demo.png">
+                </p>
+                <p class="pright"><span class="vertex out image"></span>img_output</p>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<!-- Footer -->
-<footer>
-</footer>
-<!-- /Footer -->
+    <!-- /Main Div -->
+    <div id="librarycontainer">
+        <div id="librarytoggle" class="ui-widget-header ui-corner-top">Library</div>
+        <div id="librarybody">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">All</a>
+                    </li>
+                    <li><a href="#tabs-2">Category 2</a>
+                    </li>
+                    <li><a href="#tabs-3">category 2</a>
+                    </li>
+                </ul>
+                <div id="tabs-1">
+                    <p style="float: left">
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">Integer</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pright">out<span class="vertex out int"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">Function</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pleft"><span class="vertex in image"></span> in</p>
+                                <p class="pleft"><span class="vertex in int"></span> in</p>
+                                <p class="pleft"><span class="vertex in float"></span> in</p>
+                                <p class="pleft"><span class="vertex in char"></span> in</p>
+                                <p class="pright">out<span class="vertex out float"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">vglClNot</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                                <p class="pright"><span class="vertex out image"></span>img_output</p>
+                            </div>
+                        </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">vglClErode</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
+                                <p class="pright"><span class="vertex out image"></span>img_output</p>
+                            </div>
+                        </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pleft"><span class="vertex in image"></span>img_input</p>
+                                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
+                                <p class="pright"><span class="vertex out image"></span>img_output</p>
+                            </div>
+                        </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">vglClSum</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
+                                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
+                                <p class="pright"><span class="vertex out image"></span>img_output</p>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div id="tabs-2">
+                    <p>
+                    </p>
+                </div>
+                <div id="tabs-3">
+                    <p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+    </footer>
+    <!-- /Footer -->
 </body>
+
+<!-- Files -->
+<!-- CSS Reset -->
+<link rel="stylesheet" href="css/css-reset.css">
+
+<!-- Jquery -->
+<script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
+
+<!-- Jquery UI -->
+<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">
+<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.structure.css">
+<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">
+<script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>
+
+<!-- JsPlumb -->
+<script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
+
+<!-- Project CSS -->
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/interface.css">
+
+<!-- JavaScript WebApp -->
+<script type="text/javascript" src="javascript/webapp.js"></script>
+<!-- END Files -->
+
 </html>
