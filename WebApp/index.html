@@ -13,17 +13,17 @@
             <ul class="drop_menu">
                 <li><a href='#'>Menu ▼</a>
                     <ul>
-                        <li><a href='#'>Open</a>
+                        <li onclick="pasteFrom()"><a href='#'>Open</a>
                         </li>
-                        <li><a href='#'>Save</a>
+                        <li onclick="copyToClipboard()"><a href='#'>Save</a>
                         </li>
                     </ul>
                 </li>
                 <li><a href='#'>Edit ▼</a>
                     <ul>
-                        <li><a href='#'>Duplicate</a>
+                        <li><a href='#' class="clone">Duplicate</a>
                         </li>
-                        <li><a href='#' id="delete">Delete</span></a>
+                        <li><a href='#' class="delete">Delete</span></a>
                         </li>
                     </ul>
                 </li>
@@ -35,11 +35,8 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <button id="delete">Delete</button>
-                    <button id="clone">Clone</button>
-                    <!-- <button id="zoomin">Zoom In</button>
-<button id="zoomout">Zoom Out</button> -->
+                <li id="zoomrange">
+                    <input type="range" min="0.1" max="10" step="0.25" onmouseup="alert(this.value)">
                 </li>
             </ul>
         </nav>
@@ -48,61 +45,22 @@
 
     <!-- Main Div -->
     <div id="maindiv">
-        <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">Integer</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pright">out<span class="vertex out int"></span>
-                </p>
-            </div>
+
+        <!-- Toolbar Options -->
+        <div id="format-toolbar-options">
+            <a href="#" class="delete"><i class="icon-remove-circle"></i></a>
+            <a href="#" class="clone"><i class="icon-repeat"></i></a>
+            <a href="#"><i class="icon-play-circle"></i></a>
         </div>
-        <div id="teste" class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">Function</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pleft"><span class="vertex in image"></span> in</p>
-                <p class="pleft"><span class="vertex in int"></span> in</p>
-                <p class="pleft"><span class="vertex in float"></span> in</p>
-                <p class="pleft"><span class="vertex in char"></span> in</p>
-                <p class="pright">out<span class="vertex out float"></span>
-                </p>
-            </div>
-        </div>
+        <!-- /Toolbar Options -->
+
         <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">Image Viewer</div>
+            <div class="ui-widget-header ui-corner-top">Image Viewer<span class="ui-icon ui-icon-gear blockoptions"></span>
+            </div>
             <div class="ui-widget-content ui-corner-bottom">
                 <p><img src="demo.png">
                 </p>
                 <p class="pleft"><span class="vertex in image"></span>img_input</p>
-            </div>
-        </div>
-        <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">vglClNot</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pleft"><span class="vertex in image"></span>img_input</p>
-                <p class="pright"><span class="vertex out image"></span>img_output</p>
-            </div>
-        </div>
-        <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">vglClErode</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pleft"><span class="vertex in image"></span>img_input</p>
-                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
-                <p class="pright"><span class="vertex out image"></span>img_output</p>
-            </div>
-        </div>
-        <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pleft"><span class="vertex in image"></span>img_input</p>
-                <p class="pleft"><span class="vertex in float"></span>convolution_window</p>
-                <p class="pright"><span class="vertex out image"></span>img_output</p>
-            </div>
-        </div>
-        <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">vglClSum</div>
-            <div class="ui-widget-content ui-corner-bottom">
-                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
-                <p class="pleft"><span class="vertex in image"></span>img_input1</p>
-                <p class="pright"><span class="vertex out image"></span>img_output</p>
             </div>
         </div>
         <div class="block ui-corner-all noselect">
@@ -202,24 +160,29 @@
 <link rel="stylesheet" href="css/css-reset.css">
 
 <!-- Jquery -->
-<script type="text/javascript" src="jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-2.1.1.js"></script>
 
 <!-- Jquery UI -->
-<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">
-<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.structure.css">
-<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.theme.css">
-<script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="js/jquery-ui-1.11.2/jquery-ui.css">
+<link rel="stylesheet" href="js/jquery-ui-1.11.2/jquery-ui.structure.css">
+<link rel="stylesheet" href="js/jquery-ui-1.11.2/jquery-ui.theme.css">
+<script type="text/javascript" src="js/jquery-ui-1.11.2/jquery-ui.js"></script>
 
 <!-- JsPlumb -->
-<script type="text/javascript" src="jsplumb/jquery.jsPlumb-1.7.2.js"></script>
+<script type="text/javascript" src="js/jsplumb/jquery.jsPlumb-1.7.2.js"></script>
 
-<!-- Project CSS -->
+<!-- Toolbar -->
+<script type="text/javascript" src="js/jquery-toolbar/jquery.toolbar.js"></script>
+<link href="js/jquery-toolbar/jquery.toolbars.css" rel="stylesheet" />
+<link href="js/jquery-toolbar/bootstrap.icons.css" rel="stylesheet" />
+
+<!-- WebApp CSS -->
 <link rel="stylesheet" href="css/menu.css">
 <link rel="stylesheet" href="css/interface.css">
 
 <!-- JavaScript WebApp -->
-<script type="text/javascript" src="javascript/webapp.js"></script>
-<script type="text/javascript" src="javascript/jspready.js"></script>
+<script type="text/javascript" src="js/webapp-main.js"></script>
+<script type="text/javascript" src="js/webapp-jsPlumb.js"></script>
 <!-- END Files -->
 
 </html>

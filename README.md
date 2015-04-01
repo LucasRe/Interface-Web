@@ -14,3 +14,4 @@ Libraries & Frameworks
 - jQuery (http://jquery.com)
 - jQuery UI (http://jqueryui.com)
 - jsPlumb (http://www.jsplumb.org)
+- Toolbar.Js (http://paulkinzett.github.io/toolbar/)

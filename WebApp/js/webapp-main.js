@@ -1,19 +1,27 @@
 // Variables
 var selected = ''; // Selected Block var initialize 
 var mouse = {
-        X: 0,
-        Y: 0
-    } // Hold mouse pos
+    X: 0,
+    Y: 0
+}; // Hold mouse pos
 var vout = '.vertex.out'; // Vertex output class
 var vin = '.vertex.in'; // Vertex input class
 var container = '#maindiv'; // Container id
+var blockcount = 0; // Block count
 var dragob = '.block'; // Block class
 var dragop = {
-        containment: container,
-        cursor: "default",
-        //cursorAt: { top: 10, right: 10 },
-        handle: ".ui-widget-header"
-    } // Drag options
+    containment: container,
+    cursor: "default",
+    //cursorAt: { top: 10, right: 10 },
+    handle: ".ui-widget-header"
+}; // Drag options
+
+//Toolbar
+$('.ui-icon-gear').toolbar({
+    content: '#format-toolbar-options',
+    position: 'top',
+    hideOnClick: true
+});
 
 /*// Resize
  function resize(){
@@ -38,11 +46,21 @@ function selectblock() {
     }
 }
 
+//Copy JSON
+function copyToClipboard() {
+        alert(JSON.stringify(document.getElementById("maindiv").firstChild()));
+    }
+    //Paste JSCON
+function pasteFrom() {
+    $(container).append(JSON.parse(prompt("Teste", "JSON")));
+}
+
 // Clone Block
 function cloneblock(obj, event, ui) {
 
     // Generate id
-    var idn = Math.floor((Math.random() * 100) + 1),
+    blockcount++;
+    var idn = 'Block' + blockcount,
         idt = '#' + idn;
 
     // Object from?
@@ -139,7 +157,7 @@ $(document).ready(function () {
         $("#tabs").tabs();
     });
 
-    $("button#clone").click(function () {
+    $(".clone").click(function () {
         cloneblock(true);
     });
 
@@ -147,15 +165,15 @@ $(document).ready(function () {
     $("#maindiv .ui-widget-header").click(selectblock);
 
     // DeSelect Block
-    $("#maindiv").click(function () {
-        if (selected != '') {
-            selected.removeClass('selected');
-            selected = '';
-        }
-    });
+    /* $("#maindiv").click(function () {
+         if (selected != '') {
+             selected.removeClass('selected');
+             selected = '';
+         }
+     }); */
 
     // Remove Block
-    $("button#delete").click(function () {
+    $(".delete").click(function () {
         var vertex = selected.children('.ui-widget-content').children('p').children('span');
         for (i = 0; i < vertex.length; i++) {
             jsPlumb.detachAllConnections(vertex[i]);
