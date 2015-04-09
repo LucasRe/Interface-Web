@@ -4,35 +4,27 @@ var mouse = {
     X: 0,
     Y: 0
 }; // Hold mouse pos
-var vout = '.vertex.out'; // Vertex output class
-var vin = '.vertex.in'; // Vertex input class
-var container = '#maindiv'; // Container id
 var blockcount = 0; // Block count
-var dragob = '.block'; // Block class
-var dragop = {
-    containment: container,
-    cursor: "default",
-    //cursorAt: { top: 10, right: 10 },
-    handle: ".ui-widget-header"
-}; // Drag options
 
 //Toolbar
-$('.ui-icon-gear').toolbar({
-    content: '#format-toolbar-options',
-    position: 'top',
-    hideOnClick: true
-});
+function addtoolbar() {
+    $('.ui-icon-gear').toolbar({
+        content: '#format-toolbar-options',
+        position: 'top',
+        hideOnClick: true
+    });
+}
 
-/*// Resize
- function resize(){
-     $( ".block" ).resizable({
-         maxHeight: 250,
-         maxWidth: 360,
-         minHeight: 150,
-         minWidth: 80,
-         //aspectRatio: 16 / 9
-     });
- }*/
+// Resize
+function resize() {
+    $(".block").resizable({
+        maxHeight: 250,
+        maxWidth: 360,
+        minHeight: 150,
+        minWidth: 80,
+        aspectRatio: 1
+    });
+}
 
 // Select Function
 function selectblock() {
@@ -62,13 +54,14 @@ function cloneblock(obj, event, ui) {
     blockcount++;
     var idn = 'Block' + blockcount,
         idt = '#' + idn;
+    var objpos = selected.position();
 
     // Object from?
     if (obj) {
         var block = $(selected).clone();
         block.css({
-            left: mouse.X + 'px',
-            top: mouse.Y + 'px'
+            left: objpos.left + 50 + 'px',
+            top: objpos.top + 'px'
         }).attr('id', idn).removeClass('ui-draggable selected');
     } else {
         var block = $(ui.draggable).clone();
@@ -133,12 +126,19 @@ function cloneblock(obj, event, ui) {
         }
     }
 
+    if (!obj) {
+        block.children('.ui-widget-header').append("<span></span>");
+        block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
+    }
     block.appendTo($(container)); // Append block to container
     $("#maindiv .ui-widget-header").click(selectblock);
     jsPlumb.draggable($(idt), dragop); // Add drag to block
+    addtoolbar();
 }
 
 $(document).ready(function () {
+
+    addtoolbar();
 
     // Mouse track               
     $("#maindiv").mousemove(function (event) {
@@ -163,6 +163,7 @@ $(document).ready(function () {
 
     // Select Block
     $("#maindiv .ui-widget-header").click(selectblock);
+    $("#maindiv .ui-widget-content").click(selectblock);
 
     // DeSelect Block
     /* $("#maindiv").click(function () {
@@ -179,6 +180,7 @@ $(document).ready(function () {
             jsPlumb.detachAllConnections(vertex[i]);
         }
         selected.remove();
+        $('#maindiv').click();
     });
 
     // Clone from Lib

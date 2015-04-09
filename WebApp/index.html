@@ -49,24 +49,28 @@
         <!-- Toolbar Options -->
         <div id="format-toolbar-options">
             <a href="#" class="delete"><i class="icon-remove-circle"></i></a>
-            <a href="#" class="clone"><i class="icon-repeat"></i></a>
-            <a href="#"><i class="icon-play-circle"></i></a>
+            <a href="#" class="clone"><i class="icon-tasks"></i></a>
         </div>
         <!-- /Toolbar Options -->
 
         <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">Image Viewer<span class="ui-icon ui-icon-gear blockoptions"></span>
+            <div class="ui-widget-header ui-corner-top">Image Viewer <span class="ui-icon ui-icon-gear blockoptions"></span>
             </div>
             <div class="ui-widget-content ui-corner-bottom">
-                <p><img src="demo.png">
+                <p>
+                    <a href="demo.png" data-lightbox="image-1"><img src="demo.png" data-lightbox="image-1">
+                    </a>
                 </p>
                 <p class="pleft"><span class="vertex in image"></span>img_input</p>
             </div>
         </div>
         <div class="block ui-corner-all noselect">
-            <div class="ui-widget-header ui-corner-top">Image</div>
+            <div class="ui-widget-header ui-corner-top">Image <span class="ui-icon ui-icon-gear blockoptions"></span>
+            </div>
             <div class="ui-widget-content ui-corner-bottom">
-                <p><img src="demo.png">
+                <p>
+                    <a href="demo.png" data-lightbox="image-2"><img src="demo.png" data-lightbox="image-1">
+                    </a>
                 </p>
                 <p class="pright"><span class="vertex out image"></span>img_output</p>
             </div>
@@ -175,6 +179,10 @@
 <script type="text/javascript" src="js/jquery-toolbar/jquery.toolbar.js"></script>
 <link href="js/jquery-toolbar/jquery.toolbars.css" rel="stylesheet" />
 <link href="js/jquery-toolbar/bootstrap.icons.css" rel="stylesheet" />
+
+<!-- Lightbox -->
+<script type="text/javascript" src="js/lightbox/js/lightbox.js"></script>
+<link href="js/lightbox/css/lightbox.css" rel="stylesheet" />
 
 <!-- WebApp CSS -->
 <link rel="stylesheet" href="css/menu.css">
