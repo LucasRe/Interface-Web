@@ -5,9 +5,9 @@ Interface Web
 
 Tools
 
-- Brackets [sprint 0 build 1.0.0-15191 (release 3f2eb90a4)] http://brackets.io/
+- Brackets (http://brackets.io/)
 
-- Koala http://koala-app.com/
+- Koala (http://koala-app.com/)
 
 Libraries & Frameworks
 - Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
@@ -15,4 +15,5 @@ Libraries & Frameworks
 - jQuery UI (http://jqueryui.com)
 - jsPlumb (http://www.jsplumb.org)
 - Toolbar.Js (http://paulkinzett.github.io/toolbar/)
-- Lightbox(http://lokeshdhakar.com/projects/lightbox2/)
+- Lightbox (http://lokeshdhakar.com/projects/lightbox2/)
+- w2ui (http://w2ui.com/web/home)

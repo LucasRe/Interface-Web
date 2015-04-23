@@ -1,16 +1,18 @@
-// Variables
-
-var vout = '.vertex.out'; // Vertex output class
-var vin = '.vertex.in'; // Vertex input class
-var container = '#maindiv'; // Container id
-var dragob = '.block'; // Block class
+// Vertex output class
+var vout = '.vertex.out';
+// Vertex input class
+var vin = '.vertex.in';
+// Container id
+var container = '#maindiv';
+// Block class
+var dragob = '.block';
+// Drag options
 var dragop = {
     containment: container,
     cursor: "default"
         //cursorAt: { top: 10, right: 10 },
         //handle: ".ui-widget-header"
-}; // Drag options
-
+};
 // Connections
 jsPlumb.ready(function () {
 

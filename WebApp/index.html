@@ -9,37 +9,7 @@
 <body class="noselect">
     <!-- Header -->
     <header>
-        <nav>
-            <ul class="drop_menu">
-                <li><a href='#'>Menu ▼</a>
-                    <ul>
-                        <li onclick="pasteFrom()"><a href='#'>Open</a>
-                        </li>
-                        <li onclick="copyToClipboard()"><a href='#'>Save</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href='#'>Edit ▼</a>
-                    <ul>
-                        <li><a href='#' class="clone">Duplicate</a>
-                        </li>
-                        <li><a href='#' class="delete">Delete</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href='#'>Help ▼</a>
-                    <ul>
-                        <li><a href='#'>Documentation</a>
-                        </li>
-                        <li><a href='#'>About</a>
-                        </li>
-                    </ul>
-                </li>
-                <li id="zoomrange">
-                    <input type="range" min="0.1" max="10" step="0.25" onmouseup="alert(this.value)">
-                </li>
-            </ul>
-        </nav>
+        <div id="toolbar" style="padding: 1px; border: 1px solid silver;"></div>
     </header>
     <!-- /Header -->
 
@@ -84,9 +54,11 @@
                 <ul>
                     <li><a href="#tabs-1">All</a>
                     </li>
-                    <li><a href="#tabs-2">Category 2</a>
+                    <li><a href="#tabs-2">Category 1</a>
                     </li>
-                    <li><a href="#tabs-3">category 2</a>
+                    <li><a href="#tabs-3">Category 2</a>
+                    </li>
+                    <li><a href="#tabs-4">Custom</a>
                     </li>
                 </ul>
                 <div id="tabs-1">
@@ -140,6 +112,18 @@
                                 <p class="pright"><span class="vertex out image"></span>img_output</p>
                             </div>
                         </div>
+                        <div class="lblock ui-corner-all noselect">
+                            <div class="ui-widget-header ui-corner-top">Convolution Windows</div>
+                            <div class="ui-widget-content ui-corner-bottom">
+                                <p style="float:left;">
+                                    <button class="btn" onclick="cwPopup()">Open</button>
+                                </p>
+                                <p class="pright"><span class="vertex out float"></span>conv_win</p>
+                                <p class="pright"><span class="vertex out float"></span>width</p>
+                                <p class="pright"><span class="vertex out float"></span>height</p>
+                                <p class="pright"><span class="vertex out float"></span>depth</p>
+                            </div>
+                        </div>
                     </p>
                 </div>
                 <div id="tabs-2">
@@ -147,6 +131,10 @@
                     </p>
                 </div>
                 <div id="tabs-3">
+                    <p>
+                    </p>
+                </div>
+                <div id="tabs-4">
                     <p>
                     </p>
                 </div>
@@ -160,6 +148,7 @@
 </body>
 
 <!-- Files -->
+
 <!-- CSS Reset -->
 <link rel="stylesheet" href="css/css-reset.css">
 
@@ -184,13 +173,22 @@
 <script type="text/javascript" src="js/lightbox/js/lightbox.js"></script>
 <link href="js/lightbox/css/lightbox.css" rel="stylesheet" />
 
+<!-- w2ui -->
+<link rel="stylesheet" href="js/w2ui/w2ui-1.4.2.css">
+<script type="text/javascript" src="js/w2ui/w2ui-1.4.2.js"></script>
+
 <!-- WebApp CSS -->
 <link rel="stylesheet" href="css/menu.css">
 <link rel="stylesheet" href="css/interface.css">
 
-<!-- JavaScript WebApp -->
-<script type="text/javascript" src="js/webapp-main.js"></script>
-<script type="text/javascript" src="js/webapp-jsPlumb.js"></script>
+<!-- WebApp JavaScript -->
+<script type="text/javascript" src="js/webapp/webapp-main.js"></script>
+<script type="text/javascript" src="js/webapp/webapp-docready.js"></script>
+<script type="text/javascript" src="js/webapp/webapp-forms.js"></script>
+<script type="text/javascript" src="js/webapp/webapp-jsPlumb.js"></script>
+<script type="text/javascript" src="js/webapp/webapp-w2ui.js"></script>
+
+
 <!-- END Files -->
 
 </html>

@@ -30,6 +30,7 @@ body {
   margin: 5px; }
 
 /* Vertex */
+/* Base */
 .vertex {
   border: 1px solid #454545;
   -webkit-border-radius: 10px 10px 10px 10px;
@@ -38,26 +39,35 @@ body {
   width: 10px;
   height: 10px; }
 
+/* Input */
 .vertex.in {
   float: left;
   left: -2px; }
 
+/* Output */
 .vertex.out {
   float: right;
   right: -2px; }
 
+/* Image */
 .vertex.image {
   background-color: #ff4141; }
 
+/* Integer */
 .vertex.int {
   background-color: #009f00; }
 
+/* Float */
 .vertex.float {
   background-color: #6565ff; }
 
+/* Character */
 .vertex.char {
   background-color: #ffff9a; }
 
+/* END Vertex */
+/* Block */
+/* Lib block */
 .lblock {
   opacity: 0.9;
   min-width: 100px auto;
@@ -71,6 +81,7 @@ body {
   display: inline-block;
   margin-right: 15px; }
 
+/* Workplace block */
 .block {
   opacity: 0.9;
   min-width: 100px auto;
@@ -120,6 +131,8 @@ body {
   box-shadow: 0px 0px 10px 2px #fd7639;
   z-index: 2; }
 
+/* END Block */
+/* Library */
 #librarycontainer {
   position: absolute;
   bottom: 0px;
@@ -140,6 +153,31 @@ body {
   display: none;
   cursor: default; }
 
+/* END Library */
+/* Forms */
+div#users-contain {
+  width: 350px;
+  margin: 20px 0; }
+
+div#users-contain table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%; }
+
+div#users-contain table td,
+div#users-contain table th {
+  border: 1px solid #eee;
+  padding: .6em 10px;
+  text-align: left; }
+
+.ui-dialog .ui-state-error {
+  padding: .3em; }
+
+.validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em; }
+
+/* End Forms */
 .hend {
   z-index: 3;
   opacity: 0; }

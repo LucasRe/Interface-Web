@@ -1,10 +1,13 @@
 // Variables
-var selected = ''; // Selected Block var initialize 
+// Selected Block var initialize
+var selected = '';
+// Mouse position
 var mouse = {
     X: 0,
     Y: 0
-}; // Hold mouse pos
-var blockcount = 0; // Block count
+};
+// Block count
+var blockcount = 0;
 
 //Toolbar
 function addtoolbar() {
@@ -132,79 +135,7 @@ function cloneblock(obj, event, ui) {
     }
     block.appendTo($(container)); // Append block to container
     $("#maindiv .ui-widget-header").click(selectblock);
+    $("#maindiv .ui-widget-content").click(selectblock);
     jsPlumb.draggable($(idt), dragop); // Add drag to block
     addtoolbar();
 }
-
-$(document).ready(function () {
-
-    addtoolbar();
-
-    // Mouse track               
-    $("#maindiv").mousemove(function (event) {
-        mouse.X = event.clientX;
-        mouse.Y = event.clientY;
-    });
-
-    // Library Toggle
-    $("#librarytoggle").click(function () {
-        $("#librarybody").slideToggle('slow');
-
-    });
-
-    // Library Tabs
-    $(function () {
-        $("#tabs").tabs();
-    });
-
-    $(".clone").click(function () {
-        cloneblock(true);
-    });
-
-    // Select Block
-    $("#maindiv .ui-widget-header").click(selectblock);
-    $("#maindiv .ui-widget-content").click(selectblock);
-
-    // DeSelect Block
-    /* $("#maindiv").click(function () {
-         if (selected != '') {
-             selected.removeClass('selected');
-             selected = '';
-         }
-     }); */
-
-    // Remove Block
-    $(".delete").click(function () {
-        var vertex = selected.children('.ui-widget-content').children('p').children('span');
-        for (i = 0; i < vertex.length; i++) {
-            jsPlumb.detachAllConnections(vertex[i]);
-        }
-        selected.remove();
-        $('#maindiv').click();
-    });
-
-    // Clone from Lib
-    $(function () {
-        $(".lblock").draggable({
-            opacity: 0.7,
-            revert: true,
-            helper: "clone"
-        });
-    });
-
-    // Call resize function
-    //resize();
-
-
-    //Droppable clone from Lib
-    $("#maindiv").droppable({
-        accept: ".lblock",
-        //activeClass: "ui-state-hover",
-        //hoverClass: "ui-state-active",
-        drop: function (event, ui) {
-            // Call Clone function for lib blocks
-            cloneblock(false, event, ui);
-        }
-    });
-
-}); // End Document.ready
