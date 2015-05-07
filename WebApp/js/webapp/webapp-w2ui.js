@@ -56,246 +56,19 @@ $(function () {
     });
 });
 
-//Convolution Window
-var config = {
-    layout: {
-        name: 'layout',
-        padding: 4,
-        panels: [
-            {
-                type: 'left',
-                size: '50%',
-                resizable: true,
-                minSize: 300
-            },
-            {
-                type: 'top',
-                size: '220px'
-            },
-            {
-                type: 'main',
-                minSize: 300
-            }
-        ]
-    },
-    grid: {
-        header: 'Width x Height',
-        show: {
-            header: true,
-            columnHeaders: true,
-            toolbar: true,
-            toolbarSave: true,
-            toolbarSearch: false,
-            toolbarColumns: false
-        },
-        name: 'grid',
-        columns: [
-            {
-                field: 'recid',
-                caption: 'ID',
-                size: '50px',
-                sortable: true,
-                attr: 'align=center'
-            },
-            {
-                field: 'lname',
-                caption: 'Last Name',
-                size: '30%',
-                sortable: true,
-                editable: {
-                    type: 'text'
-                }
-            },
-            {
-                field: 'fname',
-                caption: 'First Name',
-                size: '30%',
-                sortable: true
-            },
-            {
-                field: 'email',
-                caption: 'Email',
-                size: '40%'
-            },
-            {
-                field: 'sdate',
-                caption: 'Start Date',
-                size: '120px'
-            },
-        ],
-        records: [
-            {
-                recid: 1,
-                fname: 'John',
-                lname: 'doe',
-                email: 'jdoe@gmail.com',
-                sdate: '4/3/2012'
-            },
-            {
-                recid: 2,
-                fname: 'Stuart',
-                lname: 'Motzart',
-                email: 'motzart@hotmail.com',
-                sdate: '4/3/2012'
-            },
-            {
-                recid: 3,
-                fname: 'Jin',
-                lname: 'Franson',
-                email: 'jin@yahoo.com',
-                sdate: '4/3/2012'
-            },
-            {
-                recid: 4,
-                fname: 'Susan',
-                lname: 'Ottie',
-                email: 'sottie@yahoo.com',
-                sdate: '4/3/2012'
-            },
-            {
-                recid: 5,
-                fname: 'Kelly',
-                lname: 'Silver',
-                email: 'kelly@gmail.com',
-                sdate: '4/3/2012'
-            },
-            {
-                recid: 6,
-                fname: 'Francis',
-                lname: 'Gatos',
-                email: 'frank@apple.com',
-                sdate: '4/3/2012'
-            }
-        ],
-        onClick: function (event) {
-            w2ui['grid2'].clear();
-            var record = this.get(event.recid);
-            w2ui['grid2'].add([
-                {
-                    recid: 0,
-                    name: 'ID:',
-                    value: record.recid
-                },
-                {
-                    recid: 1,
-                    name: 'First Name:',
-                    value: record.fname
-                },
-                {
-                    recid: 2,
-                    name: 'Last Name:',
-                    value: record.lname
-                },
-                {
-                    recid: 3,
-                    name: 'Email:',
-                    value: record.email
-                },
-                {
-                    recid: 4,
-                    name: 'Date:',
-                    value: record.sdate
-                }
-            ]);
-        }
-    },
-    form: {
-        header: 'Edit Dimensions',
-        name: 'form',
-        fields: [
-            {
-                name: 'width',
-                type: 'text',
-                required: true,
-                html: {
-                    caption: 'Width',
-                    attr: 'size="10"'
-                }
-            },
-            {
-                name: 'height',
-                type: 'text',
-                required: true,
-                html: {
-                    caption: 'Height',
-                    attr: 'size="10" maxlength="40"'
-                }
-            },
-            {
-                name: 'depth',
-                type: 'text',
-                html: {
-                    caption: 'Depth',
-                    attr: 'size="10" maxlength="40"'
-                }
-            }
-        ],
-        actions: {
-            Save: function () {
-                var errors = this.validate();
-                if (errors.length > 0) return;
-                if (this.recid == 0) {
-                    w2ui.grid.add($.extend(true, {
-                        recid: w2ui.grid.records.length + 1
-                    }, this.record));
-                    w2ui.grid.selectNone();
-                    this.clear();
-                } else {
-                    w2ui.grid.set(this.recid, this.record);
-                    w2ui.grid.selectNone();
-                    this.clear();
-                }
-            }
-        }
-    }
-}
-
-var config2 = {
-    grid: {
-        header: 'Depth',
-        show: {
-            header: true,
-            columnHeaders: true
-        },
-        name: 'grid2',
-        columns: [
-            {
-                field: 'name',
-                caption: 'Name',
-                size: '100px',
-                style: 'background-color: #efefef; border-bottom: 1px solid white; padding-right: 5px;',
-                attr: "align=right"
-            },
-            {
-                field: 'value',
-                caption: 'Value',
-                size: '100%'
-            }
-        ]
-    }
-}
-
-$(function () {
-    // initialization in memory
-    $().w2layout(config.layout);
-    $().w2grid(config.grid);
-    $().w2form(config.form);
-    $().w2grid(config2.grid);
-});
-
+// Conv. Window Popup
 function cwPopup() {
     w2popup.open({
         title: 'Concolution Window',
         width: 900,
-        height: 900,
+        height: 500,
         showMax: true,
         body: '<div id="main" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;"></div>',
         onOpen: function (event) {
             event.onComplete = function () {
                 $('#w2ui-popup #main').w2render('layout');
-                w2ui.layout.content('left', w2ui.grid);
-                w2ui.layout.content('top', w2ui.form);
-                w2ui.layout.content('main', w2ui.grid2);
+                w2ui.layout.content('left', w2ui.form);
+                w2ui.layout.content('main', w2ui.grid);
             };
         },
         onToggle: function (event) {
@@ -305,3 +78,253 @@ function cwPopup() {
         }
     });
 }
+
+function zvalues(zn, yn) {
+    var zvalue = [];
+    for (i = 0; i < zn; i++) {
+        for (j = 0; j < yn; j++) {
+            zvalue.push(i);
+        }
+    }
+    return zvalue;
+}
+
+function yvalues(yn, zn) {
+    var yvalue = [];
+    for (i = 0; i < zn; i++) {
+        for (j = 0; j < yn; j++) {
+            yvalue.push(j);
+        }
+    }
+    return yvalue;
+}
+
+// Add column
+function add_column(fname, ccaption) {
+    w2ui['grid'].addColumn({
+        field: 'x' + fname + 'value',
+        caption: ccaption,
+        size: '50px',
+        editable: {
+            type: 'int'
+        }
+    });
+}
+
+// Remove column
+function rm_column(cname) {
+    w2ui['grid'].removeColumn(cname);
+}
+
+// Change grid
+function change_grid(x, y, z) {
+
+}
+
+//Convolution Window
+var config = {
+    layout: {
+        name: 'layout',
+        padding: 4,
+        panels: [
+            {
+                type: 'left',
+                size: '250px'
+            },
+            {
+                type: 'main',
+                minSize: 300
+            }
+        ]
+    },
+    grid: {
+        header: 'Convolution',
+        show: {
+            header: true,
+            columnHeaders: true,
+            toolbar: true,
+            toolbarSave: true,
+            toolbarSearch: false,
+            toolbarColumns: false,
+            lineNumbers: true
+        },
+        name: 'grid',
+        columns: [
+            {
+                field: 'zvalue',
+                caption: 'Z',
+                size: '50px',
+                sortable: false,
+                attr: 'align=center'
+            },
+            {
+                field: 'yvalue',
+                caption: 'Y',
+                size: '50px',
+                sortable: false,
+                attr: 'align=center'
+            },
+            {
+                field: 'x0value',
+                caption: '0',
+                size: '50px',
+                attr: 'align=center',
+                editable: {
+                    type: 'int'
+                }
+            },
+            {
+                field: 'x1value',
+                caption: '1',
+                size: '50px',
+                attr: 'align=center',
+                editable: {
+                    type: 'int'
+                }
+            },
+            {
+                field: 'x2value',
+                caption: '2',
+                size: '50px',
+                attr: 'align=center',
+                editable: {
+                    type: 'int'
+                }
+            }
+        ],
+        records: [
+            {
+                recid: 1,
+                zvalue: 0,
+                yvalue: 0
+            },
+            {
+                recid: 2,
+                zvalue: 0,
+                yvalue: 1
+            },
+            {
+                recid: 3,
+                zvalue: 0,
+                yvalue: 2
+            },
+            {
+                recid: 4,
+                zvalue: 1,
+                yvalue: 0
+            },
+            {
+                recid: 5,
+                zvalue: 1,
+                yvalue: 1
+            },
+            {
+                recid: 6,
+                zvalue: 1,
+                yvalue: 2
+            },
+            {
+                recid: 7,
+                zvalue: 2,
+                yvalue: 0
+            },
+            {
+                recid: 8,
+                zvalue: 2,
+                yvalue: 1
+            },
+            {
+                recid: 9,
+                zvalue: 2,
+                yvalue: 2
+            }
+        ]
+    },
+    form: {
+        header: 'Edit Dimensions',
+        name: 'form',
+        fields: [
+            {
+                name: 'width',
+                type: 'int',
+                html: {
+                    caption: 'Width',
+                    attr: 'size="5"'
+                },
+                options: {
+                    min: 1
+                }
+            },
+            {
+                name: 'height',
+                type: 'int',
+                html: {
+                    caption: 'Height',
+                    attr: 'size="5" value="5"'
+                },
+                options: {
+                    min: 1
+                }
+            },
+            {
+                name: 'depth',
+                type: 'int',
+                html: {
+                    caption: 'Depth',
+                    attr: 'size="5"'
+                },
+                options: {
+                    min: 1
+                }
+            }
+        ],
+        record: {
+            width: 3,
+            height: 3,
+            depth: 3
+        },
+        actions: {
+            Change: function () {
+                // Change nº cols for width
+                if (config.form.record.width < this.record.width) {
+                    // Add cols for width
+                    for (i = config.form.record.width; i < this.record.width; i++) {
+                        add_column(i, i);
+                    }
+                } else {
+                    for (i = config.form.record.width; i >= this.record.width; i--) {
+                        rm_column('x' + i + 'value');
+                        config.grid.records.splice(i, 1);
+                    }
+                }
+                config.form.record.width = this.record.width;
+
+                // Change nº rows for height and depth
+                if (w2ui['grid'].records.length > this.record.depth * this.record.height) {
+                    for (i = config.form.record.depth * config.form.record.height; i > this.record.depth * this.record.height; i--) {
+                        w2ui['grid'].remove(i);
+                    }
+                } else {
+                    for (i = config.form.record.depth * config.form.record.height + 1; i <= this.record.depth * this.record.height; i++) {
+                        w2ui['grid'].add({
+                            recid: i
+                        })
+                    };
+                }
+                config.form.record.depth = this.record.depth;
+                config.form.record.height = this.record.height;
+
+
+            }
+        }
+    }
+}
+
+function init_grid(grid) {
+    // initialization in memory
+    $().w2layout(config.layout);
+    $().w2grid(config.grid);
+    $().w2form(config.form);
+}
+
+init_grid();
