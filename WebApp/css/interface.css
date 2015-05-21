@@ -1,4 +1,3 @@
-/* ---------- WebApp ---------- */
 /* ---------- Variables ---------- */
 /* Image vertex color */
 /* Integer vertex color */
@@ -27,14 +26,14 @@ body {
 
 #maindiv {
   height: 95vh;
-  margin: 5px; }
+  margin: 10px; }
 
 /* Vertex */
 /* Base */
 .vertex {
   border: 1px solid #454545;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   position: relative;
   width: 10px;
   height: 10px; }
@@ -51,19 +50,19 @@ body {
 
 /* Image */
 .vertex.image {
-  background-color: #ff4141; }
+  background-color: #E8200C; }
 
 /* Integer */
 .vertex.int {
-  background-color: #009f00; }
+  background-color: #00FF4F; }
 
 /* Float */
 .vertex.float {
-  background-color: #6565ff; }
+  background-color: #9400FF; }
 
 /* Character */
 .vertex.char {
-  background-color: #ffff9a; }
+  background-color: #FFAE0D; }
 
 /* END Vertex */
 /* Block */
@@ -72,8 +71,8 @@ body {
   opacity: 0.9;
   min-width: 100px auto;
   min-height: 100px auto;
-  max-height: 150px;
-  max-width: 190px;
+  max-height: auto;
+  max-width: auto;
   padding-top: 0px;
   position: relative;
   z-index: 1;
@@ -95,9 +94,9 @@ body {
 
 .block:hover {
   opacity: 1;
-  -webkit-box-shadow: 0px 0px 10px 2px #4ba8d1;
-  -moz-box-shadow: 0px 0px 10px 2px #4ba8d1;
-  box-shadow: 0px 0px 10px 2px #4ba8d1;
+  -webkit-box-shadow: 0px 0px 10px 2px #0C83E8;
+  -moz-box-shadow: 0px 0px 10px 2px #0C83E8;
+  box-shadow: 0px 0px 10px 2px #0C83E8;
   z-index: 2; }
 
 .blockoptions {
@@ -109,15 +108,28 @@ body {
 .pright {
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 50px;
+  margin-left: 55px;
   margin-right: -4px;
   text-align: right; }
 
 .pleft {
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-right: 50px;
+  margin-right: 55px;
   margin-left: -4px; }
+
+.pright2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 75px;
+  margin-right: -4px;
+  text-align: right; }
+
+.pleft2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: -4px;
+  float: left; }
 
 .block img {
   max-height: 60px;
@@ -126,9 +138,9 @@ body {
 
 .selected {
   opacity: 1;
-  -webkit-box-shadow: 0px 0px 10px 2px #fd7639;
-  -moz-box-shadow: 0px 0px 10px 2px #fd7639;
-  box-shadow: 0px 0px 10px 2px #fd7639;
+  -webkit-box-shadow: 0px 0px 10px 2px #FFAE0D;
+  -moz-box-shadow: 0px 0px 10px 2px #FFAE0D;
+  box-shadow: 0px 0px 10px 2px #FFAE0D;
   z-index: 2; }
 
 /* END Block */

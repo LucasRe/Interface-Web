@@ -57,10 +57,10 @@ function cloneblock(obj, event, ui) {
     blockcount++;
     var idn = 'Block' + blockcount,
         idt = '#' + idn;
-    var objpos = selected.position();
 
     // Object from?
     if (obj) {
+        var objpos = selected.position();
         var block = $(selected).clone();
         block.css({
             left: objpos.left + 50 + 'px',
@@ -102,26 +102,34 @@ function cloneblock(obj, event, ui) {
     // Change input id
     var vin2 = block.children('.ui-widget-content').children('p').children('.vertex.in');
     for (i = 0; i < vin2.length; i++) {
+
+        //Vertex ID
+        var vid = idn + 'v' + i;
+
         if ($(vin2[i]).hasClass('image')) {
-            $(vin2[i]).attr('id', 'v' + idn);
+            vid = vid + 'image';
+            $(vin2[i]).attr('id', vid);
             jsPlumb.makeTarget($(vin2[i]), {
                 maxConnections: 1,
                 scope: 'image'
             });
         } else if ($(vin2[i]).hasClass('int')) {
-            $(vin2[i]).attr('id', 'v' + idn + 1);
+            vid = vid + 'int';
+            $(vin2[i]).attr('id', vid);
             jsPlumb.makeTarget($(vin2[i]), {
                 maxConnections: 1,
                 scope: 'int'
             });
         } else if ($(vin2[i]).hasClass('float')) {
-            $(vin2[i]).attr('id', 'v' + idn + 2);
+            vid = vid + 'float';
+            $(vin2[i]).attr('id', vid);
             jsPlumb.makeTarget($(vin2[i]), {
                 maxConnections: 1,
                 scope: 'float'
             });
         } else {
-            $(vin2[i]).attr('id', 'v' + idn + 3);
+            vid = vid + 'char';
+            $(vin2[i]).attr('id', vid);
             jsPlumb.makeTarget($(vin2[i]), {
                 maxConnections: 1,
                 scope: 'char'

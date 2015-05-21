@@ -1,38 +1,37 @@
-/* ---------- WebApp ---------- */
 /* ---------- Variables ---------- */
-
-$vimg: #ff4141;
 /* Image vertex color */
 
-$vint: #009f00;
+$vimg: #E8200C;
 /* Integer vertex color */
 
-$vfloat: #6565ff;
+$vint: #00FF4F;
 /* Float vertex color */
 
-$vchar: #ffff9a;
+$vfloat: #9400FF;
 /* Char vertex color */
 
-$vpos: -2px;
+$vchar: #FFAE0D;
 /* Vertex position */
 
-$vradius: 10px 10px 10px 10px;
+$vpos: -2px;
 /* Vertex radius */
 
-$vborder: 1px solid #454545;
+$vradius: 10px;
 /* Vertex border */
 
-$vsize: 10px;
+$vborder: 1px solid #454545;
 /* Vertex sixe */
 
-$shadow: 0px 0px 10px 2px;
+$vsize: 10px;
 /* Shadow setup */
 
-$bshadow_hover: $shadow #4ba8d1;
+$shadow: 0px 0px 10px 2px;
 /* Block:hover shadow */
 
-$selected_shadow: $shadow #fd7639;
+$bshadow_hover: $shadow #0C83E8;
 /* Selected block shadow */
+
+$selected_shadow: $shadow #FFAE0D;
 /* ---------- END Variables ---------- */
 
 .noselect {
@@ -52,7 +51,7 @@ body {
 
 #maindiv {
     height: 95vh;
-    margin: 5px;
+    margin: 10px;
 }
 /* Vertex */
 /* Base */
@@ -105,8 +104,8 @@ body {
     opacity: 0.9;
     min-width: 100px auto;
     min-height: 100px auto;
-    max-height: 150px;
-    max-width: 190px;
+    max-height: auto;
+    max-width: auto;
     padding-top: 0px;
     position: relative;
     z-index: 1;
@@ -146,7 +145,7 @@ body {
 .pright {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 50px;
+    margin-left: 55px;
     margin-right: -4px;
     text-align: right;
 }
@@ -154,8 +153,23 @@ body {
 .pleft {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-right: 50px;
+    margin-right: 55px;
     margin-left: -4px;
+}
+
+.pright2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 75px;
+    margin-right: -4px;
+    text-align: right;
+}
+
+.pleft2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: -4px;
+    float: left;
 }
 
 .block img {
