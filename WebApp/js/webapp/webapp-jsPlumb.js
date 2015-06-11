@@ -1,63 +1,48 @@
-// Vertex output class
-var vout = '.vertex.out';
-// Vertex input class
-var vin = '.vertex.in';
-// Container id
-var container = '#maindiv';
-// Block class
-var dragob = '.block';
-// Drag options
-var dragop = {
-    containment: container,
-    cursor: "default"
-        //cursorAt: { top: 10, right: 10 },
-        //handle: ".ui-widget-header"
-};
 // Connections
 jsPlumb.ready(function () {
 
     //jsPlumb set container
-    jsPlumb.setContainer($(container));
+    jsPlumb.setContainer($(container_id));
 
     // Vertex image
-    jsPlumb.makeSource($(vout + '.image'), {
+    jsPlumb.makeSource($(vertex_output_class + '.image'), {
         scope: 'image'
     });
     // Vertex image
-    jsPlumb.makeTarget($(vin + '.image'), {
+    jsPlumb.makeTarget($(vertex_input_class + '.image'), {
         maxConnections: 1,
         scope: 'image'
     });
 
     // Vertex int
-    jsPlumb.makeSource($(vout + '.int'), {
+    jsPlumb.makeSource($(vertex_output_class + '.int'), {
         scope: 'int'
     });
     // Vertex int
-    jsPlumb.makeTarget($(vin + '.int'), {
+    jsPlumb.makeTarget($(vertex_input_class + '.int'), {
         maxConnections: 1,
         scope: 'int'
     });
 
     // Vertex float
-    jsPlumb.makeSource($(vout + '.float'), {
+    jsPlumb.makeSource($(vertex_output_class + '.float'), {
         scope: 'float'
     });
     // Vertex float
-    jsPlumb.makeTarget($(vin + '.float'), {
+    jsPlumb.makeTarget($(vertex_input_class + '.float'), {
         maxConnections: 1,
         scope: 'float'
     });
 
-    // Vertex Char Source
-    jsPlumb.makeSource($(vout + '.char'), {
-        scope: 'char'
-    });
-    // Vertex Char Target
-    jsPlumb.makeTarget($(vin + '.char'), {
-        maxConnections: 1,
-        scope: 'char'
-    });
+    // // Vertex Char Source
+    // jsPlumb.makeSource($(vertex_output_class + '.char'), {
+    //     scope: 'char'
+    // });
+    // // Vertex Char Target
+    // jsPlumb.makeTarget($(vertex_input_class + '.char'), {
+    //     maxConnections: 1,
+    //     scope: 'char'
+    // });
 
     // Drag Block
     jsPlumb.draggable($(dragob), dragop);
