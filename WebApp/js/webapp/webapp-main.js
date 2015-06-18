@@ -26,10 +26,10 @@ var dragob = '.block';
 
 // Drag options
 var dragop = {
-    containment: container_id,
-    cursor: "default"
-        //cursorAt: { top: 10, right: 10 },
-        //handle: ".ui-widget-header"
+  containment: container_id,
+  cursor: "default"
+    //cursorAt: { top: 10, right: 10 },
+    //handle: ".ui-widget-header"
 };
 
 // END Variables
@@ -91,28 +91,37 @@ function cloneblock(obj, event, ui) {
   }
 
   // Change output id
-  block.children('.ui-widget-content').children('p').children('.vertex.out').attr('id', 'vo' + idn);
   var exit = block.children('.ui-widget-content').children('p').children('.vertex.out');
-  if ($(exit).hasClass('image')) {
-    $(exit).attr('id', 'v' + idn + 4);
-    jsPlumb.makeSource($(exit), {
-      scope: 'image'
-    });
-  } else if ($(exit).hasClass('int')) {
-    $(exit).attr('id', 'v' + idn + 5);
-    jsPlumb.makeSource($(exit), {
-      scope: 'int'
-    });
-  } else if ($(exit).hasClass('float')) {
-    $(exit).attr('id', 'v' + idn + 6);
-    jsPlumb.makeSource($(exit), {
-      scope: 'float'
-    });
-  } else {
-    $(exit).attr('id', 'v' + idn + 7);
-    jsPlumb.makeSource($(exit), {
-      scope: 'char'
-    });
+  for (i = 0; i < exit.length; i++) {
+
+    //Vertex ID
+    var vid = idn + 'v' + i;
+
+    if ($(exit[i]).hasClass('image')) {
+      vid = vid + 'image';
+      $(exit[i]).attr('id', vid);
+      jsPlumb.makeSource($(exit[i]), {
+        scope: 'image'
+      });
+    } else if ($(exit[i]).hasClass('int')) {
+      vid = vid + 'int';
+      $(exit[i]).attr('id', vid);
+      jsPlumb.makeSource($(exit[i]), {
+        scope: 'int'
+      });
+    } else if ($(exit[i]).hasClass('float')) {
+      vid = vid + 'float';
+      $(exit[i]).attr('id', vid);
+      jsPlumb.makeSource($(exit[i]), {
+        scope: 'float'
+      });
+    } else {
+      vid = vid + 'char';
+      $(exit[i]).attr('id', vid);
+      jsPlumb.makeSource($(exit[i]), {
+        scope: 'char'
+      });
+    }
   }
 
   // Change input id

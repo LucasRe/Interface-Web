@@ -1,0 +1,41 @@
+# Khoros Visual Programming Workspace
+#
+# cantata workspace file ([file_path.wk]) was created
+# on Sun Sep 15 18:13:20 1996
+# by user [username]
+#
+
+WorkspaceBegin: 2.1
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph '[GlyphName]'
+Glyph:[DESIGN]:comment::localhost:61:20:20:: -comment 'Edges off.\n\nRef. Fig. 9.32 (Pag. 203) in :\n\nBanon, G J F; Barrera, J  "Bases da Morfologia Matematica\n	para analise de imagens binarias". IX Escola de \n	Computacao, Recife, 1994.'
+
+#  Glyph '[GlyphA]'
+Glyph:
+
+#  Glyph '[GlyphB]'
+Glyph:
+
+#  Connections '[GlyphName]'
+NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+
+#  Connections '[GlyphA]'
+NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+
+#  Connections '[GlyphB]'
+NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+
+AnnotationsBegin
+#The glyph and the connections must be in order by glyph name. Start glyph section, end glyph section, start node conection section, end node conection section.
+AnnotationsEnd
+
+WorkspaceEnd: 2.1
