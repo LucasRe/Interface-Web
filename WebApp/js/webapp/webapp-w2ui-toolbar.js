@@ -73,7 +73,7 @@ $(function() {
           });
           saveAs(blob, vgl_file);
         } catch (e) {
-          console.log("saveAs not supported!!! Error: ", e);          
+          console.log("saveAs not supported!!! Error: ", e);
         }
         break;
     }

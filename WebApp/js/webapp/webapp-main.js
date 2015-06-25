@@ -34,6 +34,48 @@ var dragop = {
 
 // END Variables
 
+function export_wk(user_name, file_path) {
+
+  // .wk header
+  var creation_date = Date();
+  var str_wk = '# Khoros Visual Programming Workspace\n';
+  str_wk += '#\n';
+  str_wk += '# cantata workspace file (' + file_path + '.wk) was created\n';
+  str_wk += '# on ' + creation_date + '\n';
+  str_wk += '# by user ' + user_name + '\n';
+  str_wk += '#\n';
+  str_wk += '\n';
+  str_wk += 'WorkspaceBegin: 2.1\n';
+  str_wk += '\n';
+  str_wk += 'VariablesBegin:\n';
+  str_wk += '\n';
+  str_wk += '\n';
+  str_wk += '\n';
+  str_wk += '# No variables currently declared. #\n';
+  str_wk += '\n';
+  str_wk += 'VariablesEnd:\n';
+  str_wk += '\n';
+  // END .wk header
+
+  // .wk Glyphs
+  // END .wk Glyphs
+
+  // .wk Connections
+  // END .wk Connections
+
+  // .wk footer
+  str_wk += '\n';
+  str_wk += 'AnnotationsBegin\n';
+  str_wk += '\n';
+  str_wk += 'AnnotationsEnd\n';
+  str_wk += '\n';
+  str_wk += 'WorkspaceEnd: 2.1\n';
+  // END .wk footer
+
+  console.log(str_wk);
+  return str_wk;
+}
+
 //Toolbar
 function addtoolbar() {
   $('.ui-icon-gear').toolbar({
