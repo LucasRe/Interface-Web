@@ -5,8 +5,8 @@ $(document).ready(function() {
 
   // Mouse track
   $("#maindiv").mousemove(function(event) {
-    mouse.X = event.clientX;
-    mouse.Y = event.clientY;
+    mouse_position.X = event.clientX;
+    mouse_position.Y = event.clientY;
   });
 
   // Library Toggle

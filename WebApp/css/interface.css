@@ -50,19 +50,19 @@ body {
 
 /* Image */
 .vertex.image {
-  background-color: #E8200C; }
+  background-color: #e8200c; }
 
 /* Integer */
 .vertex.int {
-  background-color: #00FF4F; }
+  background-color: #00ff4f; }
 
 /* Float */
 .vertex.float {
-  background-color: #9400FF; }
+  background-color: #9400ff; }
 
 /* Character */
 .vertex.char {
-  background-color: #FFAE0D; }
+  background-color: #ffae0d; }
 
 /* END Vertex */
 /* Block */
@@ -73,10 +73,9 @@ body {
   min-height: 100px auto;
   max-height: auto;
   max-width: auto;
-  padding-top: 0px;
+  padding-top: 0;
   position: relative;
   z-index: 1;
-  float: left;
   display: inline-block;
   margin-right: 15px; }
 
@@ -87,16 +86,16 @@ body {
   min-height: 100px auto;
   max-height: auto;
   max-width: auto;
-  padding-top: 0px;
+  padding-top: 0;
   position: absolute;
   z-index: 1;
   cursor: default; }
 
 .block:hover {
   opacity: 1;
-  -webkit-box-shadow: 0px 0px 10px 2px #0C83E8;
-  -moz-box-shadow: 0px 0px 10px 2px #0C83E8;
-  box-shadow: 0px 0px 10px 2px #0C83E8;
+  -webkit-box-shadow: 0 0 10px 2px #0c83e8;
+  -moz-box-shadow: 0 0 10px 2px #0c83e8;
+  box-shadow: 0 0 10px 2px #0c83e8;
   z-index: 2; }
 
 .blockoptions {
@@ -106,23 +105,14 @@ body {
   float: right; }
 
 .pright {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 55px;
-  margin-right: -4px;
+  margin: 5px -4px 5px 55px;
   text-align: right; }
 
 .pleft {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 55px;
-  margin-left: -4px; }
+  margin: 5px 55px 5px -4px; }
 
 .pright2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 75px;
-  margin-right: -4px;
+  margin: 5px -4px 5px 75px;
   text-align: right; }
 
 .pleft2 {
@@ -138,16 +128,16 @@ body {
 
 .selected {
   opacity: 1;
-  -webkit-box-shadow: 0px 0px 10px 2px #FFAE0D;
-  -moz-box-shadow: 0px 0px 10px 2px #FFAE0D;
-  box-shadow: 0px 0px 10px 2px #FFAE0D;
+  -webkit-box-shadow: 0 0 10px 2px #ffae0d;
+  -moz-box-shadow: 0 0 10px 2px #ffae0d;
+  box-shadow: 0 0 10px 2px #ffae0d;
   z-index: 2; }
 
 /* END Block */
 /* Library */
 #librarycontainer {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
   width: 100%;
   height: auto;
   z-index: 4; }
@@ -157,13 +147,18 @@ body {
 
 #librarybody {
   align-self: center;
-  bottom: 0px;
+  bottom: 0;
   position: relative;
   background-color: white;
   width: 100%;
-  height: 300px;
+  min-height: 150px;
+  height: auto;
   display: none;
   cursor: default; }
+
+.libtabs {
+  overflow: auto;
+  white-space: nowrap; }
 
 /* END Library */
 /* Forms */
@@ -179,11 +174,11 @@ div#users-contain table {
 div#users-contain table td,
 div#users-contain table th {
   border: 1px solid #eee;
-  padding: .6em 10px;
+  padding: 0.6em 10px;
   text-align: left; }
 
 .ui-dialog .ui-state-error {
-  padding: .3em; }
+  padding: 0.3em; }
 
 .validateTips {
   border: 1px solid transparent;

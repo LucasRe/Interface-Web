@@ -58,7 +58,7 @@ $(function() {
           document.getElementById('maindiv').innerHTML = load;
           $("#maindiv .ui-widget-header").click(selectblock);
           $("#maindiv .ui-widget-content").click(selectblock);
-          jsPlumb.draggable($(dragob), dragop); // Add drag to block
+          jsPlumb.draggable($(drag_object), drag_options); // Add drag to block
           addtoolbar();
         } else {
           console.log("Open canceled!!!");

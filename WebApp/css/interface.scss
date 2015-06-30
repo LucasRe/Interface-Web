@@ -1,256 +1,209 @@
 /* ---------- Variables ---------- */
 /* Image vertex color */
-
-$vimg: #E8200C;
+$vimg: #e8200c;
 /* Integer vertex color */
-
-$vint: #00FF4F;
+$vint: #00ff4f;
 /* Float vertex color */
-
-$vfloat: #9400FF;
+$vfloat: #9400ff;
 /* Char vertex color */
-
-$vchar: #FFAE0D;
+$vchar: #ffae0d;
 /* Vertex position */
-
 $vpos: -2px;
 /* Vertex radius */
-
 $vradius: 10px;
 /* Vertex border */
-
 $vborder: 1px solid #454545;
 /* Vertex sixe */
-
 $vsize: 10px;
 /* Shadow setup */
-
-$shadow: 0px 0px 10px 2px;
+$shadow: 0 0 10px 2px;
 /* Block:hover shadow */
-
-$bshadow_hover: $shadow #0C83E8;
+$bshadow_hover: $shadow #0c83e8;
 /* Selected block shadow */
-
-$selected_shadow: $shadow #FFAE0D;
+$selected_shadow: $shadow #ffae0d;
 /* ---------- END Variables ---------- */
-
 .noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
 body {
-    font-family: sans-serif;
-    font-size: 10px;
-    cursor: default;
+  font-family: sans-serif;
+  font-size: 10px;
+  cursor: default;
 }
-
 #maindiv {
-    height: 95vh;
-    margin: 10px;
+  height: 95vh;
+  margin: 10px;
 }
 /* Vertex */
 /* Base */
-
 .vertex {
-    border: $vborder;
-    -webkit-border-radius: $vradius;
-    border-radius: $vradius;
-    position: relative;
-    width: $vsize;
-    height: $vsize;
+  border: $vborder;
+  -webkit-border-radius: $vradius;
+  border-radius: $vradius;
+  position: relative;
+  width: $vsize;
+  height: $vsize;
 }
 /* Input */
-
 .vertex.in {
-    float: left;
-    left: $vpos;
+  float: left;
+  left: $vpos;
 }
 /* Output */
-
 .vertex.out {
-    float: right;
-    right: $vpos;
+  float: right;
+  right: $vpos;
 }
 /* Image */
-
 .vertex.image {
-    background-color: $vimg;
+  background-color: $vimg;
 }
 /* Integer */
-
 .vertex.int {
-    background-color: $vint;
+  background-color: $vint;
 }
 /* Float */
-
 .vertex.float {
-    background-color: $vfloat;
+  background-color: $vfloat;
 }
 /* Character */
-
 .vertex.char {
-    background-color: $vchar;
+  background-color: $vchar;
 }
 /* END Vertex */
 /* Block */
 /* Lib block */
-
 .lblock {
-    opacity: 0.9;
-    min-width: 100px auto;
-    min-height: 100px auto;
-    max-height: auto;
-    max-width: auto;
-    padding-top: 0px;
-    position: relative;
-    z-index: 1;
-    float: left;
-    display: inline-block;
-    margin-right: 15px;
+  opacity: 0.9;
+  min-width: 100px auto;
+  min-height: 100px auto;
+  max-height: auto;
+  max-width: auto;
+  padding-top: 0;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-right: 15px;
 }
 /* Workplace block */
-
 .block {
-    opacity: 0.9;
-    min-width: 100px auto;
-    min-height: 100px auto;
-    max-height: auto;
-    max-width: auto;
-    padding-top: 0px;
-    position: absolute;
-    z-index: 1;
-    cursor: default;
+  opacity: 0.9;
+  min-width: 100px auto;
+  min-height: 100px auto;
+  max-height: auto;
+  max-width: auto;
+  padding-top: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
 }
-
 .block:hover {
-    opacity: 1;
-    -webkit-box-shadow: $bshadow_hover;
-    -moz-box-shadow: $bshadow_hover;
-    box-shadow: $bshadow_hover;
-    z-index: 2;
+  opacity: 1;
+  -webkit-box-shadow: $bshadow_hover;
+  -moz-box-shadow: $bshadow_hover;
+  box-shadow: $bshadow_hover;
+  z-index: 2;
 }
-
 .blockoptions {
-    margin-right: 5px;
-    margin-left: 10px;
-    margin-top: -3px;
-    float: right;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-top: -3px;
+  float: right;
 }
-
 .pright {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 55px;
-    margin-right: -4px;
-    text-align: right;
+  margin: 5px -4px 5px 55px;
+  text-align: right;
 }
-
 .pleft {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 55px;
-    margin-left: -4px;
+  margin: 5px 55px 5px -4px;
 }
-
 .pright2 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 75px;
-    margin-right: -4px;
-    text-align: right;
+  margin: 5px -4px 5px 75px;
+  text-align: right;
 }
-
 .pleft2 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: -4px;
-    float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: -4px;
+  float: left;
 }
-
 .block img {
-    max-height: 60px;
-    max-width: 90px;
-    margin: 5px;
+  max-height: 60px;
+  max-width: 90px;
+  margin: 5px;
 }
-
 .selected {
-    opacity: 1;
-    -webkit-box-shadow: $selected_shadow;
-    -moz-box-shadow: $selected_shadow;
-    box-shadow: $selected_shadow;
-    z-index: 2;
+  opacity: 1;
+  -webkit-box-shadow: $selected_shadow;
+  -moz-box-shadow: $selected_shadow;
+  box-shadow: $selected_shadow;
+  z-index: 2;
 }
 /* END Block */
 /* Library */
-
 #librarycontainer {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: auto;
-    z-index: 4;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 4;
 }
-
 #librarytoggle {
-    text-align: center;
+  text-align: center;
 }
-
 #librarybody {
-    align-self: center;
-    bottom: 0px;
-    position: relative;
-    background-color: white;
-    width: 100%;
-    height: 300px;
-    display: none;
-    cursor: default;
+  align-self: center;
+  bottom: 0;
+  position: relative;
+  background-color: white;
+  width: 100%;
+  min-height: 150px;
+  height: auto;
+  display: none;
+  cursor: default;
+}
+.libtabs {
+  overflow: auto;
+  white-space: nowrap;
 }
 /* END Library */
 /* Forms */
-
 div#users-contain {
-    width: 350px;
-    margin: 20px 0;
+  width: 350px;
+  margin: 20px 0;
 }
-
 div#users-contain table {
-    margin: 1em 0;
-    border-collapse: collapse;
-    width: 100%;
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
 }
-
 div#users-contain table td,
 div#users-contain table th {
-    border: 1px solid #eee;
-    padding: .6em 10px;
-    text-align: left;
+  border: 1px solid #eee;
+  padding: 0.6em 10px;
+  text-align: left;
 }
-
 .ui-dialog .ui-state-error {
-    padding: .3em;
+  padding: 0.3em;
 }
-
 .validateTips {
-    border: 1px solid transparent;
-    padding: 0.3em;
+  border: 1px solid transparent;
+  padding: 0.3em;
 }
 /* End Forms */
-
 .hend {
-    z-index: 3;
-    opacity: 0;
+  z-index: 3;
+  opacity: 0;
 }
-
 #format-toolbar-options {
-    visibility: hidden;
-    display: none;
+  visibility: hidden;
+  display: none;
 }
-
 #zoomrange {
-    float: right;
+  float: right;
 }

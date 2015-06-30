@@ -1,3 +1,5 @@
+jsPlumb.importDefaults(jsP_defaults);
+
 // Connections
 jsPlumb.ready(function() {
 
@@ -8,6 +10,7 @@ jsPlumb.ready(function() {
   jsPlumb.makeSource($(vertex_output_class + '.image'), {
     scope: 'image'
   });
+
   // Vertex image
   jsPlumb.makeTarget($(vertex_input_class + '.image'), {
     maxConnections: 1,
@@ -18,6 +21,7 @@ jsPlumb.ready(function() {
   jsPlumb.makeSource($(vertex_output_class + '.int'), {
     scope: 'int'
   });
+
   // Vertex int
   jsPlumb.makeTarget($(vertex_input_class + '.int'), {
     maxConnections: 1,
@@ -28,6 +32,7 @@ jsPlumb.ready(function() {
   jsPlumb.makeSource($(vertex_output_class + '.float'), {
     scope: 'float'
   });
+
   // Vertex float
   jsPlumb.makeTarget($(vertex_input_class + '.float'), {
     maxConnections: 1,
@@ -45,5 +50,6 @@ jsPlumb.ready(function() {
   // });
 
   // Drag Block
-  jsPlumb.draggable($(dragob), dragop);
+  jsPlumb.draggable($(drag_object), drag_options);
+
 });
