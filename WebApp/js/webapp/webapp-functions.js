@@ -1,9 +1,10 @@
 function export_wk(user_name, file_path) {
 
-  var lib = 'VISIONGL';
+  var LIB = 'VISIONGL';
 
   // .wk header
   var creation_date = Date();
+  var str_nodes = '';
   var str_wk = '# Khoros Visual Programming Workspace\n';
   str_wk += '#\n';
   str_wk += '# cantata workspace file (' + file_path + '.wk) was created\n';
@@ -24,7 +25,7 @@ function export_wk(user_name, file_path) {
   // END .wk header
 
   // .wk Glyphs
-  var blocks = $(container_id).children(".block");
+  var blocks = $(CONTAINER_ID).children(".block");
   console.log(blocks);
   console.log(blocks.length + " BLOCOS");
   for (var i = 0; i < blocks.length; i++) {
@@ -34,29 +35,53 @@ function export_wk(user_name, file_path) {
     console.log(block_pos);
     var block_id = $(blocks[i]).attr('id').split('_')[1];
     console.log(block_id);
-    var block_input_names = $(blocks[i]).children('.ui-widget-content').children('p').children('.vertex.in');
+    var block_input_names = $(blocks[i]).children('.ui-widget-content').children('p');
     console.log(block_input_names);
+    console.log(block_input_names.length + " length");
     var func_name = block_name.split(' ').join('_').toLowerCase();
     console.log(func_name);
 
-    // Comment
+    // Glyph Comment
     str_wk += '# Glyph ' + '\'' + block_name + '\'\n';
 
-    // Glyph info
-    str_wk += 'Glyph:' + lib + ':' + func_name + '::localhost:' + block_id + ':' + block_pos.left + ':' + block_pos.top + '::';
-    for (var i = 0; i < block_input_names.length; i++) {
-      str_wk += " -" + $(block_input_names[i]).parent().text().trim();
-    }
+    // Mode Connections Comment
+    str_nodes += '# Connections ' + '\'' + block_name + '\'\n';
 
+    // Glyph info
+    str_wk += 'Glyph:' + LIB + ':' + func_name + '::localhost:' + block_id + ':' + block_pos.left + ':' + block_pos.top + '::';
+    for (var j = 0; j < block_input_names.length; j++) {
+      console.log($(block_input_names[j]).children('span').hasClass('vertex in'));
+      if ($(block_input_names[j]).children('span').hasClass('vertex in')) {
+        str_wk += " -" + $(block_input_names[j]).text().trim();
+      } else if ($(block_input_names[j]).children('span').hasClass('vertex out')) {
+        // .wk Connections
+        var con_source = $(block_input_names[j]).children('.vertex.out').attr('id');
+        var block_connections = jsPlumb.getConnections({
+          scope: [],
+          source: con_source
+        });
+        console.log(con_source);
+        console.log(block_connections);
+        for (var k = 0; k < block_connections.length; k++) {
+          var out_name = $('#' + block_connections[k].sourceId).parent().text().trim();
+          console.log(out_name);
+          var in_name = $('#' + block_connections[k].targetId).parent().text().trim();
+          console.log(in_name);
+          var in_parent_id = $('#' + block_connections[k].targetId).parent().parent().parent().attr('id').split('_')[1];
+          console.log(in_parent_id);
+          str_nodes += 'NodeConnection:data:' + block_id + ':' + out_name + ':' + in_parent_id + ':' + in_name + '\n';
+        }
+        // END .wk Connections
+      }
+    }
+    str_nodes += '\n';
     str_wk += '\n\n'
   }
   // END .wk Glyphs
 
-  // .wk Connections
-  // END .wk Connections
+  str_wk += str_nodes;
 
   // .wk footer
-  str_wk += '\n';
   str_wk += 'AnnotationsBegin\n';
   str_wk += '\n';
   str_wk += 'AnnotationsEnd\n';

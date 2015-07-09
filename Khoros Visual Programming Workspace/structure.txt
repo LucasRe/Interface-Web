@@ -16,23 +16,18 @@ VariablesBegin:
 VariablesEnd:
 
 #  Glyph '[GlyphName]'
-Glyph:[DESIGN]:comment::localhost:61:20:20:: -comment 'Edges off.\n\nRef. Fig. 9.32 (Pag. 203) in :\n\nBanon, G J F; Barrera, J  "Bases da Morfologia Matematica\n	para analise de imagens binarias". IX Escola de \n	Computacao, Recife, 1994.'
+Glyph:[Library]:comment::localhost:[Glyph_ID]:[Glyph_X]:[Glyph_Y]:: -[var_str] '[var_str_value]' -[var_num] [var_num_value]
 
-#  Glyph '[GlyphA]'
-Glyph:
-
-#  Glyph '[GlyphB]'
-Glyph:
+#  Glyph '[GlyphName]'
+Glyph:[Library]:comment::localhost:[Glyph_ID]:[Glyph_X]:[Glyph_Y]:: -[var_str] '[var_str_value]' -[var_num] [var_num_value]
 
 #  Connections '[GlyphName]'
-NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+NodeConnection:data:[output_Glyph_ID]:[output_varname]:[input_Glyph_ID]:[input_varname]
+NodeConnection:data:[output_Glyph_ID]:[output_varname]:[input_Glyph_ID]:[input_varname]
 
-#  Connections '[GlyphA]'
-NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
-NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
-
-#  Connections '[GlyphB]'
-NodeConnection:data:[first number after localhost:(output)]:o:[last number after localhost:(input)]:i
+#  Connections '[GlyphName]'
+NodeConnection:data:[output_Glyph_ID]:[output_varname]:[input_Glyph_ID]:[input_varname]
+NodeConnection:data:[output_Glyph_ID]:[output_varname]:[input_Glyph_ID]:[input_varname]
 
 AnnotationsBegin
 #The glyph and the connections must be in order by glyph name. Start glyph section, end glyph section, start node conection section, end node conection section.

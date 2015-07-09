@@ -1,48 +1,3 @@
-//Toolbar
-$(function() {
-  $('#toolbar').w2toolbar({
-    name: 'toolbar',
-    items: [{
-      type: 'menu',
-      id: 'item1',
-      caption: 'Menu',
-      items: [{
-        text: 'Open',
-        icon: 'icon-page'
-      }, {
-        text: 'Save',
-        icon: 'icon-page'
-      }]
-    }, {
-      type: 'menu',
-      id: 'item2',
-      caption: 'Edit',
-      items: [{
-        text: 'Duplicate',
-        icon: 'icon-page'
-      }, {
-        text: 'Delete',
-        icon: 'icon-page'
-      }]
-    }, {
-      type: 'menu',
-      id: 'item3',
-      caption: 'Help',
-      items: [{
-        text: 'Documentation',
-        icon: 'icon-page'
-      }, {
-        text: 'About',
-        icon: 'icon-page'
-      }]
-    }, ]
-  });
-
-  w2ui.toolbar.on('*', function(event) {
-    console.log('EVENT: ' + event.type + ' TARGET: ' + event.target, event);
-  });
-});
-
 // Conv. Window Popup
 function cwPopup() {
   w2popup.open({
@@ -117,6 +72,10 @@ function change_zy(z, y, grid) {
     });
   };
 }
+
+// Fill X values]
+function fill_x(x_value, y, z, grid) {}
+
 //Convolution Window default config.
 var config = {
   layout: {
@@ -182,39 +141,66 @@ var config = {
     records: [{
       recid: 1,
       zvalue: 0,
-      yvalue: 0
+      yvalue: 0,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 2,
       zvalue: 0,
-      yvalue: 1
+      yvalue: 1,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 3,
       zvalue: 0,
-      yvalue: 2
+      yvalue: 2,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 4,
       zvalue: 1,
-      yvalue: 0
+      yvalue: 0,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 5,
       zvalue: 1,
-      yvalue: 1
+      yvalue: 1,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 6,
       zvalue: 1,
-      yvalue: 2
+      yvalue: 2,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 7,
       zvalue: 2,
-      yvalue: 0
+      yvalue: 0,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 8,
       zvalue: 2,
-      yvalue: 1
+      yvalue: 1,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }, {
       recid: 9,
       zvalue: 2,
-      yvalue: 2
+      yvalue: 2,
+      x0value: 0.1,
+      x1value: 0.1,
+      x2value: 0.1
     }]
   },
   form: {

@@ -11,27 +11,27 @@ var mouse_position = {
 var block_count = 0;
 
 // Vertex output class
-var vertex_output_class = '.vertex.out';
+var VERTEX_OUTPUT_CLASS = '.vertex.out';
 
 // Vertex input class
-var vertex_input_class = '.vertex.in';
+var VERTEX_INPUT_CLASS = '.vertex.in';
 
 // Container id
-var container_id = '#maindiv';
+var CONTAINER_ID = '#maindiv';
 
 // Block class
-var drag_object = '.block';
+var DRAG_OBJECT = '.block';
 
 // Drag options
-var drag_options = {
-  containment: container_id,
+var DRAG_OPTIONS = {
+  containment: CONTAINER_ID,
   cursor: "default"
     //cursorAt: { top: 10, right: 10 },
     //handle: ".ui-widget-header"
 };
 
 // jsPlumb defaults
-var jsP_defaults = {
+var JSPLUMB_DEFAULTS = {
   Anchor: null,
   Anchors: ["Right", "Left"],
   ConnectionsDetachable: true,

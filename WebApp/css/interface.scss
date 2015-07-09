@@ -38,6 +38,8 @@ body {
 #maindiv {
   height: 95vh;
   margin: 10px;
+  overflow: auto;
+  white-space: nowrap;
 }
 /* Vertex */
 /* Base */

@@ -130,9 +130,9 @@ function cloneblock(obj, event, ui) {
     block.children('.ui-widget-header').append("<span></span>");
     block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
   }
-  block.appendTo($(container_id)); // Append block to container
+  block.appendTo($(CONTAINER_ID)); // Append block to container
   $("#maindiv .ui-widget-header").click(selectblock);
   $("#maindiv .ui-widget-content").click(selectblock);
-  jsPlumb.draggable($(idt), drag_options); // Add drag to block
+  jsPlumb.draggable($(idt), DRAG_OPTIONS); // Add drag to block
   addtoolbar();
 }

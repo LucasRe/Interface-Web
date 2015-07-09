@@ -15,6 +15,9 @@ $(function() {
       }, {
         text: 'Save',
         icon: 'icon-page'
+      }, {
+        text: 'Export .wk',
+        icon: 'icon-page'
       }]
     }, {
       type: 'menu',
@@ -58,7 +61,7 @@ $(function() {
           document.getElementById('maindiv').innerHTML = load;
           $("#maindiv .ui-widget-header").click(selectblock);
           $("#maindiv .ui-widget-content").click(selectblock);
-          jsPlumb.draggable($(drag_object), drag_options); // Add drag to block
+          jsPlumb.draggable($(DRAG_OBJECT), DRAG_OPTIONS); // Add drag to block
           addtoolbar();
         } else {
           console.log("Open canceled!!!");
@@ -75,6 +78,9 @@ $(function() {
         } catch (e) {
           console.log("saveAs not supported!!! Error: ", e);
         }
+        break;
+      case 'item1:Export .wk':
+        console.log(export_wk(prompt("Please enter your name", "VISIONGL"),prompt("Please the file path", "/home")));
         break;
     }
   });
