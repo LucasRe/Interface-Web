@@ -1,4 +1,5 @@
-function export_wk(user_name, file_path) {
+// Export workspace to .wk
+function workspace_export_wk(user_name, file_path) {
 
   var LIB = 'VISIONGL';
 
@@ -90,4 +91,96 @@ function export_wk(user_name, file_path) {
   // END .wk footer
 
   return str_wk;
+}
+
+// New Workspace
+function workspace_new() {
+  if (confirm('Your changes will be lost if start a new project without saving!!!')) {
+    console.log("Reloading page!!!");
+    location.reload();
+  } else {
+    console.log("New canceled!!!");
+  }
+}
+
+// Load Workspace
+function workspace_load() {
+  if (confirm('Your changes will be lost if you open a project without saving!!!')) {
+    console.log("Saving file!!!");
+    var load = prompt("Please enter the tags", "String");
+
+    // Clear the container
+    $(CONTAINER_ID).empty();
+
+    // Appent the data to container
+    $(CONTAINER_ID).append(load);
+
+    // Add select to blocks
+    add_select();
+
+    // Add drag to block
+    jsPlumb.draggable($(DRAG_OBJECT), DRAG_OPTIONS);
+
+    // Add the blocks's toolbar
+    addtoolbar();
+
+    // Set Source & Target
+    set_sourceANDtarget();
+
+  } else {
+    console.log("Open canceled!!!");
+  }
+}
+
+// Save Workspace
+function workspace_save() {
+
+  // Save Connections
+  var connections = jsPlumb.getAllConnections();
+  var connections_clear = [];
+  for (var i = 0; i < connections.length; i++) {
+    connections_clear.push({source:connections[i].sourceId, target:connections[i].targetId});
+  }
+
+  // Clear Selected and Connections
+  deselectblock();
+  jsPlumb.detachEveryConnection()
+
+  // Remove drag classes
+  var blocks = $(CONTAINER_ID).children(DRAG_OBJECT);
+  for (var i = 0; i < blocks.length; i++) {
+    $(blocks[i]).removeClass('ui-draggable ui-draggable-handle');
+    console.log(blocks[i]);
+  }
+
+  var save_file = {
+    block_count: block_count,
+    connections_clear
+  };
+
+  save_file.workspace = document.getElementById('maindiv').innerHTML;
+  save_file.custom = document.getElementById('tabs-custom').innerHTML;
+  console.log('Save File: ', save_file);
+  console.log('Save File: ', JSON.stringify(save_file));
+
+  try {
+    var blob = new Blob([text], {
+      type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, save_file);
+  } catch (e) {
+    console.log("saveAs not supported!!! Error: ", e);
+  }
+
+  // Restore connections
+  for (var i = 0; i < connections_clear.length; i++) {
+    jsPlumb.connect(connections_clear[i]);
+  }
+
+}
+
+// Add select
+function add_select() {
+  $(CONTAINER_ID + " .ui-widget-header").click(selectblock);
+  $(CONTAINER_ID + " .ui-widget-content").click(selectblock);
 }

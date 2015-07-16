@@ -1,10 +1,8 @@
+// Import default config
 jsPlumb.importDefaults(JSPLUMB_DEFAULTS);
 
-// Connections
-jsPlumb.ready(function() {
-
-  //jsPlumb set container
-  jsPlumb.setContainer($(CONTAINER_ID));
+// Set source and target vertexs
+function set_sourceANDtarget() {
 
   // Vertex image
   jsPlumb.makeSource($(VERTEX_OUTPUT_CLASS + '.image'), {
@@ -48,8 +46,11 @@ jsPlumb.ready(function() {
   //     maxConnections: 1,
   //     scope: 'char'
   // });
+}
 
-  // Drag Block
-  jsPlumb.draggable($(DRAG_OBJECT), DRAG_OPTIONS);
+jsPlumb.ready(function() {
+
+  //jsPlumb set container
+  jsPlumb.setContainer($(CONTAINER_ID));
 
 });

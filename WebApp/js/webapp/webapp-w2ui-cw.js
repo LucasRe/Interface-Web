@@ -1,26 +1,3 @@
-// Conv. Window Popup
-function cwPopup() {
-  w2popup.open({
-    title: 'Concolution Window',
-    width: 900,
-    height: 500,
-    showMax: true,
-    body: '<div id="main" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;"></div>',
-    onOpen: function(event) {
-      event.onComplete = function() {
-        $('#w2ui-popup #main').w2render('layout');
-        w2ui.layout.content('left', w2ui.form);
-        w2ui.layout.content('main', w2ui.grid);
-      };
-    },
-    onToggle: function(event) {
-      event.onComplete = function() {
-        w2ui.layout.resize();
-      }
-    }
-  });
-}
-
 // Return the Z column values
 function zvalues(zn, yn) {
   var zvalue = [];
@@ -282,6 +259,29 @@ var config = {
       }
     }
   }
+}
+
+// Conv. Window Popup
+function cwPopup(grid) {
+  w2popup.open({
+    title: 'Concolution Window',
+    width: 900,
+    height: 500,
+    showMax: true,
+    body: '<div id="main" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;"></div>',
+    onOpen: function(event) {
+      event.onComplete = function() {
+        $('#w2ui-popup #main').w2render('layout');
+        w2ui.layout.content('left', w2ui.form);
+        w2ui.layout.content('main', w2ui.grid);
+      };
+    },
+    onToggle: function(event) {
+      event.onComplete = function() {
+        w2ui.layout.resize();
+      }
+    }
+  });
 }
 
 function init_grid(grid) {

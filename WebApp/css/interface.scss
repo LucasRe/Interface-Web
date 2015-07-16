@@ -16,9 +16,11 @@ $vborder: 1px solid #454545;
 /* Vertex sixe */
 $vsize: 10px;
 /* Shadow setup */
-$shadow: 0 0 10px 2px;
+$shadow: 0 0 5px 2px;
 /* Block:hover shadow */
 $bshadow_hover: $shadow #0c83e8;
+/* Block opacity */
+$bopacity: 1;
 /* Selected block shadow */
 $selected_shadow: $shadow #ffae0d;
 /* ---------- END Variables ---------- */
@@ -50,6 +52,17 @@ body {
   position: relative;
   width: $vsize;
   height: $vsize;
+}
+#maindiv .pright .vertex:hover,
+#maindiv .pright2 .vertex:hover {
+  border: 2px solid #454545;
+  -webkit-border-radius: $vradius;
+  border-radius: $vradius;
+  position: relative;
+  width: 1.3*$vsize;
+  height: 1.3*$vsize;
+  margin-top: -2.5px;
+  margin-right: -5px;
 }
 /* Input */
 .vertex.in {
@@ -94,7 +107,7 @@ body {
 }
 /* Workplace block */
 .block {
-  opacity: 0.9;
+  opacity: $bopacity;
   min-width: 100px auto;
   min-height: 100px auto;
   max-height: auto;
@@ -118,14 +131,14 @@ body {
   float: right;
 }
 .pright {
-  margin: 5px -4px 5px 55px;
+  margin: 15px -5px 5px 50px;
   text-align: right;
 }
 .pleft {
   margin: 5px 55px 5px -4px;
 }
 .pright2 {
-  margin: 5px -4px 5px 75px;
+  margin: 5px -5px 5px 80px;
   text-align: right;
 }
 .pleft2 {
@@ -133,6 +146,9 @@ body {
   margin-bottom: 5px;
   margin-left: -4px;
   float: left;
+}
+.pleft2 input{
+  width: 40px
 }
 .block img {
   max-height: 60px;

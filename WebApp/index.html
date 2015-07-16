@@ -9,12 +9,13 @@
 <body class="noselect">
   <!-- Header -->
   <header>
-    <div id="toolbar" style="padding: 1px; border: 1px solid silver;"></div>
+    <div id="toolbar" style="padding: 1px; border: 1px solid gray;"></div>
 
     <!-- Toolbar Options -->
     <div id="format-toolbar-options">
-      <a href="#" class="delete"><i class="icon-remove-circle"></i></a>
-      <a href="#" class="clone"><i class="icon-tasks"></i></a>
+      <a href="#" class="delete"><i class="icon-trash"></i></a>
+      <a href="#" class="clone"><i class="icon-plus-sign"></i></a>
+      <a href="#" class="lock"><i class="icon-lock"></i></a>
     </div>
     <!-- /Toolbar Options -->
 
@@ -34,9 +35,9 @@
           </li>
           <li><a href="#tabs-2">VGL Shaders</a>
           </li>
-          <li><a href="#tabs-3">Category 2</a>
-          </li>
-          <li><a href="#tabs-4">Custom</a>
+          <!-- <li><a href="#tabs-3">Category 2</a>
+          </li> -->
+          <li><a href="#tabs-custom">Custom</a>
           </li>
         </ul>
         <div id="tabs-1" class="libtabs">
@@ -69,7 +70,7 @@
               <div class="ui-widget-header ui-corner-top">Integer</div>
               <div class="ui-widget-content ui-corner-bottom">
                 <p class="pleft2">
-                  <input type="number" step="1" value="0" style="width:50px;">
+                  <input type="number" step="1" value="0" onchange="$(this).attr('value',$(this).val())">
                 </p>
                 <p class="pright">out
                   <span class="vertex out int"></span>
@@ -80,7 +81,7 @@
               <div class="ui-widget-header ui-corner-top">Float</div>
               <div class="ui-widget-content ui-corner-bottom">
                 <p class="pleft2">
-                  <input type="number" step="0.1" value="0" style="width:50px;">
+                  <input type="number" step="0.1" value="0">
                 </p>
                 <p class="pright">out
                   <span class="vertex out float"></span>
@@ -382,11 +383,11 @@
             </div>
           </p>
         </div>
-        <div id="tabs-3" class="libtabs">
+        <!-- <div id="tabs-3" class="libtabs">
           <p>
           </p>
-        </div>
-        <div id="tabs-4" class="libtabs">
+        </div> -->
+        <div id="tabs-custom" class="libtabs">
           <p>
           </p>
         </div>

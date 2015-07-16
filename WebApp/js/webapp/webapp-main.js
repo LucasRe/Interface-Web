@@ -9,7 +9,7 @@ function addtoolbar() {
 
 // Resize
 function resize() {
-  $(".block").resizable({
+  $(DRAG_OBJECT).resizable({
     maxHeight: 250,
     maxWidth: 360,
     minHeight: 150,
@@ -27,6 +27,14 @@ function selectblock() {
     selected.removeClass('selected');
     selected = $(this).parent();
     selected.addClass('selected');
+  }
+}
+
+// Select Function
+function deselectblock() {
+  if (selected != '') {
+    selected.removeClass('selected');
+    selected = '';
   }
 }
 
@@ -65,7 +73,7 @@ function cloneblock(obj, event, ui) {
       vid = vid + 'image';
       $(exit[i]).attr('id', vid);
       jsPlumb.makeSource($(exit[i]), {
-        scope: 'image'
+        scope: 'image',
       });
     } else if ($(exit[i]).hasClass('int')) {
       vid = vid + 'int';
@@ -131,8 +139,8 @@ function cloneblock(obj, event, ui) {
     block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
   }
   block.appendTo($(CONTAINER_ID)); // Append block to container
-  $("#maindiv .ui-widget-header").click(selectblock);
-  $("#maindiv .ui-widget-content").click(selectblock);
+  console.log(block);
+  add_select();
   jsPlumb.draggable($(idt), DRAG_OPTIONS); // Add drag to block
   addtoolbar();
 }

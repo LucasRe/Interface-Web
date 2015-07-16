@@ -64,7 +64,7 @@ var JSPLUMB_DEFAULTS = {
   Overlays: [],
   MaxConnections: 1,
   PaintStyle: {
-    lineWidth: 2,
+    lineWidth: 2.5,
     strokeStyle: "#456"
   },
   ReattachConnections: false,

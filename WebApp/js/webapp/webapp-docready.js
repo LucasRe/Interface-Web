@@ -1,10 +1,16 @@
 $(document).ready(function() {
 
+  // Change inpute value
+  // $("input").bind('chage',function(){
+  //   // $(event).attr('value',$(event).val());
+  //   alert($(this).val());
+  // });
+
   // Add Toolbar
   addtoolbar();
 
   // Mouse track
-  $("#maindiv").mousemove(function(event) {
+  $(CONTAINER_ID).mousemove(function(event) {
     mouse_position.X = event.clientX;
     mouse_position.Y = event.clientY;
   });
@@ -30,7 +36,7 @@ $(document).ready(function() {
   });
 
   //Droppable clone from Lib
-  $("#maindiv").droppable({
+  $(CONTAINER_ID).droppable({
     accept: ".lblock",
     //activeClass: "ui-state-hover",
     //hoverClass: "ui-state-active",
@@ -42,20 +48,25 @@ $(document).ready(function() {
 
 
   // Select Block
-  $("#maindiv .ui-widget-header").click(selectblock);
-  $("#maindiv .ui-widget-content").click(selectblock);
+  add_select();
 
   // DeSelect Block
-  $("#maindiv").dblclick(function() {
-    if (selected != '') {
-      selected.removeClass('selected');
-      selected = '';
-    }
+  $(CONTAINER_ID).dblclick(function() {
+    deselectblock();
   });
 
   // Clone Block
   $(".clone").click(function() {
     cloneblock(true);
+  });
+
+  // Lock/Unlock Block
+  $(".lock").click(function() {
+    if (!($(selected).hasClass('ui-draggable-disabled'))) {
+      jsPlumb.setDraggable($(selected), false);
+    } else {
+      jsPlumb.setDraggable($(selected), true);
+    }
   });
 
   // Remove Block
@@ -65,8 +76,8 @@ $(document).ready(function() {
       jsPlumb.detachAllConnections(vertex[i]);
     }
     selected.remove();
-    $('#maindiv').dblclick();
-    $('#maindiv').click();
+    $(CONTAINER_ID).dblclick();
+    $(CONTAINER_ID).click();
   });
 
   // Call resize function
