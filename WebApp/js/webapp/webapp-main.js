@@ -1,11 +1,21 @@
 //Toolbar
 function addtoolbar() {
   $('.ui-icon-gear').toolbar({
-    content: '#format-toolbar-options',
+    content: '#toolbar-options',
     position: 'top',
     hideOnClick: true
   });
 }
+
+// Change inpute value
+function change_input_value() {
+  $("input").change(function() {
+    console.log('BEFORE: value = ' + $(this).attr('value') + ' val = ' + $(this).val());
+    $(this).attr('value', $(this).val());
+    console.log('AFTER: value = ' + $(this).attr('value') + ' val = ' + $(this).val());
+  });
+}
+
 
 // Resize
 function resize() {
@@ -143,4 +153,5 @@ function cloneblock(obj, event, ui) {
   add_select();
   jsPlumb.draggable($(idt), DRAG_OPTIONS); // Add drag to block
   addtoolbar();
+  change_input_value();
 }

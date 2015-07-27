@@ -107,7 +107,7 @@ function workspace_new() {
 function workspace_load() {
   if (confirm('Your changes will be lost if you open a project without saving!!!')) {
     console.log("Saving file!!!");
-    var load = prompt("Please enter the tags", "String");
+    var load = prompt("Please enter the JSON file", "String");
 
     // Clear the container
     $(CONTAINER_ID).empty();
@@ -126,6 +126,9 @@ function workspace_load() {
 
     // Set Source & Target
     set_sourceANDtarget();
+
+    // Change input value
+    change_input_value();
 
   } else {
     console.log("Open canceled!!!");
@@ -177,6 +180,7 @@ function workspace_save() {
     jsPlumb.connect(connections_clear[i]);
   }
 
+ return JSON.stringify(save_file);
 }
 
 // Add select

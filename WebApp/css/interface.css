@@ -39,7 +39,8 @@ body {
   border-radius: 10px;
   position: relative;
   width: 10px;
-  height: 10px; }
+  height: 10px;
+  display: inline-block; }
 
 #maindiv .pright .vertex:hover,
 #maindiv .pright2 .vertex:hover {
@@ -206,7 +207,7 @@ div#users-contain table th {
   z-index: 3;
   opacity: 0; }
 
-#format-toolbar-options {
+#toolbar-options {
   visibility: hidden;
   display: none; }
 

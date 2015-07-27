@@ -52,6 +52,7 @@ body {
   position: relative;
   width: $vsize;
   height: $vsize;
+  display: inline-block;
 }
 #maindiv .pright .vertex:hover,
 #maindiv .pright2 .vertex:hover {
@@ -218,7 +219,7 @@ div#users-contain table th {
   z-index: 3;
   opacity: 0;
 }
-#format-toolbar-options {
+#toolbar-options {
   visibility: hidden;
   display: none;
 }

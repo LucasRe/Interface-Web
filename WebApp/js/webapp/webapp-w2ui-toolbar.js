@@ -9,6 +9,9 @@ $(function() {
       items: [{
         text: 'New',
         icon: 'icon-page'
+      },{
+        text: 'New Procedure',
+        icon: 'icon-page'
       }, {
         text: 'Open',
         icon: 'icon-page'

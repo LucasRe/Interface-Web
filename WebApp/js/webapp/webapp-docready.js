@@ -1,14 +1,5 @@
 $(document).ready(function() {
 
-  // Change inpute value
-  // $("input").bind('chage',function(){
-  //   // $(event).attr('value',$(event).val());
-  //   alert($(this).val());
-  // });
-
-  // Add Toolbar
-  addtoolbar();
-
   // Mouse track
   $(CONTAINER_ID).mousemove(function(event) {
     mouse_position.X = event.clientX;
@@ -46,11 +37,10 @@ $(document).ready(function() {
     }
   });
 
-
   // Select Block
   add_select();
 
-  // DeSelect Block
+  // Deselect Block
   $(CONTAINER_ID).dblclick(function() {
     deselectblock();
   });
@@ -79,8 +69,5 @@ $(document).ready(function() {
     $(CONTAINER_ID).dblclick();
     $(CONTAINER_ID).click();
   });
-
-  // Call resize function
-  //resize();
 
 });
