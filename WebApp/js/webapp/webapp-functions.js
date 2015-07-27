@@ -90,6 +90,16 @@ function workspace_export_wk(user_name, file_path) {
   str_wk += 'WorkspaceEnd: 2.1\n';
   // END .wk footer
 
+  // SaveZip
+  var zip = new JSZip();
+  zip.file(user_name + ".wk", str_wk);
+  var img = zip.folder("images");
+  var content = zip.generate({
+    type: "blob"
+  });
+  // see FileSaver.js
+  saveAs(content, project_name + ".zip");
+
   return str_wk;
 }
 
@@ -142,7 +152,10 @@ function workspace_save() {
   var connections = jsPlumb.getAllConnections();
   var connections_clear = [];
   for (var i = 0; i < connections.length; i++) {
-    connections_clear.push({source:connections[i].sourceId, target:connections[i].targetId});
+    connections_clear.push({
+      source: connections[i].sourceId,
+      target: connections[i].targetId
+    });
   }
 
   // Clear Selected and Connections
@@ -180,7 +193,7 @@ function workspace_save() {
     jsPlumb.connect(connections_clear[i]);
   }
 
- return JSON.stringify(save_file);
+  return JSON.stringify(save_file);
 }
 
 // Add select

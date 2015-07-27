@@ -9,7 +9,7 @@ $(function() {
       items: [{
         text: 'New',
         icon: 'icon-page'
-      },{
+      }, {
         text: 'New Procedure',
         icon: 'icon-page'
       }, {
@@ -20,6 +20,9 @@ $(function() {
         icon: 'icon-page'
       }, {
         text: 'Export .wk',
+        icon: 'icon-page'
+      }, {
+        text: 'Import .wk',
         icon: 'icon-page'
       }]
     }, {

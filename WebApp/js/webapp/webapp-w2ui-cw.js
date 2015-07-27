@@ -37,7 +37,6 @@ function rm_column(cname) {
   w2ui['grid'].removeColumn(cname);
 }
 
-
 // Change Z Y values
 function change_zy(z, y, grid) {
   var zv = zvalues(z, y);
@@ -287,8 +286,15 @@ function cwPopup(grid) {
 function init_grid(grid) {
   // initialization in memory
   $().w2layout(config.layout);
-  $().w2grid(config.grid);
+  //$().w2grid(config.grid);
   $().w2form(config.form);
 }
 
 init_grid();
+
+// Open CW popup
+function open_cwpopup() {
+  $('.btn').click(function() {
+    cwPopup();
+  });
+}

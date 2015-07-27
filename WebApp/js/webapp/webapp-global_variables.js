@@ -10,6 +10,9 @@ var mouse_position = {
 // Block count
 var block_count = 0;
 
+// Project Title
+var project_name = 'DEFAULT';
+
 // Vertex output class
 var VERTEX_OUTPUT_CLASS = '.vertex.out';
 

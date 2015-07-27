@@ -16,7 +16,6 @@ function change_input_value() {
   });
 }
 
-
 // Resize
 function resize() {
   $(DRAG_OBJECT).resizable({
@@ -144,6 +143,10 @@ function cloneblock(obj, event, ui) {
     }
   }
 
+  if ($(block).find('.btn').length > 0) {
+    $(block).find('.btn').attr('disabled', false);
+  }
+
   if (!obj) {
     block.children('.ui-widget-header').append("<span></span>");
     block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
@@ -154,4 +157,7 @@ function cloneblock(obj, event, ui) {
   jsPlumb.draggable($(idt), DRAG_OPTIONS); // Add drag to block
   addtoolbar();
   change_input_value();
+  open_cwpopup();
+  //config.grid.name = '#grid_' + block_count;
+  $('#grid_' + block_count).w2grid(config.grid);
 }
