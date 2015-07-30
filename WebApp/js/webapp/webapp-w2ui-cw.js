@@ -21,8 +21,8 @@ function yvalues(yn, zn) {
 }
 
 // Add column
-function add_column(fname, ccaption) {
-  w2ui['grid'].addColumn({
+function add_column(grid,fname, ccaption) {
+  w2ui[grid].addColumn({
     field: 'x' + fname + 'value',
     caption: ccaption,
     size: '50px',
@@ -33,16 +33,16 @@ function add_column(fname, ccaption) {
 }
 
 // Remove column
-function rm_column(cname) {
-  w2ui['grid'].removeColumn(cname);
+function rm_column(grid,cname) {
+  w2ui[grid].removeColumn(cname);
 }
 
 // Change Z Y values
-function change_zy(z, y, grid) {
+function change_zy(grid,z, y) {
   var zv = zvalues(z, y);
   var yv = yvalues(y, z);
   for (i = 1; i <= z * y; i++) {
-    w2ui['grid'].set(i, {
+    w2ui[grid].set(i, {
       zvalue: zv[i - 1],
       yvalue: yv[i - 1]
     });
@@ -95,7 +95,7 @@ var config = {
       size: '50px',
       attr: 'align=center',
       editable: {
-        type: 'int'
+        type: 'float'
       }
     }, {
       field: 'x1value',
@@ -103,7 +103,7 @@ var config = {
       size: '50px',
       attr: 'align=center',
       editable: {
-        type: 'int'
+        type: 'float'
       }
     }, {
       field: 'x2value',
@@ -111,7 +111,7 @@ var config = {
       size: '50px',
       attr: 'align=center',
       editable: {
-        type: 'int'
+        type: 'float'
       }
     }],
     records: [{
@@ -220,40 +220,45 @@ var config = {
     },
     actions: {
       Change: function() {
+
         // Change nº cols for width
-        if (w2ui['grid'].columns.length - 2 < this.record.width) {
+        if (w2ui[grid_id].columns.length - 2 < this.record.width) {
           // Add cols for width
-          for (i = w2ui['grid'].columns.length - 2; i < this.record.width; i++) {
-            add_column(i, i);
+          for (i = w2ui[grid_id].columns.length - 2; i < this.record.width; i++) {
+            add_column(grid_id,i, i);
           }
         } else {
-          for (i = w2ui['grid'].columns.length - 2; i >= this.record.width; i--) {
+          for (i = w2ui[grid_id].columns.length - 2; i >= this.record.width; i--) {
             var col = 'x' + (i) + 'value';
-            eval("w2ui['grid'].set({ '" + col + "' : null });");
-            rm_column(col);
+            eval("w2ui[grid_id].set({ '" + col + "' : null });");
+            rm_column(grid_id,col);
           }
         }
 
         // Change nº rows for height and depth
-        if (w2ui['grid'].records.length > this.record.depth * this.record.height) {
+        if (w2ui[grid_id].records.length > this.record.depth * this.record.height) {
           for (i = config.form.record.depth * config.form.record.height; i > this.record.depth * this.record.height; i--) {
-            w2ui['grid'].remove(i);
+            w2ui[grid_id].remove(i);
           }
 
           // Change Z Y columns values
-          change_zy(this.record.depth, this.record.height, null);
+          change_zy(grid_id,this.record.depth, this.record.height);
 
         } else {
           for (i = config.form.record.depth * config.form.record.height + 1; i <= this.record.depth * this.record.height; i++) {
-            w2ui['grid'].add({
+            w2ui[grid_id].add({
               recid: i
             })
           };
 
           // Change Z Y columns values
-          change_zy(this.record.depth, this.record.height, null);
+          change_zy(grid_id,this.record.depth, this.record.height);
 
         }
+
+        grid_xyz[grid_id].y= this.record.height;
+        grid_xyz[grid_id].z= this.record.depth;
+        grid_xyz[grid_id].x= this.record.width;
 
       }
     }
@@ -272,7 +277,7 @@ function cwPopup(grid) {
       event.onComplete = function() {
         $('#w2ui-popup #main').w2render('layout');
         w2ui.layout.content('left', w2ui.form);
-        w2ui.layout.content('main', w2ui.grid);
+        w2ui.layout.content('main', w2ui[grid]);
       };
     },
     onToggle: function(event) {
@@ -283,18 +288,25 @@ function cwPopup(grid) {
   });
 }
 
-function init_grid(grid) {
+function init_w2ui() {
   // initialization in memory
   $().w2layout(config.layout);
   //$().w2grid(config.grid);
   $().w2form(config.form);
 }
 
-init_grid();
+init_w2ui();
 
 // Open CW popup
 function open_cwpopup() {
-  $('.btn').click(function() {
-    cwPopup();
+  $('.btn').click(function(event) {
+    var id = $(event.target.closest('.block')).attr('id').split('_')[1];
+    grid_id = 'grid_'+id;
+    console.log(grid_id);
+    w2ui.form.record['height']=grid_xyz[grid_id].y;
+    w2ui.form.record['depth']=grid_xyz[grid_id].z;
+    w2ui.form.record['width']=grid_xyz[grid_id].x;
+    w2ui.form.refresh();
+    cwPopup(grid_id);
   });
 }

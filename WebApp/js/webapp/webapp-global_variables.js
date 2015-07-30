@@ -13,6 +13,10 @@ var block_count = 0;
 // Project Title
 var project_name = 'DEFAULT';
 
+var grid_id = '';
+
+var grid_xyz = {default:{x:3,y:3,z:3}};
+
 // Vertex output class
 var VERTEX_OUTPUT_CLASS = '.vertex.out';
 

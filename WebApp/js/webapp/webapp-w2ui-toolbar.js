@@ -66,9 +66,14 @@ $(function() {
         workspace_save();
         break;
 
-        // Export.wk
+        // Export to .wk
       case 'item1:Export .wk':
         console.log(workspace_export_wk(prompt("Please enter your name", "VISIONGL"), prompt("Please the file path", "/home")));
+        break;
+
+        // Import from .wk
+      case 'item1:Import .wk':
+        console.log(workspace_import_wk(prompt("Please enter the .wk str", "# Khoros Visual Programming Workspace...")));
         break;
     }
   });

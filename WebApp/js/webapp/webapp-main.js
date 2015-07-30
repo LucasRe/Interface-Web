@@ -60,7 +60,7 @@ function cloneblock(obj, event, ui) {
     var objpos = selected.position();
     var block = $(selected).clone();
     block.css({
-      left: objpos.left + 50 + 'px',
+      left: objpos.left + 100 + 'px',
       top: objpos.top + 'px'
     }).attr('id', idn).removeClass('ui-draggable selected');
   } else {
@@ -145,12 +145,14 @@ function cloneblock(obj, event, ui) {
 
   if ($(block).find('.btn').length > 0) {
     $(block).find('.btn').attr('disabled', false);
+    grid_xyz[('grid_' + block_count)] = {x:3,y:3,z:3};
   }
 
   if (!obj) {
     block.children('.ui-widget-header').append("<span></span>");
     block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
   }
+
   block.appendTo($(CONTAINER_ID)); // Append block to container
   console.log(block);
   add_select();
@@ -158,6 +160,6 @@ function cloneblock(obj, event, ui) {
   addtoolbar();
   change_input_value();
   open_cwpopup();
-  //config.grid.name = '#grid_' + block_count;
+  config.grid.name = 'grid_' + block_count;
   $('#grid_' + block_count).w2grid(config.grid);
 }

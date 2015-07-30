@@ -103,6 +103,192 @@ function workspace_export_wk(user_name, file_path) {
   return str_wk;
 }
 
+// Import from .wk
+function workspace_import_wk(wk) {
+
+  // Clear the container
+  $(CONTAINER_ID).empty();
+  
+  var block_connections = [];
+  block_count = 0;
+  console.log(wk);
+  var wk_lines = wk.split('\n');
+  console.log(wk_lines);
+  console.log(wk_lines.length);
+  var glyph_lib = $('#librarycontainer').find('.lblock');
+  for (var l = 0; l < wk_lines.length; l++) {
+    console.log('wk_lines[' + l + ']');
+    if (wk_lines[l].substring(0, 5) == 'Glyph') {
+      console.log(wk_lines[l].substring(0, 5));
+      var wk_lines_glyphs = wk_lines[l].split(':');
+      console.log('Function: ' + wk_lines_glyphs[2]);
+      console.log('ID: ' + wk_lines_glyphs[5]);
+      console.log('X: ' + wk_lines_glyphs[6]);
+      console.log('Y: ' + wk_lines_glyphs[7]);
+
+      if (block_count < wk_lines_glyphs[5]) {
+        block_count = wk_lines_glyphs[5];
+      }
+
+      var idn = 'Block_' + wk_lines_glyphs[5],
+        idt = '#' + idn;
+
+      var block;
+
+      for (var y = 0; y < glyph_lib.length; y++) {
+        var glyph_title = (($(glyph_lib[y]).find('.ui-widget-header').text()).toLowerCase());
+        if (glyph_title == (wk_lines_glyphs[2].toLowerCase().split('_')).join(' ')) {
+          block = $(glyph_lib[y]).clone();
+          console.log(block);
+          break;
+        }
+      }
+
+      //var block = $($('#librarycontainer').find('.lblock')[0]).clone();
+      block.css({
+        left: wk_lines_glyphs[6] + 'px',
+        top: wk_lines_glyphs[7] + 'px'
+      }).attr('id', idn).removeClass('ui-draggable ui-draggable-handle selected lblock').addClass('block');
+
+      // Change output id
+      var exit = block.children('.ui-widget-content').children('p').children('.vertex.out');
+      for (i = 0; i < exit.length; i++) {
+
+        //Vertex ID
+        var vid = idn + '_vout_' + i;
+
+        if ($(exit[i]).hasClass('image')) {
+          vid = vid + 'image';
+          $(exit[i]).attr('id', vid);
+          jsPlumb.makeSource($(exit[i]), {
+            scope: 'image',
+          });
+        } else if ($(exit[i]).hasClass('int')) {
+          vid = vid + 'int';
+          $(exit[i]).attr('id', vid);
+          jsPlumb.makeSource($(exit[i]), {
+            scope: 'int'
+          });
+        } else if ($(exit[i]).hasClass('float')) {
+          vid = vid + 'float';
+          $(exit[i]).attr('id', vid);
+          jsPlumb.makeSource($(exit[i]), {
+            scope: 'float'
+          });
+        } else {
+          vid = vid + 'char';
+          $(exit[i]).attr('id', vid);
+          jsPlumb.makeSource($(exit[i]), {
+            scope: 'char'
+          });
+        }
+      }
+
+      // Change input id
+      var vin2 = block.children('.ui-widget-content').children('p').children('.vertex.in');
+      for (i = 0; i < vin2.length; i++) {
+
+        //Vertex ID
+        var vid = idn + '_vin_' + i;
+
+        if ($(vin2[i]).hasClass('image')) {
+          vid = vid + 'image';
+          $(vin2[i]).attr('id', vid);
+          jsPlumb.makeTarget($(vin2[i]), {
+            maxConnections: 1,
+            scope: 'image'
+          });
+        } else if ($(vin2[i]).hasClass('int')) {
+          vid = vid + 'int';
+          $(vin2[i]).attr('id', vid);
+          jsPlumb.makeTarget($(vin2[i]), {
+            maxConnections: 1,
+            scope: 'int'
+          });
+        } else if ($(vin2[i]).hasClass('float')) {
+          vid = vid + 'float';
+          $(vin2[i]).attr('id', vid);
+          jsPlumb.makeTarget($(vin2[i]), {
+            maxConnections: 1,
+            scope: 'float'
+          });
+        } else {
+          vid = vid + 'char';
+          $(vin2[i]).attr('id', vid);
+          jsPlumb.makeTarget($(vin2[i]), {
+            maxConnections: 1,
+            scope: 'char'
+          });
+        }
+      }
+
+      if ($(block).find('.btn').length > 0) {
+        $(block).find('.btn').attr('disabled', false);
+        grid_xyz[('grid_' + wk_lines_glyphs[5])] = {
+          x: 3,
+          y: 3,
+          z: 3
+        };
+      }
+
+
+      block.children('.ui-widget-header').append("<span></span>");
+      block.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear blockoptions");
+
+      block.appendTo($(CONTAINER_ID)); // Append block to container
+      console.log(block);
+      add_select();
+      jsPlumb.draggable($(idt), DRAG_OPTIONS); // Add drag to block
+      addtoolbar();
+      change_input_value();
+      open_cwpopup();
+      config.grid.name = 'grid_' + wk_lines_glyphs[5];
+      $('#grid_' + wk_lines_glyphs[5]).w2grid(config.grid);
+
+    } else if (wk_lines[l].substring(0, 14) == 'NodeConnection') {
+      // Connections
+      console.log(wk_lines[l].substring(0, 14));
+      var wk_lines_nc = wk_lines[l].split(':');
+      console.log('Out ID: ' + wk_lines_nc[2]);
+      console.log('Out var:  ' + wk_lines_nc[3]);
+      console.log('In ID: ' + wk_lines_nc[4]);
+      console.log('In var: ' + wk_lines_nc[5]);
+      block_connections.push({
+        'out_id': wk_lines_nc[2],
+        'out_var': wk_lines_nc[3],
+        'in_id': wk_lines_nc[4],
+        'in_var': wk_lines_nc[5]
+      })
+      console.log(block_connections);
+    }
+
+  }
+  for (var o = 0; o < block_connections.length; o++) {
+    var conn = {};
+    var temp, idsource, idtarget;
+    temp = $('#Block_' + block_connections[o].out_id).find('p');
+    console.log('Temp:', temp);
+    for (var m = 0; m < temp.length; m++) {
+      console.log('ST1' + $(temp[m]).text().trim());
+      console.log('ST2' + block_connections[o].out_var);
+      if ($(temp[m]).text().trim() == block_connections[o].out_var) {
+        conn['source'] = $($(temp[m]).children('span')).attr('id');
+        break;
+      }
+    }
+    temp = $('#Block_' + block_connections[o].in_id).find('p');
+    for (var m = 0; m < temp.length; m++) {
+      if ($(temp[m]).text().trim() == block_connections[o].in_var) {
+        conn['target'] = $($(temp[m]).children('span')).attr('id');
+        break;
+      }
+    }
+    console.log(conn);
+    jsPlumb.connect(conn);
+  }
+  return true;
+}
+
 // New Workspace
 function workspace_new() {
   if (confirm('Your changes will be lost if start a new project without saving!!!')) {
