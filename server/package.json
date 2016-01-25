@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "server side",
+  "main": "server.js",
+  "scripts": {
+    "start_server": "node server.js"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "Lucas Silva",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "rethinkdb": "^2.1.1",
+    "socket.io": "^1.3.7"
+  }
+}

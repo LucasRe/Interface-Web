@@ -1,17 +1,38 @@
-# Interface-Web
+# VisionGL Web-Interface
 
-Tools
-- Atom ([https://atom.io/](https://atom.io/))
-- Koala ([http://koala-app.com/](http://koala-app.com/))
+## Prerequisites
 
-Libraries & Frameworks
-- Eric Meyer's Reset CSS v2.0 ([http://meyerweb.com/eric/tools/css/reset/](http://meyerweb.com/eric/tools/css/reset/))
-- jQuery ([http://jquery.com](http://jquery.com))
-- jQuery UI ([http://jqueryui.com](http://jqueryui.com))
-- jsPlumb ([http://www.jsplumb.org](http://www.jsplumb.org))
-- Toolbar.Js ([http://paulkinzett.github.io/toolbar/](http://paulkinzett.github.io/toolbar/))
-- Lightbox ([http://lokeshdhakar.com/projects/lightbox2/](http://lokeshdhakar.com/projects/lightbox2/))
-- w2ui ([http://w2ui.com/web/home](http://w2ui.com/web/home))
-- FileSaver ([http://eligrey.com/blog/post/saving-generated-files-on-the-client-side/](http://eligrey.com/blog/post/saving-generated-files-on-the-client-side/))
-- jsZip ([https://stuk.github.io/jszip/](https://stuk.github.io/jszip/))
-- DropZone ([http://www.dropzonejs.com/](http://www.dropzonejs.com/))
+You will need the following things properly installed on your computer.
+
+* [Git](http://git-scm.com/)
+* [Node.js](http://nodejs.org/) (with NPM)
+* [Bower](http://bower.io/)
+* [Grunt CLI](http://gruntjs.com/)
+* [RethinkDB](http://rethinkdb.com/)
+
+## Installation
+
+* `git clone <repository-url>` this repository
+* change into the new directory
+* `npm install` (also in server directory)
+* `bower install`
+
+## Running / Development
+
+* `grunt serve`
+* Visit the app at [http://localhost:9000](http://localhost:9000).
+
+* `grunt watch` - Run predefined tasks whenever watched file patterns are added, changed or deleted.
+
+* `grunt wiredep` - Finds your components and injects them directly into the HTML file you specify.
+
+### Running Tests
+
+* `grunt test`
+
+### Building
+
+* `grunt build` (development)
+
+### Tools
+- [Atom](https://atom.io/)

@@ -1,0 +1,226 @@
+/* ---------- Variables ---------- */
+/* Image vertex color */
+$vertexImageColor: #e8200c;
+/* Integer vertex color */
+$vertexIntegerColor: #00ff4f;
+/* Float vertex color */
+$vertexFloatColor: #9400ff;
+/* Char vertex color */
+$vertexCharColor: #ffae0d;
+/* Vertex position */
+$vertexPosition: -2px;
+/* Vertex radius */
+$vertexRadius: 10px;
+/* Vertex border */
+$vertexBorder: 1px solid #454545;
+/* Vertex sixe */
+$vertexSize: 10px;
+/* Shadow setup */
+$glyphShadow: 0 0 5px 2px;
+/* Glyph:hover shadow */
+$glyphShadowHover: $glyphShadow #0c83e8;
+/* Glyph opacity */
+$glyphOpacity: 1;
+/* Selected Glyph shadow */
+$selected_shadow: $glyphShadow #ffae0d;
+/* ---------- END Variables ---------- */
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body{
+  font-size: 8px
+}
+#workspace {
+  height: 95vh;
+  margin: 10px;
+  overflow: auto;
+  white-space: nowrap;
+}
+/* Vertex */
+/* Base */
+.vertex {
+  border: $vertexBorder;
+  -webkit-border-radius: $vertexRadius;
+  border-radius: $vertexRadius;
+  position: relative;
+  width: $vertexSize;
+  height: $vertexSize;
+  display: inline-block;
+}
+#workspace .pright .vertex:hover,
+#workspace .pright2 .vertex:hover {
+  border: 2px solid #454545;
+  -webkit-border-radius: $vertexRadius;
+  border-radius: $vertexRadius;
+  position: relative;
+  width: 1.3*$vertexSize;
+  height: 1.3*$vertexSize;
+  margin-top: -2.5px;
+  margin-right: -5px;
+}
+/* Input */
+.vertex.in {
+  float: left;
+  left: $vertexPosition;
+}
+/* Output */
+.vertex.out {
+  float: right;
+  right: $vertexPosition;
+}
+/* Image */
+.vertex.image {
+  background-color: $vertexImageColor;
+}
+/* Integer */
+.vertex.int {
+  background-color: $vertexIntegerColor;
+}
+/* Float */
+.vertex.float {
+  background-color: $vertexFloatColor;
+}
+/* Character */
+.vertex.char {
+  background-color: $vertexCharColor;
+}
+/* END Vertex */
+/* Glyph */
+/* Lib Glyph */
+.lglyph {
+  opacity: 0.9;
+  min-width: 100px auto;
+  min-height: 100px auto;
+  max-height: auto;
+  max-width: auto;
+  padding-top: 0;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-right: 15px;
+}
+/* Workplace Glyph */
+.glyph {
+  opacity: $glyphOpacity;
+  min-width: 100px auto;
+  min-height: 100px auto;
+  max-height: auto;
+  max-width: auto;
+  padding-top: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+}
+.glyph:hover {
+  opacity: 1;
+  -webkit-box-shadow: $glyphShadowHover;
+  -moz-box-shadow: $glyphShadowHover;
+  box-shadow: $glyphShadowHover;
+  z-index: 2;
+}
+.glyphoptions {
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-top: -3px;
+  float: right;
+}
+.pright {
+  margin: 15px -5px 5px 50px;
+  text-align: right;
+}
+.pleft {
+  margin: 5px 55px 5px -4px;
+}
+.pright2 {
+  margin: 5px -5px 5px 80px;
+  text-align: right;
+}
+.pleft2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: -4px;
+  float: left;
+}
+.pleft2 input {
+  width: 40px;
+}
+.glyph img {
+  max-height: 60px;
+  max-width: 90px;
+  margin: 5px;
+}
+.selected {
+  opacity: 1;
+  -webkit-box-shadow: $selected_shadow;
+  -moz-box-shadow: $selected_shadow;
+  box-shadow: $selected_shadow;
+  z-index: 2;
+}
+/* END Glyph */
+/* Library */
+#librarycontainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 4;
+}
+#librarytoggle {
+  text-align: center;
+}
+#librarybody {
+  align-self: center;
+  bottom: 0;
+  position: relative;
+  background-color: white;
+  width: 100%;
+  min-height: 150px;
+  height: auto;
+  display: none;
+  cursor: default;
+}
+.libtabs {
+  overflow: auto;
+  white-space: nowrap;
+}
+/* END Library */
+/* Forms */
+div#users-contain {
+  width: 350px;
+  margin: 20px 0;
+}
+div#users-contain table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+div#users-contain table td,
+div#users-contain table th {
+  border: 1px solid #eee;
+  padding: 0.6em 10px;
+  text-align: left;
+}
+.ui-dialog .ui-state-error {
+  padding: 0.3em;
+}
+.validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em;
+}
+/* End Forms */
+.hend {
+  z-index: 3;
+  opacity: 0;
+}
+#toolbar-options {
+  visibility: hidden;
+  display: none;
+}
+#zoomrange {
+  float: right;
+}
