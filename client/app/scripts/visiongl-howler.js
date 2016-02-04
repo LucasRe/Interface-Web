@@ -1,13 +1,13 @@
 // Web interface sound system
 
 const VISIONGL_SOUND_LOGO = new Howl({
-  urls: ['../sounds/visiongl.ogg']
+	urls: ['../sounds/visiongl.ogg']
 })
 
 $("#visiongl-logo").mouseenter(function() {
-    VISIONGL_SOUND_LOGO.play();
-  })
+	VISIONGL_SOUND_LOGO.play();
+})
 
 $("#visiongl-logo").mouseout(function() {
-      VISIONGL_SOUND_LOGO.stop();
-    })
+	VISIONGL_SOUND_LOGO.stop();
+})
