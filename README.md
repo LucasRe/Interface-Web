@@ -5,10 +5,10 @@
 You will need the following things properly installed on your computer.
 
 * [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Grunt CLI](http://gruntjs.com/)
-* [RethinkDB](http://rethinkdb.com/)
+* [Node.js](http://nodejs.org/) v4.3.0 (with NPM 2.14.12) [How to install](https://nodejs.org/en/download/package-manager/)
+* [Bower](http://bower.io/) * `sudo npm install -g bower`
+* [Grunt CLI](http://gruntjs.com/) * `sudo npm install -g grunt-cli`
+* [RethinkDB](http://rethinkdb.com/) [How to install](http://rethinkdb.com/docs/install/)
 
 ### Tools
 - [Atom](https://atom.io/)
@@ -16,12 +16,26 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install` (client and server directory)
-* `bower install` (client directory)
+* `git clone https://github.com/ddantas/Interface-Web.git` this repository
+
+change into the new directory
+
+change into "client directory" * `cd client`
+
+run:
+* `npm install`
+* `bower install`
+
+On project root:
+
+change to server directory * `cd server`
+
+run:
+* `npm install`
+
 
 ## Running / Development
+On client directory(On project root,* `cd client`):
 
 * `grunt serve` - Visit the app at [http://localhost:9000](http://localhost:9000).
 
@@ -34,5 +48,8 @@ You will need the following things properly installed on your computer.
 * `grunt test`
 
 ### Building
+On project root:
 
-* `grunt build` (development)
+* `cd client`
+
+* `grunt build`

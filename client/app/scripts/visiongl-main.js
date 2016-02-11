@@ -1,14 +1,5 @@
 "use strict";
-//Toolbar
-function addtoolbar() {
-	$('.gear').toolbar({
-		content: '#toolbar-options',
-		position: 'top',
-		style: 'toolbar-danger',
-		event: 'click',
-		hideOnClick: true
-	});
-}
+
 
 // Change inpute value
 function change_input_value() {
@@ -50,6 +41,27 @@ function deselectglyph() {
 	}
 }
 
+// Lock/UnLock Glyph
+function lockGlyph(selected) {
+	if (!($(selected).hasClass('ui-draggable-disabled'))) {
+		jsPlumb.setDraggable($(selected), false);
+	} else {
+		jsPlumb.setDraggable($(selected), true);
+	}
+}
+
+// Delete Glyph
+function deleteGlyph(selected) {
+	var vertex = selected.children('.ui-widget-content').children('p').children('span');
+	var contDel;
+	for (contDel = 0; contDel < vertex.length; contDel++) {
+		jsPlumb.detachAllConnections(vertex[contDel]);
+	}
+	selected.remove();
+	$(CONTAINER_ID).dblclick();
+	$(CONTAINER_ID).click();
+}
+
 // Clone Glyph
 function cloneglyph(obj, event, ui) {
 
@@ -76,6 +88,7 @@ function cloneglyph(obj, event, ui) {
 
 	// Change output id
 	var exit = glyph.children('.ui-widget-content').children('p').children('.vertex.out');
+	var i;
 	for (i = 0; i < exit.length; i++) {
 
 		//Vertex ID
@@ -156,8 +169,8 @@ function cloneglyph(obj, event, ui) {
 	}
 
 	if (!obj) {
-		glyph.children('.ui-widget-header').append("<span></span>");
-		glyph.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear glyphoptions");
+		glyph.children('.ui-widget-header').append("<i></i>");
+		glyph.children('.ui-widget-header').children('i').addClass("fa fa-gear glyphoptions");
 	}
 
 	glyph.appendTo($(CONTAINER_ID)); // Append glyph to container

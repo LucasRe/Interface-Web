@@ -1,534 +1,480 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>VisionGL</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/eye.ico">
-    <link rel="apple-touch-icon" href="/eye.png">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<head>
+	<meta charset="utf-8">
+	<title>VisionGL</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/w2ui/w2ui-1.4.3.min.css" />
-    <link rel="stylesheet" href="/bower_components/dropzone/dist/min/dropzone.min.css" />
-    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
-    <link rel="stylesheet" href="/bower_components/hover/css/hover.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/visiongl.css">
-    <link rel="stylesheet" href="../bower_components/jquery-ui/themes/hot-sneaks/jquery-ui.css" />
-    <link rel="stylesheet" href="../bower_components/foundation-sites/dist/foundation.css" />
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="../bower_components/toolbar/jquery.toolbars.css" />
-    <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
+	<link rel="shortcut icon" href="/eye.ico">
+	<link rel="apple-touch-icon" href="/eye.png">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  </head>
-  <body>
-    <!--[if lt IE 10]>
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="/bower_components/w2ui/w2ui-1.4.3.min.css" />
+	<link rel="stylesheet" href="/bower_components/dropzone/dist/min/dropzone.min.css" />
+	<link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+	<link rel="stylesheet" href="/bower_components/hover/css/hover.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/visiongl.css">
+	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="../bower_components/toolbar/jquery.toolbar.css" />
+	<!-- endbuild -->
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="/bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+
+</head>
+
+<body>
+	<!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="/bower_components/jsPlumb/dist/js/dom.jsPlumb-1.7.6.js"></script>
-    <script src="/bower_components/jszip/dist/jszip.js"></script>
-    <script src="/bower_components/w2ui/w2ui-1.4.3.min.js"></script>
-    <script src="/bower_components/dropzone/dist/min/dropzone.min.js"></script>
-    <script src="/bower_components/howler.js/howler.js"></script>
-    <script src="/bower_components/what-input/what-input.js"></script>
-    <script src="/bower_components/foundation-sites/dist/foundation.js"></script>
-    <script src="/bower_components/keymaster/keymaster.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+	<!-- build:js(.) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+	<script src="/bower_components/jsPlumb/dist/js/dom.jsPlumb-1.7.6.js"></script>
+	<script src="/bower_components/toolbar/jquery.toolbar.js"></script>
+	<script src="/bower_components/jszip/dist/jszip.js"></script>
+	<script src="/bower_components/w2ui/w2ui-1.4.3.min.js"></script>
+	<script src="/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="/bower_components/howler.js/howler.js"></script>
+	<script src="/bower_components/keymaster/keymaster.js"></script>
+	<script src="/bower_components/moment/moment.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
 
-    <!-- Toolbar -->
-    <div id="toolbar-options" class="hidden">
-       <a href="#"><i class="fa fa-plane"></i></a>
-       <a href="#"><i class="fa fa-car"></i></a>
-       <a href="#"><i class="fa fa-bicycle"></i></a>
-    </div>
-    <!-- EndToolbar -->
+	<!-- Top Menu -->
 
-    <div class="off-canvas position-left reveal-for-large" data-off-canvas>
-      <!-- ... -->
-    </div>
+	<!-- EndTopMenu -->
 
-    <!-- Top Menu -->
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li id="visiongl-logo" class="menu-text hvr-pulse"><i class="fa fa-eye fa-lg"></i>
-VisionGL</li>
-          <li class="has-submenu">
-            <a href="#">Menu</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="#"><i class="fa fa-file"></i>
-
-    New Workspace</a></li>
-              <li><a href="#"><i class="fa fa-file"></i>
-
-    New Procedure</a></li>
-              <li><a href="#">
-
-    <i class="fa fa-folder-open"></i>
-    Open Workspace</a></li>
-              <li><a href="#">
-
-    <i class="fa fa-folder-open"></i>
-    Open Procedure</a></li>
-              <li><a href="#"><i class="fa fa-floppy-o"></i>
-    Save Workspace</a></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <a href="#">Edit</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="#"><i class="fa fa-clone"></i>
-
-    Duplicate</a></li>
-              <li><a href="#"><i class="fa fa-trash"></i>
-
-    Delete</a></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <a href="#">Options</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="#">Fullscreen</a></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <a href="#">Help</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">About</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!-- <div class="top-bar-right">
-        <ul class="menu">
-          <li><input type="search" placeholder="Search"></li>
-          <li><button type="button" class="button">Search</button></li>
-        </ul>
-      </div> -->
-    </div>
-    <!-- EndTopMenu -->
-
-    <!-- <form action="/file-upload"
+	<!-- <form action="/file-upload"
       class="dropzone"
       id="myawesomedropzone"></form> -->
 
-      <!-- Main Div -->
-      <div id="workspace" clas="ui-droppable">
-      </div>
-      <!-- /Main Div -->
+	<!-- Toolbar -->
+	<div id="toolbar-options" class="hidden">
+		<a href="#"><i class="clone fa fa-clone"></i></a>
+		<a href="#"><i class="lock fa fa-lock"></i></a>
+		<a href="#"><i class="delete fa fa-trash"></i></a>
+	</div>
+	<!-- EndToolbar -->
 
-      <div id="librarycontainer">
-        <div id="librarytoggle" class="ui-widget-header ui-corner-top">Library</div>
-        <div id="librarybody">
-          <div id="tabs">
-            <ul>
-              <li><a href="#tabs-1">Basic</a>
-              </li>
-              <li><a href="#tabs-2">VGL Shaders</a>
-              </li>
-              <!-- <li><a href="#tabs-3">Category 2</a>
+	<!-- Main Div -->
+	<div id="workspace" clas="ui-droppable">
+		<!-- <button type="button" class="success button">Save <i class="glyphoptions fa fa-cog"></i></button> -->
+	</div>
+	<!-- /Main Div -->
+
+	<div id="librarycontainer">
+		<div id="librarytoggle" class="ui-widget-header ui-corner-top ui-state-active">Library</div>
+		<div id="librarybody">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Basic</a>
+					</li>
+					<li><a href="#tabs-2">VGL Shaders</a>
+					</li>
+					<!-- <li><a href="#tabs-3">Category 2</a>
               </li> -->
-              <li><a href="#tabs-custom">Custom</a>
-              </li>
-            </ul>
-            <div id="tabs-1" class="libtabs">
-              <p style="float: left">
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">Image Source</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p>
-                      <form action="/file-upload" class="dropzone" id="libdropzone"></form>
-                    </p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">Image Viewer</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p>
-                      <a href="eye.svg" >
-                        <img src="eye.svg" >
-                      </a>
-                    </p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">Integer</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft2">
-                      <input type="number" step="1" value="0">
-                    </p>
-                    <p class="pright">out
-                      <span class="vertex out int"></span>
-                    </p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">Float</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft2">
-                      <input type="number" step="0.1" value="0">
-                    </p>
-                    <p class="pright">out
-                      <span class="vertex out float"></span>
-                    </p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">Convolution Windows</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft2">
-                      <button class="btn" disabled="true">Open</button>
-                    </p>
-                    <p class="pright2">
-                      <span class="vertex out float"></span>conv_win</p>
-                    <p class="pright2">
-                      <span class="vertex out int"></span>width</p>
-                    <p class="pright2">
-                      <span class="vertex out int"></span>height</p>
-                    <p class="pright2">
-                      <span class="vertex out int"></span>depth</p>
-                  </div>
-                </div>
-              </p>
-            </div>
-            <div id="tabs-2" class="libtabs">
-              <p>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dBlurSq3</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dConvolution</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_z</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dCopy</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dDilate</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_z</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dErode</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_z</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dMax</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dMin</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dNot</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dSub</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dSum</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglCl3dThreshold</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>src</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>dst</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>thresh</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>top</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClBlurSq3</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClConvolution</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClCopy</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClDilate</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClErode</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>convolution_window</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_x</p>
-                    <p class="pleft">
-                      <span class="vertex in int"></span>window_size_y</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClInvert</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClMax</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClMin</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClNdNot</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClSub</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClSum</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input1</p>
-                    <p class="pleft">
-                      <span class="vertex in image"></span>img_input2</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>img_output</p>
-                  </div>
-                </div>
-                <div class="lglyph ui-corner-all noselect">
-                  <div class="ui-widget-header ui-corner-top">vglClThreshold</div>
-                  <div class="ui-widget-content ui-corner-bottom">
-                    <p class="pleft">
-                      <span class="vertex in image"></span>src</p>
-                    <p class="pright">
-                      <span class="vertex out image"></span>dst</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>thresh</p>
-                    <p class="pleft">
-                      <span class="vertex in float"></span>top</p>
-                  </div>
-                </div>
-              </p>
-            </div>
-            <!-- <div id="tabs-3" class="libtabs">
+					<li><a href="#tabs-custom">Custom</a>
+					</li>
+				</ul>
+				<div id="tabs-1" class="libtabs">
+					<p style="float: left">
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">Image Source</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p>
+									<form action="/file-upload" class="dropzone" id="libdropzone"></form>
+								</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">Image Viewer</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p>
+									<img class="image-output" src="images/eye.svg">
+								</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">Integer</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft2">
+									<input type="number" step="1" value="0">
+								</p>
+								<p class="pright">out
+									<span class="vertex out int"></span>
+								</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">Float</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft2">
+									<input type="number" step="0.1" value="0">
+								</p>
+								<p class="pright">out
+									<span class="vertex out float"></span>
+								</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">Convolution Windows</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft2">
+									<button class="btn" disabled="true">Open</button>
+								</p>
+								<p class="pright2">
+									<span class="vertex out float"></span>conv_win</p>
+								<p class="pright2">
+									<span class="vertex out int"></span>width</p>
+								<p class="pright2">
+									<span class="vertex out int"></span>height</p>
+								<p class="pright2">
+									<span class="vertex out int"></span>depth</p>
+							</div>
+						</div>
+					</p>
+				</div>
+				<div id="tabs-2" class="libtabs">
+					<p>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dBlurSq3</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dConvolution</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_z</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dCopy</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dDilate</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_z</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dErode</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_z</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dMax</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dMin</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dNot</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dSub</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dSum</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglCl3dThreshold</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>src</p>
+								<p class="pright">
+									<span class="vertex out image"></span>dst</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>thresh</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>top</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClBlurSq3</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClConvolution</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClCopy</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClDilate</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClErode</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>convolution_window</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_x</p>
+								<p class="pleft">
+									<span class="vertex in int"></span>window_size_y</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClInvert</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClMax</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClMin</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClNdNot</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClSub</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClSum</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input1</p>
+								<p class="pleft">
+									<span class="vertex in image"></span>img_input2</p>
+								<p class="pright">
+									<span class="vertex out image"></span>img_output</p>
+							</div>
+						</div>
+						<div class="lglyph ui-corner-all noselect">
+							<div class="ui-widget-header ui-corner-top">vglClThreshold</div>
+							<div class="ui-widget-content ui-corner-bottom">
+								<p class="pleft">
+									<span class="vertex in image"></span>src</p>
+								<p class="pright">
+									<span class="vertex out image"></span>dst</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>thresh</p>
+								<p class="pleft">
+									<span class="vertex in float"></span>top</p>
+							</div>
+						</div>
+					</p>
+				</div>
+				<!-- <div id="tabs-3" class="libtabs">
               <p>
               </p>
             </div> -->
-            <div id="tabs-custom" class="libtabs">
-              <p>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+				<div id="tabs-custom" class="libtabs">
+					<p>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <script src="scripts/visiongl-includes.js"></script>
-    <script src="scripts/visiongl-global_variables.js"></script>
-    <script src="scripts/visiongl-functions.js"></script>
-    <script src="scripts/visiongl-main.js"></script>
-    <script src="scripts/visiongl-jsPlumb_ready.js"></script>
-    <script src="scripts/visiongl-w2ui-toolbar.js"></script>
-    <script src="scripts/visiongl-w2ui-cw.js"></script>
-    <script src="scripts/visiongl-docready.js"></script>
-    <script src="scripts/visiongl-howler.js"></script>
-    <script src="scripts/visiongl-dropzone.js"></script>
-    <script src="scripts/visiongl-keymaster.js"></script>
-    <script src="scripts/visiongl-socketio.js"></script>
-    <script src="../bower_components/foundation-sites/dist/foundation.js"></script>
-    <script src="../bower_components/toolbar/jquery.toolbar.js"></script>
-    <script src="../bower_components/file-saver/FileSaver.js"></script>
-    <!-- endbuild -->
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<script src="scripts/visiongl-global_variables.js"></script>
+	<script src="scripts/visiongl-functions.js"></script>
+	<script src="scripts/visiongl-main.js"></script>
+	<script src="scripts/visiongl-jsPlumb_ready.js"></script>
+	<script src="scripts/visiongl-toolbar.js"></script>
+	<script src="scripts/visiongl-w2ui-cw.js"></script>
+ <script src="scripts/visiongl-w2ui-toolbar.js"></script>
+	<script src="scripts/visiongl-docready.js"></script>
+	<script src="scripts/visiongl-howler.js"></script>
+	<script src="scripts/visiongl-dropzone.js"></script>
+	<script src="scripts/visiongl-keymaster.js"></script>
+	<script src="scripts/visiongl-socketio.js"></script>
+	<script src="../bower_components/toolbar/jquery.toolbar.js"></script>
+	<script src="../bower_components/file-saver/FileSaver.js"></script>
+	<!-- endbuild -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-  </body>
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+	<script>
+		(function(b, o, i, l, e, r) {
+			b.GoogleAnalyticsObject = l;
+			b[l] || (b[l] =
+				function() {
+					(b[l].q = b[l].q || []).push(arguments)
+				});
+			b[l].l = +new Date;
+			e = o.createElement(i);
+			r = o.getElementsByTagName(i)[0];
+			e.src = 'https://www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e, r)
+		}(window, document, 'script', 'ga'));
+		ga('create', 'UA-XXXXX-X');
+		ga('send', 'pageview');
+	</script>
+</body>
+
 </html>

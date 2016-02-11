@@ -235,7 +235,7 @@ function workspace_import_wk(wk) {
 			}
 
 
-			glyph.children('.ui-widget-header').append("<span></span>");
+			glyph.children('.ui-widget-header').append("<i></i>");
 			glyph.children('.ui-widget-header').children('span').addClass("ui-icon ui-icon-gear glyphoptions");
 
 			glyph.appendTo($(CONTAINER_ID)); // Append glyph to container

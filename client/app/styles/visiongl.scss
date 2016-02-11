@@ -1,28 +1,28 @@
 /* ---------- Variables ---------- */
 /* Image vertex color */
-$vertexImageColor: #e8200c;
+$vertexImageColor: rgba(254, 0, 102, 1);
 /* Integer vertex color */
-$vertexIntegerColor: #00ff4f;
+$vertexIntegerColor: rgba(144, 254, 0, 1);
 /* Float vertex color */
-$vertexFloatColor: #9400ff;
+$vertexFloatColor: rgba(114, 0, 254, 1);
 /* Char vertex color */
-$vertexCharColor: #ffae0d;
+$vertexCharColor: rgba(254, 220, 0, 1);
 /* Vertex position */
 $vertexPosition: -2px;
 /* Vertex radius */
 $vertexRadius: 10px;
 /* Vertex border */
-$vertexBorder: 1px solid #454545;
+$vertexBorder: 1px solid rgba(69, 69, 69, 1);
 /* Vertex sixe */
 $vertexSize: 10px;
 /* Shadow setup */
 $glyphShadow: 0 0 5px 2px;
 /* Glyph:hover shadow */
-$glyphShadowHover: $glyphShadow #0c83e8;
+$glyphShadowHover: $glyphShadow rgba(0, 127, 255, 1);
 /* Glyph opacity */
 $glyphOpacity: 1;
 /* Selected Glyph shadow */
-$selected_shadow: $glyphShadow #ffae0d;
+$selected_shadow: $glyphShadow rgba(254, 199, 0, 1);
 /* ---------- END Variables ---------- */
 .noselect {
 	-webkit-touch-callout: none;
@@ -33,13 +33,14 @@ $selected_shadow: $glyphShadow #ffae0d;
 	user-select: none;
 }
 body {
-	font-size: 8px;
+	font-size: 14px;
 }
 #workspace {
 	height: 95vh;
-	margin: 10px;
+	margin: 5px;
 	overflow: auto;
 	white-space: nowrap;
+	display: block;
 }
 /* Vertex */
 /* Base */
@@ -123,10 +124,13 @@ body {
 	box-shadow: $glyphShadowHover;
 	z-index: 2;
 }
+image-output {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 .glyphoptions {
-	margin-right: 5px;
-	margin-left: 10px;
-	margin-top: -3px;
+	margin-left: 5px;
 	float: right;
 }
 .pright {
@@ -216,11 +220,4 @@ div#users-contain table th {
 .hend {
 	z-index: 3;
 	opacity: 0;
-}
-#toolbar-options {
-	visibility: hidden;
-	display: none;
-}
-#zoomrange {
-	float: right;
 }

@@ -1,8 +1,6 @@
 "use strict";
 $(document).ready(function() {
 
-	$(document).foundation();
-
 	// Mouse track
 	$(CONTAINER_ID).mousemove(function(event) {
 		mouse_position.X = event.clientX;
@@ -55,22 +53,12 @@ $(document).ready(function() {
 
 	// Lock/Unlock Glyph
 	$(".lock").click(function() {
-		if (!($(selected).hasClass('ui-draggable-disabled'))) {
-			jsPlumb.setDraggable($(selected), false);
-		} else {
-			jsPlumb.setDraggable($(selected), true);
-		}
+		lockGlyph(selected);
 	});
 
-	// Remove Glyph
+	// Delete Glyph
 	$(".delete").click(function() {
-		var vertex = selected.children('.ui-widget-content').children('p').children('span');
-		for (i = 0; i < vertex.length; i++) {
-			jsPlumb.detachAllConnections(vertex[i]);
-		}
-		selected.remove();
-		$(CONTAINER_ID).dblclick();
-		$(CONTAINER_ID).click();
-	});
+		deleteGlyph(selected);
+});
 
 });

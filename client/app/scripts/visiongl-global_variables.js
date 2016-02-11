@@ -25,20 +25,31 @@ var grid_xyz = {
 	}
 };
 
+// Toolbar Options
+const TOOLBAR_OPTIONS = {
+	content: '#toolbar-options',
+	position: 'top',
+	style: 'primary',
+	event: 'click',
+	animation: 'flip',
+	hideOnClick: true,
+	adjustment: 32
+}
+
 // Vertex output class
-var VERTEX_OUTPUT_CLASS = '.vertex.out';
+const VERTEX_OUTPUT_CLASS = '.vertex.out';
 
 // Vertex input class
-var VERTEX_INPUT_CLASS = '.vertex.in';
+const VERTEX_INPUT_CLASS = '.vertex.in';
 
 // Container id
-var CONTAINER_ID = '#workspace';
+const CONTAINER_ID = '#workspace';
 
 // Glyph class
-var DRAG_OBJECT = '.glyph';
+const DRAG_OBJECT = '.glyph';
 
 // Drag options
-var DRAG_OPTIONS = {
+const DRAG_OPTIONS = {
 	containment: CONTAINER_ID,
 	cursor: "default"
 		//cursorAt: { top: 10, right: 10 },
@@ -46,7 +57,7 @@ var DRAG_OPTIONS = {
 };
 
 // jsPlumb defaults
-var JSPLUMB_DEFAULTS = {
+const JSPLUMB_DEFAULTS = {
 	Anchor: null,
 	Anchors: ["Right", "Left"],
 	ConnectionsDetachable: true,
