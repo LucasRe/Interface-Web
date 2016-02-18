@@ -5,76 +5,99 @@ $(function() {
 		name: 'toolbar',
 		items: [{
 			type: 'menu',
-			id: 'item1',
+			id: 'filemenu',
 			caption: 'Menu',
 			items: [{
 				text: 'New',
-				icon: 'icon-page'
+				icon: 'fa fa-file',
+				style: 'width: 60px'
 			}, {
 				text: 'New Procedure',
-				icon: 'icon-page'
+				icon: 'fa fa-file'
 			}, {
 				text: 'Open',
-				icon: 'icon-page'
+				icon: 'fa fa-folder-open'
 			}, {
 				text: 'Save',
-				icon: 'icon-page'
+				icon: 'fa fa-save'
 			}, {
 				text: 'Export .wk',
-				icon: 'icon-page'
+				icon: 'fa fa-file-zip-o'
 			}, {
 				text: 'Import .wk',
-				icon: 'icon-page'
+				icon: 'fa fa-file-zip-o'
 			}]
 		}, {
 			type: 'menu',
-			id: 'item2',
-			caption: 'Edit',
+			id: 'glyphmenu',
+			caption: 'Gliph',
 			items: [{
 				text: 'Duplicate',
-				icon: 'icon-page'
+				icon: 'fa fa-clone'
 			}, {
 				text: 'Delete',
-				icon: 'icon-page'
+				icon: 'fa fa-trash'
+			}, {
+				text: 'Lock/Unlock Glyph',
+				icon: 'fa fa-lock'
 			}]
 		}, {
 			type: 'menu',
-			id: 'item3',
+			id: 'helpmenu',
 			caption: 'Help',
 			items: [{
 				text: 'Documentation',
-				icon: 'icon-page'
+				icon: 'fa fa-file-text'
 			}, {
 				text: 'About',
-				icon: 'icon-page'
+				icon: 'fa fa-life-bouy'
 			}]
 		}, ]
 	});
 	w2ui.toolbar.on('click', function(event) {
-		console.log('item ' + event.target + ' is clicked.');
+
+		console.log('item ' + event.target + ' was clicked.');
+
 		switch (event.target) {
-			case 'item1:New':
+
+			// New Workspace
+			case 'filemenu:New':
 				workspace_new();
 				break;
 
-				// Open workspace
-			case 'item1:Open':
+				// Open Workspace
+			case 'filemenu:Open':
 				workspace_load()
 				break;
 
-				// Save workspace
-			case 'item1:Save':
+				// Save Workspace
+			case 'filemenu:Save':
 				workspace_save();
 				break;
 
 				// Export to .wk
-			case 'item1:Export .wk':
+			case 'filemenu:Export .wk':
 				console.log(workspace_export_wk(prompt("Please enter your name", "VISIONGL"), prompt("Please the file path", "/home")));
 				break;
 
 				// Import from .wk
-			case 'item1:Import .wk':
+			case 'filemenu:Import .wk':
 				console.log(workspace_import_wk(prompt("Please enter the .wk str", "# Khoros Visual Programming Workspace...")));
+				break;
+
+				// Glyph Duplicate
+			case 'glyphmenu:Duplicate':
+			console.log("Duplicate");
+				break;
+
+				// Glyph Delete
+			case 'glyphmenu:Delete':
+			console.log("Delete");
+				break;
+
+				// Glyph Duplicate
+			case 'glyphmenu:Lock/Unlock Glyph':
+			console.log("Lock");
 				break;
 		}
 	});

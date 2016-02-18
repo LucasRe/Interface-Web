@@ -34,6 +34,8 @@ $selected_shadow: $glyphShadow rgba(254, 199, 0, 1);
 }
 body {
 	font-size: 14px;
+	font-family: sans-serif;
+	font-weight: bold;
 }
 #workspace {
 	height: 95vh;
@@ -41,6 +43,7 @@ body {
 	overflow: auto;
 	white-space: nowrap;
 	display: block;
+	position: relative;
 }
 /* Vertex */
 /* Base */
@@ -208,6 +211,10 @@ div#users-contain table th {
 	border: 1px solid #eee;
 	padding: 0.6em 10px;
 	text-align: left;
+}
+#topmenu {
+	padding: 1px;
+	border: 1px solid gray;
 }
 .ui-dialog .ui-state-error {
 	padding: 0.3em;

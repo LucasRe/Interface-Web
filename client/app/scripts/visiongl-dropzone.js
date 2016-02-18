@@ -13,3 +13,8 @@ const dropZone_Options = {
 
 // DropZone config
 Dropzone.options.libdropzone = dropZone_Options;
+
+// Create dropzones programmatically
+function createDropZone(id) {
+	$('div#'+id).dropzone({ url: "/file-upload" });
+}
