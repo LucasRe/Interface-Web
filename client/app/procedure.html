@@ -71,24 +71,23 @@
 	<!-- EndToolbar -->
 
 	<!-- Main Div -->
-	<div id="workspace" clas="ui-droppable">		
+	<div id="workspace" clas="ui-droppable">
 
-		<!-- Outputs -->
-		<div id="procedurein" class="glyph ui-corner-all noselect">
-			<div class="ui-widget-header ui-corner-top ui-state-highlight">Inputs</div>
+		<!-- Inputs -->
+		<div id="procedurein" class="glyph ui-corner-all noselect procedure">
+			<div class="ui-widget-header ui-corner-top ui-state-highlight">INPUTs</div>
 			<div class="ui-widget-content ui-corner-bottom">
-				<p class="pleft">
-					<span class="vertex in"></span>img_input</p>
+				<p class="pright">
+					<span class="vertex out procedurein"></span>null</p>
 			</div>
 		</div>
 
-		<!-- Inputs -->
-		<div id="procedureout" class="glyph ui-corner-all noselect">
-			<div class="ui-widget-header ui-corner-top ui-state-highlight">Outputs</div>
+		<!-- Outputs -->
+		<div id="procedureout" class="glyph ui-corner-all noselect procedure">
+			<div class="ui-widget-header ui-corner-top ui-state-highlight">OUTPUTs</div>
 			<div class="ui-widget-content ui-corner-bottom">
-				<p class="pright">
-					<span class="vertex out"></span>
-				</p>
+				<p class="pleft">
+					<span class="vertex in"></span>null</p>
 			</div>
 		</div>
 
@@ -472,6 +471,11 @@
 	<script src="../bower_components/toolbar/jquery.toolbar.js"></script>
 	<script src="../bower_components/file-saver/FileSaver.js"></script>
 	<!-- endbuild -->
+
+	<!-- build:js scripts/procedure.js -->
+	<script src="scripts/visiongl-procedures.js"></script>
+	<!-- endbuild -->
+
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>

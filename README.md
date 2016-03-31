@@ -12,7 +12,7 @@ You will need the following things properly installed on your computer.
 
 ### Tools
 - [Atom](https://atom.io/)
-
+- [Chromium](https://www.chromium.org/)
 
 ## Installation
 
