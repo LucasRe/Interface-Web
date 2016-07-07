@@ -1,0 +1,81 @@
+# Khoros Visual Programming Workspace
+#
+# cantata workspace file (/n/image/khoros-2.1/mmach-1.3/tutor/toolbox/thirdl/edgeoff/edgeoff.wk) was created 
+# on Sun Sep 15 18:13:20 1996
+# by user lotufo
+#
+
+WorkspaceBegin: 2.1
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph 'Comment Icon'
+Glyph:DESIGN:comment::localhost:61:20:20:: -comment 'Edges off.\n\nRef. Fig. 9.32 (Pag. 203) in :\n\nBanon, G J F; Barrera, J  "Bases da Morfologia Matematica\n	para analise de imagens binarias". IX Escola de \n	Computacao, Recife, 1994.' 
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:63:60:120::  -o $MMACH/viff/edgeoff.xv
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:65:60:260::  -o $MMACH/viff/edges.xv
+
+#  Glyph 'Display Image'
+Glyph:ENVISION:putimage::localhost:67:220:20:: -xoffset '0' -yoffset '0' -complex 5 -normaltype 1 -normalmethod 1 -redcol 1 -greencol 2 -bluecol 3 -redfn 'M0' -greenfn 'M1' -bluefn 'M2' -x '300' -y '77' 
+
+#  Glyph 'Display Image'
+Glyph:ENVISION:putimage::localhost:69:180:360:: -xoffset '0' -yoffset '0' -complex 5 -normaltype 1 -normalmethod 1 -redcol 1 -greencol 2 -bluecol 3 -redfn 'M0' -greenfn 'M1' -bluefn 'M2' -x '180' -y '550' 
+
+#  Glyph 'Opening by Reconstr.'
+Glyph:MMACH:vopenrec::localhost:71:380:180:: 
+
+#  Glyph 'Subtraction (mmach)'
+Glyph:MMACH:vsubm::localhost:73:540:120:: 
+
+#  Glyph '3x3 Str.El.'
+Glyph:MMACH:vstrflat::localhost:75:240:300:: -s00 '1' -s10 '1' -s20 '1' -s01 '1' -s11 '1' -s21 '1' -s02 '1' -s12 '1' -s22 '1' 
+
+#  Glyph 'Display Image'
+Glyph:ENVISION:putimage::localhost:77:720:120:: -xoffset '0' -yoffset '0' -complex 5 -normaltype 1 -normalmethod 1 -redcol 1 -greencol 2 -bluecol 3 -redfn 'M0' -greenfn 'M1' -bluefn 'M2' -x '780' -y '210' 
+
+#  Glyph 'Display Image'
+Glyph:ENVISION:putimage::localhost:79:500:300:: -xoffset '0' -yoffset '0' -complex 5 -normaltype 1 -normalmethod 1 -redcol 1 -greencol 2 -bluecol 3 -redfn 'M0' -greenfn 'M1' -bluefn 'M2' -x '500' -y '480' 
+
+
+#  Connections 'Comment Icon'
+
+#  Connections 'User defined'
+NodeConnection:data:63:o:67:i
+NodeConnection:data:63:o:71:i1
+NodeConnection:data:63:o:73:i1
+
+#  Connections 'User defined'
+NodeConnection:data:65:o:69:i
+NodeConnection:data:65:o:71:i2
+
+#  Connections 'Display Image'
+
+#  Connections 'Display Image'
+
+#  Connections 'Opening by Reconstr.'
+NodeConnection:data:71:o:79:i
+NodeConnection:data:71:o:73:i2
+
+#  Connections 'Subtraction (mmach)'
+NodeConnection:data:73:o:77:i
+
+#  Connections '3x3 Str.El.'
+NodeConnection:data:75:o:71:str
+
+#  Connections 'Display Image'
+
+#  Connections 'Display Image'
+
+AnnotationsBegin
+AnnotationsEnd
+
+WorkspaceEnd: 2.1

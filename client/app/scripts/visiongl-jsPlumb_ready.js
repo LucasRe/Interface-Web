@@ -6,6 +6,11 @@ jsPlumb.importDefaults(JSPLUMB_DEFAULTS);
 function set_sourceANDtarget() {
 
 	// Vertex image
+	jsPlumb.makeSource($(VERTEX_OUTPUT_CLASS + '.procedurein'), {
+		scope: 'image'
+	});
+
+	// Vertex image
 	jsPlumb.makeSource($(VERTEX_OUTPUT_CLASS + '.image'), {
 		scope: 'image'
 	});
