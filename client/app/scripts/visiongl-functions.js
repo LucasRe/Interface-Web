@@ -78,7 +78,7 @@ function workspace_export_wk(user_name, file_path, file_name) {
 			}
 		}
 		str_nodes += '\n';
-		str_wk += '\n\n'
+		str_wk += '\n\n';
 	}
 	// END .wk Glyphs
 
@@ -261,7 +261,7 @@ function workspace_import_wk(wk) {
 				'out_var': wk_lines_nc[3],
 				'in_id': wk_lines_nc[4],
 				'in_var': wk_lines_nc[5]
-			})
+			});
 			console.log(glyph_connections);
 		}
 
@@ -349,7 +349,7 @@ function workspace_save() {
 
 	// Clear Selected and Connections
 	deselectglyph();
-	jsPlumb.detachEveryConnection()
+	jsPlumb.detachEveryConnection();
 
 	// Remove drag classes
 	var glyphs = $(CONTAINER_ID).children(DRAG_OBJECT);

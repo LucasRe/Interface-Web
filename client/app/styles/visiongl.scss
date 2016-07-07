@@ -7,6 +7,8 @@ $vertexIntegerColor: rgba(144, 254, 0, 1);
 $vertexFloatColor: rgba(114, 0, 254, 1);
 /* Char vertex color */
 $vertexCharColor: rgba(254, 220, 0, 1);
+// Procedure's vertex color
+$ProcedureVertexColor:rgba(30,45,90,1);
 /* Vertex position */
 $vertexPosition: -2px;
 /* Vertex radius */
@@ -237,6 +239,27 @@ div#users-contain table th {
 #procedureout {
 	left: 92%;
 }
-.procedureins{
-	
+.procedurein{
+	border: $vertexBorder;
+	-webkit-border-radius: $vertexRadius;
+	border-radius: $vertexRadius;
+	position: relative;
+	width: $vertexSize;
+	height: $vertexSize;
+	display: inline-block;
+	float: right;
+	right: $vertexPosition;
+	background-color: $ProcedureVertexColor;
+}
+.procedureout{
+	border: $vertexBorder;
+	-webkit-border-radius: $vertexRadius;
+	border-radius: $vertexRadius;
+	position: relative;
+	width: $vertexSize;
+	height: $vertexSize;
+	display: inline-block;
+	float: left;
+	left: $vertexPosition;
+	background-color: $ProcedureVertexColor;
 }

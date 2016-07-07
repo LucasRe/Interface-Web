@@ -1,0 +1,36 @@
+{
+  "name":"demo",
+  "type":"procedure",
+  "index":0,
+  "library":"library name",
+  "position":["x","y"],
+  "workspace":{
+  "type":"workspace",
+  "last_index": 3,
+  "glyphs":[
+    {
+      "name":"input image",
+      "library":"library name",
+      "index":1,
+      "connections":[["glyph id","input id"]],
+      "position":["x","y"],
+      "value" :{"type":"input value type","data":"data"}
+    },
+    {
+      "name":"output image",
+      "library":"library name",
+      "index":2,
+      "position":["x","y"]
+    },
+    {
+      "name":"output image",
+      "library":"library name",
+      "index":3,
+      "position":["x","y"]
+    }
+  ]
+  },
+  "inputs":[["procedure input number", "glyph id","glyph input id"],["procedure input number", "glyph id","glyph input id"]],
+  "outputs":[["procedure output number", "glyph id","glyph output id"]],
+  "connections":[["glyph id","input id"]]
+}

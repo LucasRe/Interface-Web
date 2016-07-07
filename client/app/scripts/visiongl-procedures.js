@@ -9,12 +9,12 @@ jsPlumb.draggable($(PROCEDUREIN_ID), DRAG_OPTIONS);
 jsPlumb.draggable($(PROCEDUREOUT_ID), DRAG_OPTIONS);
 
 // null Vertex
-jsPlumb.makeSource($('.procedureins'), {
-  scope: 'image'
+jsPlumb.makeSource($('.procedurein'), {
+	scope: ['image', 'float']
 });
 
 // Vertex image
 jsPlumb.makeTarget($(VERTEX_INPUT_CLASS + '.image'), {
-  maxConnections: 1,
-  scope: 'image'
+	maxConnections: 1,
+	scope: 'image'
 });
