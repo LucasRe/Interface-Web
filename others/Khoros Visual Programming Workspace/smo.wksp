@@ -1,0 +1,318 @@
+# Khoros Visual Programming Workspace
+#
+# cantata workspace file (/users2/dave/sumschool/smo.wksp) was created 
+# on Fri Sep  3 17:09:45 1999
+# by user dave
+#
+
+WorkspaceBegin: 2.1
+
+VariablesBegin:
+
+
+#
+# list of currently declared variables
+#
+
+width_size = 1031
+height_size = 509
+
+VariablesEnd:
+
+#  Glyph 'Extract'
+Glyph:DATAMANIP:kextract::localhost:1:202:362:: -esize '1' -eoff '0' -subpos 0 
+
+#  Glyph 'Extract'
+Glyph:DATAMANIP:kextract::localhost:3:202:442:: -esize '1' -eoff '1' -subpos 0 
+
+#  Glyph 'Extract'
+Glyph:DATAMANIP:kextract::localhost:5:202:522:: -esize '1' -eoff '2' -subpos 0 
+
+#  Glyph 'Maximum'
+Glyph:DATAMANIP:kmaximum::localhost:7:302:22:: 
+
+#  Glyph 'Maximum'
+Glyph:DATAMANIP:kmaximum::localhost:9:302:162:: 
+
+#  Glyph 'Print Stats'
+Glyph:DATAMANIP:kprstats::localhost:11:202:22:: -wsize_var 'width_size' -hsize_var 'height_size' 
+
+#  Glyph 'Labeling'
+Glyph:CYTOMETRY:kffl::localhost:13:562:162:: -conn 1 
+
+#  Glyph 'Blob extractor'
+Glyph:CYTOMETRY:kblobext::localhost:15:662:522:: -backvalue 0 -masklogic 0 
+
+#  Glyph 'Blob extractor'
+Glyph:CYTOMETRY:kblobext::localhost:17:662:442:: -backvalue 0 -masklogic 0 
+
+#  Glyph 'Blob extractor'
+Glyph:CYTOMETRY:kblobext::localhost:19:662:362:: -backvalue 0 -masklogic 0 
+
+#  Procedure 'Procedure'
+ProcedureBegin:Procedure:(unknown):localhost:21:482:82: 
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph '3x3 Str.El.'
+Glyph:MMACH:vstrflat::localhost:1:1102:142:: -s00 '1' -s10 '1' -s20 '1' -s01 '1' -s11 '1' -s21 '1' -s02 '1' -s12 '1' -s22 '1' 
+
+#  Glyph 'Closing of Holes'
+Glyph:MMACH:vclohole::localhost:3:1102:42:: 
+
+#  Glyph 'Thresh Below'
+Glyph:DATAMANIP:kthreshbelow::localhost:5:1002:122:: -lc '1' -fval '0' -tval '255' 
+
+#  Glyph 'Shrink'
+Glyph:DATAMANIP:kshrink::localhost:7:842:122:: -wmag '0.4' -hmag '0.4' 
+
+#  Glyph 'Dist. Transf.'
+Glyph:MMACH:vdist::localhost:9:442:42:: -cv 1 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:11:522:42:: -type 3 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Median'
+Glyph:IMAGE:imedian::localhost:13:682:42:: -wsize '19' -hsize '19' -reps '1' 
+
+#  Glyph 'DRF Edge Extract'
+Glyph:RETRO:vdrf::localhost:15:1022:42:: -a1 '0.589744' -a2 '0.564103' -w '5' -t1 '12' -t2 '15' -l '10' 
+
+#  Glyph 'Thresh Above'
+Glyph:DATAMANIP:kthreshabove::localhost:17:922:42:: -uc '1' -fval '255' -tval '0' 
+
+#  Glyph 'Median'
+Glyph:IMAGE:imedian::localhost:19:842:42:: -wsize '7' -hsize '7' -reps '2' 
+
+#  Glyph 'Expand'
+Glyph:DATAMANIP:kexpand::localhost:21:762:42:: -wmag '2.5' -hmag '2.5' 
+
+#  Glyph 'Median'
+Glyph:IMAGE:imedian::localhost:23:922:122:: -wsize '19' -hsize '19' -reps '1' 
+
+#  Glyph 'Unmask Data'
+Glyph:DATAMANIP:kunmask::localhost:25:762:122:: -real '0' -imag '0' -prop 
+
+#  Glyph 'Equalize'
+Glyph:DATAMANIP:kheq::localhost:27:682:122:: -w -h 
+
+#  Glyph 'Insert Segments'
+Glyph:DATAMANIP:kinsertseg::localhost:29:602:122:: -val 
+
+#  Glyph 'Copy from Value'
+Glyph:DATAMANIP:kcpfromval::localhost:31:542:202:: -mask 
+
+#  Glyph 'Thresh Below'
+Glyph:DATAMANIP:kthreshbelow::localhost:33:542:282:: -lc '1' -fval '0' -tval '255' 
+
+#  ExtPort 'External Output (1)'
+ExtPort:out:External Output (1):o1:35:1239:69:
+
+#  ExtPort 'External Input (2)'
+ExtPort:in:External Input (2):i1:37:505:149:
+
+#  Glyph 'Expand'
+Glyph:DATAMANIP:kexpand::localhost:39:362:42:: -wmag '2.5' -hmag '2.5' 
+
+#  Glyph 'Shrink'
+Glyph:DATAMANIP:kshrink::localhost:41:602:42:: -wmag '0.4' -hmag '0.4' 
+
+
+#  Connections '3x3 Str.El.'
+NodeConnection:data:1:o:3:str:
+
+#  Connections 'Closing of Holes'
+NodeConnection:data:3:o:35::
+
+#  Connections 'Thresh Below'
+NodeConnection:data:5:o:39:i:
+
+#  Connections 'Shrink'
+NodeConnection:data:7:o:23:i:
+
+#  Connections 'Dist. Transf.'
+NodeConnection:data:9:o:11:i:
+
+#  Connections 'Convert Type'
+NodeConnection:data:11:o:41:i:
+
+#  Connections 'Median'
+NodeConnection:data:13:o:21:i:
+
+#  Connections 'DRF Edge Extract'
+NodeConnection:data:15:o:3:i:
+
+#  Connections 'Thresh Above'
+NodeConnection:data:17:o:15:i:
+
+#  Connections 'Median'
+NodeConnection:data:19:o:17:i:
+
+#  Connections 'Expand'
+NodeConnection:data:21:o:19:i:
+
+#  Connections 'Median'
+NodeConnection:data:23:o:5:i:
+
+#  Connections 'Unmask Data'
+NodeConnection:data:25:o:7:i:
+
+#  Connections 'Equalize'
+NodeConnection:data:27:o:25:i:
+
+#  Connections 'Insert Segments'
+NodeConnection:data:29:o:27:i:
+
+#  Connections 'Copy from Value'
+NodeConnection:data:31:o:29:i2:
+
+#  Connections 'Thresh Below'
+NodeConnection:data:33:o:31:i:
+
+#  Connections 'External Output (1)'
+
+#  Connections 'External Input (2)'
+NodeConnection:data:37::29:i1:
+NodeConnection:data:37::33:i:
+
+#  Connections 'Expand'
+NodeConnection:data:39:o:9:i:
+
+#  Connections 'Shrink'
+NodeConnection:data:41:o:13:i:
+
+AnnotationsBegin
+AnnotationsEnd
+
+ProcedureEnd:Procedure
+
+#  Glyph 'Shrink'
+Glyph:DATAMANIP:kshrink::localhost:23:202:202:: -wmag '0.4' -hmag '0.4' 
+
+#  Glyph 'Expand'
+Glyph:DATAMANIP:kexpand::localhost:25:202:122:: -wmag '2.5' -hmag '2.5' 
+
+#  Glyph 'Pad'
+Glyph:DATAMANIP:kpad::localhost:27:382:162:: -wsize 'width_size+50' -hsize 'height_size+50' -woff '25' -hoff '25' -doff '0' -toff '0' -eoff '0' -real '0' -imag '0' -valid 1 
+
+#  Glyph 'Pad'
+Glyph:DATAMANIP:kpad::localhost:29:382:362:: -wsize 'width_size+50' -hsize 'height_size+50' -woff '25' -hoff '25' -doff '0' -toff '0' -eoff '0' -real '0' -imag '0' -valid 1 
+
+#  Glyph 'Pad'
+Glyph:DATAMANIP:kpad::localhost:31:382:442:: -wsize 'width_size+50' -hsize 'height_size+50' -woff '25' -hoff '25' -doff '0' -toff '0' -eoff '0' -real '0' -imag '0' -valid 1 
+
+#  Glyph 'Pad'
+Glyph:DATAMANIP:kpad::localhost:33:382:522:: -wsize 'width_size+50' -hsize 'height_size+50' -woff '25' -hoff '25' -doff '0' -toff '0' -eoff '0' -real '0' -imag '0' -valid 1 
+
+#  Glyph 'N Erosion'
+Glyph:MMACH:vnero::localhost:35:482:202:: -n '10' 
+
+#  Glyph '3x3 Str.El.'
+Glyph:MMACH:vstrflat::localhost:37:482:282:: -s00 '1' -s10 '1' -s20 '1' -s01 '1' -s11 '1' -s21 '1' -s02 '1' -s12 '1' -s22 '1' 
+
+#  Glyph 'Blob extractor'
+Glyph:CYTOMETRY:kblobext::localhost:39:662:262:: -backvalue 0 -masklogic 0 
+
+#  Glyph 'Append'
+Glyph:DATAMANIP:kappend::localhost:41:782:342:: -append 1 -mapping 0 -e 
+
+#  Glyph 'Supported Formats'
+Glyph:DATAMANIP:kformats::localhost:43:883:343:: -kdf 
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:79:62:442::  -o image:ball
+
+
+#  Connections 'Extract'
+NodeConnection:data:1:o:7:i1:
+NodeConnection:data:1:o:29:i:
+NodeConnection:data:1:o:23:i:
+
+#  Connections 'Extract'
+NodeConnection:data:3:o:7:i2:
+NodeConnection:data:3:o:31:i:
+
+#  Connections 'Extract'
+NodeConnection:data:5:o:9:i2:
+NodeConnection:data:5:o:33:i:
+
+#  Connections 'Maximum'
+NodeConnection:data:7:o:9:i1:
+NodeConnection:control:7:out:9:in:
+
+#  Connections 'Maximum'
+NodeConnection:data:9:o:27:i:
+NodeConnection:control:9:out:27:in:
+
+#  Connections 'Print Stats'
+NodeConnection:control:11:out:7:in:
+
+#  Connections 'Labeling'
+NodeConnection:data:13:o:19:i1:
+NodeConnection:data:13:o:17:i1:
+NodeConnection:data:13:o:15:i1:
+NodeConnection:data:13:o:39:i1:
+
+#  Connections 'Blob extractor'
+NodeConnection:data:15:o1:41:i4:
+
+#  Connections 'Blob extractor'
+NodeConnection:data:17:o1:41:i3:
+
+#  Connections 'Blob extractor'
+NodeConnection:data:19:o1:41:i2:
+
+#  Connections 'Procedure'
+NodeConnection:data:21:o1:35:i:
+
+#  Connections 'Shrink'
+NodeConnection:data:23:o:25:i:
+
+#  Connections 'Expand'
+NodeConnection:data:25:o:11:i:
+
+#  Connections 'Pad'
+NodeConnection:data:27:o:21:i1:
+NodeConnection:control:27:out:29:in:
+
+#  Connections 'Pad'
+NodeConnection:data:29:o:19:i2:
+NodeConnection:control:29:out:31:in:
+
+#  Connections 'Pad'
+NodeConnection:data:31:o:17:i2:
+NodeConnection:control:31:out:33:in:
+
+#  Connections 'Pad'
+NodeConnection:data:33:o:15:i2:
+
+#  Connections 'N Erosion'
+NodeConnection:data:35:o:13:i:
+NodeConnection:data:35:o:39:i2:
+
+#  Connections '3x3 Str.El.'
+NodeConnection:data:37:o:35:str:
+
+#  Connections 'Blob extractor'
+NodeConnection:data:39:o1:41:i1:
+
+#  Connections 'Append'
+NodeConnection:data:41:o:43:i:
+
+#  Connections 'Supported Formats'
+
+#  Connections 'User defined'
+NodeConnection:data:79:o:1:i:
+NodeConnection:data:79:o:3:i:
+NodeConnection:data:79:o:5:i:
+
+AnnotationsBegin
+AnnotationsEnd
+
+WorkspaceEnd: 2.1

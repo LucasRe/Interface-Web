@@ -1,0 +1,394 @@
+# Khoros Visual Programming Workspace
+#
+# cantata workspace file (/users2/dave/sumschool/import3.wksp) was created 
+# on Fri Sep  3 17:02:27 1999
+# by user dave
+#
+
+WorkspaceBegin: 2.1
+
+VariablesBegin:
+
+
+#
+# list of currently declared variables
+#
+
+xav = 1
+
+VariablesEnd:
+
+#  Glyph 'Maximum'
+Glyph:DATAMANIP:kmaximum::localhost:1:442:142:: 
+
+#  Glyph 'Maximum'
+Glyph:DATAMANIP:kmaximum::localhost:3:442:342:: 
+
+#  Procedure 'chan1imp'
+ProcedureBegin:chan1imp:(unknown):localhost:5:242:62: 
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:1:682:82:: -type 3 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Divide'
+Glyph:DATAMANIP:kdiv::localhost:3:582:82:: -real '2' 
+
+#  Glyph 'Add'
+Glyph:DATAMANIP:kadd::localhost:5:462:82:: 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:7:302:42:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:9:302:122:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:11:182:122:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:13:182:42:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  ExtPort 'External Output (1)'
+ExtPort:out:External Output (1):o1:15:821:111:
+
+#  ExtPort 'External Input (2)'
+ExtPort:in:External Input (2):i1:17:87:151:
+
+#  ExtPort 'External Input (3)'
+ExtPort:in:External Input (3):i1_2:19:87:71:
+
+
+#  Connections 'Convert Type'
+NodeConnection:data:1:o:15::
+
+#  Connections 'Divide'
+NodeConnection:data:3:o:1:i:
+
+#  Connections 'Add'
+NodeConnection:data:5:o:3:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:7:o:5:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:9:o:5:i2:
+
+#  Connections 'Import Raw'
+NodeConnection:data:11:o:9:i:
+
+#  Connections 'Import Raw'
+NodeConnection:data:13:o:7:i:
+
+#  Connections 'External Output (1)'
+
+#  Connections 'External Input (2)'
+NodeConnection:data:17::11:i1:
+
+#  Connections 'External Input (3)'
+NodeConnection:data:19::13:i1:
+
+AnnotationsBegin
+AnnotationsEnd
+
+ProcedureEnd:chan1imp
+
+#  Procedure 'chan2imp'
+ProcedureBegin:chan2imp:(unknown):localhost:7:242:222: 
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:1:682:82:: -type 3 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Divide'
+Glyph:DATAMANIP:kdiv::localhost:3:582:82:: -real '2' 
+
+#  Glyph 'Add'
+Glyph:DATAMANIP:kadd::localhost:5:462:82:: 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:7:302:42:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:9:302:122:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:11:182:122:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:13:182:42:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  ExtPort 'External Output (1)'
+ExtPort:out:External Output (1):o1:15:821:111:
+
+#  ExtPort 'External Input (2)'
+ExtPort:in:External Input (2):i1:17:87:151:
+
+#  ExtPort 'External Input (3)'
+ExtPort:in:External Input (3):i1_2:19:87:71:
+
+
+#  Connections 'Convert Type'
+NodeConnection:data:1:o:15::
+
+#  Connections 'Divide'
+NodeConnection:data:3:o:1:i:
+
+#  Connections 'Add'
+NodeConnection:data:5:o:3:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:7:o:5:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:9:o:5:i2:
+
+#  Connections 'Import Raw'
+NodeConnection:data:11:o:9:i:
+
+#  Connections 'Import Raw'
+NodeConnection:data:13:o:7:i:
+
+#  Connections 'External Output (1)'
+
+#  Connections 'External Input (2)'
+NodeConnection:data:17::11:i1:
+
+#  Connections 'External Input (3)'
+NodeConnection:data:19::13:i1:
+
+AnnotationsBegin
+AnnotationsEnd
+
+ProcedureEnd:chan2imp
+
+#  Procedure 'chan3imp'
+ProcedureBegin:chan3imp:(unknown):localhost:9:242:402: 
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:1:682:82:: -type 3 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Divide'
+Glyph:DATAMANIP:kdiv::localhost:3:582:82:: -real '2' 
+
+#  Glyph 'Add'
+Glyph:DATAMANIP:kadd::localhost:5:462:82:: 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:7:302:42:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Convert Type'
+Glyph:DATAMANIP:kconvert::localhost:9:302:122:: -type 10 -scale '1' -roff '0' -ioff '0' -val 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:11:182:122:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  Glyph 'Import Raw'
+Glyph:DATAMANIP:kimportraw::localhost:13:182:42:: -arch 8 -type 3 -wsize '1024' -hsize '1024' -dsize '1' -tsize '1' -esize '1' -skip '0' -segment 1 -color 1 
+
+#  ExtPort 'External Output (1)'
+ExtPort:out:External Output (1):o1:15:821:111:
+
+#  ExtPort 'External Input (2)'
+ExtPort:in:External Input (2):i1:17:87:151:
+
+#  ExtPort 'External Input (3)'
+ExtPort:in:External Input (3):i1_2:19:87:71:
+
+
+#  Connections 'Convert Type'
+NodeConnection:data:1:o:15::
+
+#  Connections 'Divide'
+NodeConnection:data:3:o:1:i:
+
+#  Connections 'Add'
+NodeConnection:data:5:o:3:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:7:o:5:i1:
+
+#  Connections 'Convert Type'
+NodeConnection:data:9:o:5:i2:
+
+#  Connections 'Import Raw'
+NodeConnection:data:11:o:9:i:
+
+#  Connections 'Import Raw'
+NodeConnection:data:13:o:7:i:
+
+#  Connections 'External Output (1)'
+
+#  Connections 'External Input (2)'
+NodeConnection:data:17::11:i1:
+
+#  Connections 'External Input (3)'
+NodeConnection:data:19::13:i1:
+
+AnnotationsBegin
+AnnotationsEnd
+
+ProcedureEnd:chan3imp
+
+#  Procedure 'count blobs'
+ProcedureBegin:count blobs:(unknown):localhost:11:582:342: 
+
+VariablesBegin:
+
+
+
+# No variables currently declared. #
+
+VariablesEnd:
+
+#  Glyph 'N Erosion'
+Glyph:MMACH:vnero::localhost:1:562:182:: -n '5' 
+
+#  Glyph '3x3 Str.El.'
+Glyph:MMACH:vstrflat::localhost:3:442:342:: -s00 '1' -s10 '1' -s20 '1' -s01 '1' -s11 '1' -s21 '1' -s02 '1' -s12 '1' -s22 '1' 
+
+#  Glyph 'N Dilation'
+Glyph:MMACH:vndil::localhost:5:462:182:: -n '5' 
+
+#  Glyph 'Median Histogram'
+Glyph:RETRO:vhmed::localhost:7:342:182:: -w '7' -h '7' 
+
+#  Glyph 'thresh=5'
+Glyph:DATAMANIP:kthreshabove:thresh=5:localhost:9:222:182:: -uc '5' -fval '255' -tval '0' 
+
+#  ExtPort 'External Input (1)'
+ExtPort:in:External Input (1):i1:11:102:202:
+
+#  ExtPort 'External Output (2)'
+ExtPort:out:External Output (2):o1:13:740:210:
+
+
+#  Connections 'N Erosion'
+NodeConnection:data:1:o:13::
+
+#  Connections '3x3 Str.El.'
+NodeConnection:data:3:o:5:str:
+NodeConnection:data:3:o:1:str:
+
+#  Connections 'N Dilation'
+NodeConnection:data:5:o:1:i:
+
+#  Connections 'Median Histogram'
+NodeConnection:data:7:o:5:i:
+
+#  Connections 'thresh=5'
+NodeConnection:data:9:o:7:i:
+
+#  Connections 'External Input (1)'
+NodeConnection:data:11::9:i:
+
+#  Connections 'External Output (2)'
+
+AnnotationsBegin
+AnnotationsEnd
+
+ProcedureEnd:count blobs
+
+#  Glyph 'Pad'
+Glyph:DATAMANIP:kpad::localhost:13:822:82:: -wsize '1400' -hsize '1400' -woff '175' -hoff '175' -doff '0' -toff '0' -eoff '0' -real '0' -imag '0' -valid 1 
+
+#  Glyph 'Append'
+Glyph:DATAMANIP:kappend::localhost:15:722:82:: -append 1 -mapping 0 -e 
+
+#  Glyph 'Supported Formats'
+Glyph:DATAMANIP:kformats::localhost:17:922:82:: -kdf 
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:32:62:42::  -o image:ball
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:34:62:102::  -o image:ball
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:36:62:202::  -o image:ball
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:38:62:262::  -o image:ball
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:40:62:382::  -o image:ball
+
+#  Glyph 'User defined'
+Glyph:DESIGN:user_def::localhost:42:62:442::  -o image:ball
+
+
+#  Connections 'Maximum'
+NodeConnection:data:1:o:3:i1:
+
+#  Connections 'Maximum'
+NodeConnection:data:3:o:11:i1:
+
+#  Connections 'chan1imp'
+NodeConnection:data:5:o1:1:i1:
+NodeConnection:data:5:o1:15:i2:
+NodeConnection:control:5:out:7:in:
+
+#  Connections 'chan2imp'
+NodeConnection:data:7:o1:1:i2:
+NodeConnection:data:7:o1:15:i3:
+NodeConnection:control:7:out:9:in:
+
+#  Connections 'chan3imp'
+NodeConnection:data:9:o1:3:i2:
+NodeConnection:data:9:o1:15:i4:
+
+#  Connections 'count blobs'
+NodeConnection:data:11:o1:15:i1:
+
+#  Connections 'Pad'
+NodeConnection:data:13:o:17:i:
+
+#  Connections 'Append'
+NodeConnection:data:15:o:13:i:
+
+#  Connections 'Supported Formats'
+
+#  Connections 'User defined'
+NodeConnection:data:32:o:5:i1:
+
+#  Connections 'User defined'
+NodeConnection:data:34:o:5:i1_2:
+
+#  Connections 'User defined'
+NodeConnection:data:36:o:7:i1:
+
+#  Connections 'User defined'
+NodeConnection:data:38:o:7:i1_2:
+
+#  Connections 'User defined'
+NodeConnection:data:40:o:9:i1:
+
+#  Connections 'User defined'
+NodeConnection:data:42:o:9:i1_2:
+
+AnnotationsBegin
+AnnotationsEnd
+
+WorkspaceEnd: 2.1
