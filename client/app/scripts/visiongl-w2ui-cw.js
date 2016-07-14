@@ -2,8 +2,8 @@
 // Return the Z column values
 function zvalues(zn, yn) {
 	var zvalue = [];
-	for (i = 0; i < zn; i++) {
-		for (j = 0; j < yn; j++) {
+	for (var i = 0; i < zn; i++) {
+		for (var j = 0; j < yn; j++) {
 			zvalue.push(i);
 		}
 	}
@@ -13,8 +13,8 @@ function zvalues(zn, yn) {
 // Return the Z column values
 function yvalues(yn, zn) {
 	var yvalue = [];
-	for (i = 0; i < zn; i++) {
-		for (j = 0; j < yn; j++) {
+	for (var i = 0; i < zn; i++) {
+		for (var j = 0; j < yn; j++) {
 			yvalue.push(j);
 		}
 	}
@@ -22,15 +22,19 @@ function yvalues(yn, zn) {
 }
 
 // Add column
-function add_column(grid, fname, ccaption) {
+function add_column(grid, fname, ccaption, nrecords) {
+	var colName = 'x' + fname + 'value';
 	w2ui[grid].addColumn({
-		field: 'x' + fname + 'value',
+		field: colName,
 		caption: ccaption,
 		size: '50px',
 		editable: {
 			type: 'int'
 		}
 	});
+	for (var i = 1; i <= nrecords; i++) {
+		w2ui[grid].set(i,{[colName]:1});
+	}
 }
 
 // Remove column
@@ -42,16 +46,13 @@ function rm_column(grid, cname) {
 function change_zy(grid, z, y) {
 	var zv = zvalues(z, y);
 	var yv = yvalues(y, z);
-	for (i = 1; i <= z * y; i++) {
+	for (var i = 1; i <= z * y; i++) {
 		w2ui[grid].set(i, {
 			zvalue: zv[i - 1],
 			yvalue: yv[i - 1]
 		});
-	};
+	}
 }
-
-// Fill X values]
-function fill_x(x_value, y, z, grid) {}
 
 //Convolution Window default config.
 var config = {
@@ -119,65 +120,65 @@ var config = {
 			recid: 1,
 			zvalue: 0,
 			yvalue: 0,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 2,
 			zvalue: 0,
 			yvalue: 1,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 3,
 			zvalue: 0,
 			yvalue: 2,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 4,
 			zvalue: 1,
 			yvalue: 0,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 5,
 			zvalue: 1,
 			yvalue: 1,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 6,
 			zvalue: 1,
 			yvalue: 2,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 7,
 			zvalue: 2,
 			yvalue: 0,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 8,
 			zvalue: 2,
 			yvalue: 1,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}, {
 			recid: 9,
 			zvalue: 2,
 			yvalue: 2,
-			x0value: 0.1,
-			x1value: 0.1,
-			x2value: 0.1
+			x0value: 1.0,
+			x1value: 1.0,
+			x2value: 1.0
 		}]
 	},
 	form: {
@@ -222,39 +223,39 @@ var config = {
 		actions: {
 			Change: function() {
 
-				// Change nº cols for width
-				if (w2ui[grid_id].columns.length - 2 < this.record.width) {
-					// Add cols for width
-					for (i = w2ui[grid_id].columns.length - 2; i < this.record.width; i++) {
-						add_column(grid_id, i, i);
+				// Change nº rows for height and depth
+				if (w2ui[grid_id].records.length > this.record.depth * this.record.height) {
+					console.log("i3= "+config.form.record.depth * config.form.record.height +" "+this.record.depth * this.record.height);
+					for (var i3 = config.form.record.depth * config.form.record.height; i3 > this.record.depth * this.record.height; i3--) {
+						console.log("RM record: "+i3);
+						w2ui[grid_id].remove(i3-1);
 					}
+
+					// Change Z Y columns values
+					change_zy(grid_id, this.record.depth, this.record.height);
+
 				} else {
-					for (i = w2ui[grid_id].columns.length - 2; i >= this.record.width; i--) {
-						var col = 'x' + (i) + 'value';
-						eval("w2ui[grid_id].set({ '" + col + "' : null });");
-						rm_column(grid_id, col);
+					for (var i4 = config.form.record.depth * config.form.record.height + 1; i4 <= this.record.depth * this.record.height; i4++) {
+						w2ui[grid_id].add({
+							recid: i4
+						});
 					}
 				}
 
-				// Change nº rows for height and depth
-				if (w2ui[grid_id].records.length > this.record.depth * this.record.height) {
-					for (i = config.form.record.depth * config.form.record.height; i > this.record.depth * this.record.height; i--) {
-						w2ui[grid_id].remove(i);
+				// Change Z Y columns values
+				change_zy(grid_id, this.record.depth, this.record.height);
+
+				// Change nº cols for width
+				if (w2ui[grid_id].columns.length - 2 < this.record.width) {
+					// Add cols for width
+					for (var i = w2ui[grid_id].columns.length - 2; i < this.record.width; i++) {
+						add_column(grid_id, i, i, w2ui[grid_id].records.length);
 					}
-
-					// Change Z Y columns values
-					change_zy(grid_id, this.record.depth, this.record.height);
-
 				} else {
-					for (i = config.form.record.depth * config.form.record.height + 1; i <= this.record.depth * this.record.height; i++) {
-						w2ui[grid_id].add({
-							recid: i
-						})
-					};
-
-					// Change Z Y columns values
-					change_zy(grid_id, this.record.depth, this.record.height);
-
+					for (var i2 = w2ui[grid_id].columns.length - 2; i2 >= this.record.width; i2--) {
+						var col = 'x' + (i2) + 'value';
+						rm_column(grid_id, col);
+					}
 				}
 
 				grid_xyz[grid_id].y = this.record.height;
@@ -264,7 +265,7 @@ var config = {
 			}
 		}
 	}
-}
+};
 
 // Conv. Window Popup
 function cwPopup(grid) {
@@ -284,7 +285,7 @@ function cwPopup(grid) {
 		onToggle: function(event) {
 			event.onComplete = function() {
 				w2ui.layout.resize();
-			}
+			};
 		}
 	});
 }
@@ -304,9 +305,9 @@ function open_cwpopup() {
 		var id = $(event.target.closest('.glyph')).attr('id').split('_')[1];
 		grid_id = 'grid_' + id;
 		console.log(grid_id);
-		w2ui.form.record['height'] = grid_xyz[grid_id].y;
-		w2ui.form.record['depth'] = grid_xyz[grid_id].z;
-		w2ui.form.record['width'] = grid_xyz[grid_id].x;
+		w2ui.form.record.height = grid_xyz[grid_id].y;
+		w2ui.form.record.depth = grid_xyz[grid_id].z;
+		w2ui.form.record.width = grid_xyz[grid_id].x;
 		w2ui.form.refresh();
 		cwPopup(grid_id);
 	});

@@ -59,6 +59,6 @@ $(document).ready(function() {
 	// Delete Glyph
 	$(".delete").click(function() {
 		deleteGlyph(selected);
-});
+	});
 
 });

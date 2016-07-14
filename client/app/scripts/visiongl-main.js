@@ -1,6 +1,5 @@
 "use strict";
 
-
 // Change inpute value
 function change_input_value() {
 	$("input").change(function() {
@@ -23,7 +22,7 @@ function resize() {
 
 // Select Function
 function selectglyph() {
-	if (selected == '') {
+	if (selected === '') {
 		selected = $(this).parent();
 		selected.addClass('selected');
 	} else {
@@ -35,7 +34,7 @@ function selectglyph() {
 
 // Select Function
 function deselectglyph() {
-	if (selected != '') {
+	if (selected !== '') {
 		selected.removeClass('selected');
 		selected = '';
 	}
@@ -43,9 +42,11 @@ function deselectglyph() {
 
 // Lock/UnLock Glyph
 function lockGlyph(selected) {
-	if (!($(selected).hasClass('ui-draggable-disabled'))) {
+	if (!($(selected).hasClass('draglock'))) {
+		$(selected).addClass('draglock');
 		jsPlumb.setDraggable($(selected), false);
 	} else {
+		$(selected).removeClass('draglock');
 		jsPlumb.setDraggable($(selected), true);
 	}
 }

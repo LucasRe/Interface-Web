@@ -34,7 +34,7 @@ const TOOLBAR_OPTIONS = {
 	animation: 'flip',
 	hideOnClick: true,
 	adjustment: 32
-}
+};
 
 // Vertex output class
 const VERTEX_OUTPUT_CLASS = '.vertex.out';

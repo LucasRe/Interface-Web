@@ -275,14 +275,14 @@ function workspace_import_wk(wk) {
 			console.log('ST1' + $(temp[m]).text().trim());
 			console.log('ST2' + glyph_connections[o].out_var);
 			if ($(temp[m]).text().trim() == glyph_connections[o].out_var) {
-				conn['source'] = $($(temp[m]).children('span')).attr('id');
+				conn.source = $($(temp[m]).children('span')).attr('id');
 				break;
 			}
 		}
 		temp = $('#Glyph_' + glyph_connections[o].in_id).find('p');
 		for (var m = 0; m < temp.length; m++) {
 			if ($(temp[m]).text().trim() == glyph_connections[o].in_var) {
-				conn['target'] = $($(temp[m]).children('span')).attr('id');
+				conn.target = $($(temp[m]).children('span')).attr('id');
 				break;
 			}
 		}
@@ -361,7 +361,7 @@ function workspace_save() {
 	var save_file = {
 		glyph_count: glyph_count,
 		connections: connections_clear
-	}
+	};
 
 	save_file.workspace = document.getElementById('workspace').innerHTML;
 	save_file.custom = document.getElementById('tabs-custom').innerHTML;
