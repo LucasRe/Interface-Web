@@ -30,7 +30,7 @@
 			}, {
 				type: 'menu',
 				id: 'glyphmenu',
-				caption: 'Gliph',
+				caption: 'Glyph',
 				items: [{
 					text: 'Duplicate',
 					icon: 'fa fa-clone'
@@ -65,6 +65,11 @@
 					workspace_new();
 					break;
 
+					// New Procedure
+				case 'filemenu:New Procedure':
+					window.open("procedure.html");
+					break;
+
 					// Open Workspace
 				case 'filemenu:Open':
 					workspace_load();
@@ -87,17 +92,32 @@
 
 					// Glyph Duplicate
 				case 'glyphmenu:Duplicate':
-					console.log("Duplicate");
+					cloneglyph(true);
+					console.log("Duplicate: "+selected);
 					break;
 
 					// Glyph Delete
 				case 'glyphmenu:Delete':
+					deleteGlyph(selected);
 					console.log("Delete");
 					break;
 
-					// Glyph Duplicate
+					// Glyph Lock
 				case 'glyphmenu:Lock/Unlock Glyph':
+					lockGlyph(selected);
 					console.log("Lock");
+					break;
+
+					// Help Documentation
+				case 'helpmenu:Documentation':
+					console.log("Documentation");
+					window.open("https://github.com/ddantas/Interface-Web/wiki");
+					break;
+
+					// Help About
+				case 'helpmenu:About':
+					console.log("About");
+					window.open("https://github.com/ddantas/Interface-Web");
 					break;
 			}
 		});

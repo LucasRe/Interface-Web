@@ -236,6 +236,7 @@ var config = {
 
 				} else {
 					for (var i4 = config.form.record.depth * config.form.record.height + 1; i4 <= this.record.depth * this.record.height; i4++) {
+
 						w2ui[grid_id].add({
 							recid: i4
 						});
