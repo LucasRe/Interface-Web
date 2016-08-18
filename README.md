@@ -8,11 +8,17 @@ You will need the following things properly installed on your computer.
 * [Node.js](http://nodejs.org/) v4.3.0 (with NPM 2.14.12) [How to install](https://nodejs.org/en/download/package-manager/)
 * [Bower](http://bower.io/) * `sudo npm install -g bower`
 * [Grunt CLI](http://gruntjs.com/) * `sudo npm install -g grunt-cli`
-* [RethinkDB](http://rethinkdb.com/) [How to install](http://rethinkdb.com/docs/install/)
+* [RethinkDB](http://rethinkdb.com/) - [How to install](http://rethinkdb.com/docs/install/)
 
-### Tools
+### Dev Tools suggestion
 - [Atom](https://atom.io/)
-- [Chromium](https://www.chromium.org/)
+- [Chromium](https://www.chromium.org/) or [Chrome](https://www.google.com/chrome/)
+
+### Server Framework
+* [Expres](http://expressjs.com)
+
+### Client dependencies
+Please look [bower.json](https://github.com/ddantas/Interface-Web/blob/master/client/bower.json)
 
 ## Installation
 
@@ -53,3 +59,5 @@ On project root:
 * `cd client`
 
 * `grunt build`
+
+
